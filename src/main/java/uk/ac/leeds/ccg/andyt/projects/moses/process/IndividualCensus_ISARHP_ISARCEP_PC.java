@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Level;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
 
 /**

@@ -18,6 +18,7 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;

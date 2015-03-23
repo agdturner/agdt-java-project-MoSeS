@@ -34,16 +34,16 @@ import java.util.Iterator;
 import java.util.TreeMap;
 import org.jfree.chart.JFreeChart;
 import uk.ac.leeds.ccg.andyt.generic.math.Generic_BigDecimal;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CAS001DataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CAS002DataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CAS002DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASUV003DataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASUV003DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASUV003DataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASUV003DataRecord;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataRecord_2;
-import uk.ac.leeds.ccg.andyt.projects.moses.utilities.StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.StaticIO;
 
 /**
  * For producing a set of comparison regression reports.

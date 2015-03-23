@@ -25,19 +25,19 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.TreeMap;
 import java.util.Vector;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CAS002DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS008DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS020DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS09bDataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS09cDataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler.AgeSexType;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.misc.AgeConverter;
-import uk.ac.leeds.ccg.andyt.projects.moses.utilities.StaticCollections;
-import uk.ac.leeds.ccg.andyt.projects.moses.utilities.StaticCopy;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS008DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS020DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09bDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09cDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler.AgeSexType;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.generic.scratch.AgeConverter;
+import uk.ac.leeds.ccg.andyt.generic.utilities.StaticCollections;
+import uk.ac.leeds.ccg.andyt.generic.utilities.StaticCopy;
 
 public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
 

@@ -18,6 +18,8 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
 import java.io.RandomAccessFile;
 
 /**

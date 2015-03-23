@@ -20,8 +20,8 @@ package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
 import java.io.File;
 import java.io.IOException;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASAreaEastingNorthingDataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.SWSDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASAreaEastingNorthingDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.SWSDataHandler;
 
 /**
  * A class for formatting all original census data into more readable forms.

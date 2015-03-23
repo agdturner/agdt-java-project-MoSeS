@@ -40,7 +40,7 @@ import org.jfree.data.statistics.Regression;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.WebContentHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.utilities.StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.StaticIO;
 
 /**
  * A class for generating maps comparing CAS data with IndividualCensus outputs

@@ -18,6 +18,14 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -118,41 +126,63 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         for (long RecordID = startRecordID; RecordID <= endRecordID; RecordID++) {
             // System.out.println("RecordID " + RecordID);
             aCASDataRecord = (CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
-            aCounts.allPeople = aCASDataRecord.tCAS001DataRecord.getAllPeople();
-            aCounts.allHouseholds = aCASDataRecord.tCAS003DataRecord.getAllHouseholdsTotal();
-            aCounts.allPeopleAge0to4 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge0to4();
-            aCounts.allPeopleAge5to9 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge5to9();
-            aCounts.allPeopleAge10to14 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge10to14();
-            aCounts.allPeopleAge15to19 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge15to19();
-            aCounts.allPeopleAge20to24 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge20to24();
-            aCounts.allPeopleAge25to29 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge25to29();
-            aCounts.allPeopleAge30to44 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge30to34() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge35to39() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge40to44();
+            aCounts.allPeople = aCASDataRecord.getCAS001DataRecord().getAllPeople();
+            aCounts.allHouseholds = aCASDataRecord.getCAS003DataRecord().getAllHouseholdsTotal();
+            aCounts.allPeopleAge0to4 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge0to4();
+            aCounts.allPeopleAge5to9 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge5to9();
+            aCounts.allPeopleAge10to14 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge10to14();
+            aCounts.allPeopleAge15to19 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge15to19();
+            aCounts.allPeopleAge20to24 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge20to24();
+            aCounts.allPeopleAge25to29 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge25to29();
+            aCounts.allPeopleAge30to44 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge30to34()
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge35to39() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge40to44();
             // aCounts.allPeopleAge30to44 =
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge30to34() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge35to39() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge40to44();
-            aCounts.allPeopleAge45to59 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge45to49() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge50to54() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge55to59();
-            aCounts.allPeopleAge60to64 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge60to64();
-            aCounts.allPeopleAge65to69 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge65to69();
-            aCounts.allPeopleAge70to74 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge70to74();
-            aCounts.allPeopleAge75to79 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge75to79();
-            aCounts.allPeopleAge80AndOver = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge80to84() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge85to89() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge90AndOver();
+            aCounts.allPeopleAge45to59 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge45to49() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge50to54() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge55to59();
+            aCounts.allPeopleAge60to64 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge60to64();
+            aCounts.allPeopleAge65to69 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge65to69();
+            aCounts.allPeopleAge70to74 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge70to74();
+            aCounts.allPeopleAge75to79 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge75to79();
+            aCounts.allPeopleAge80AndOver = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge80to84() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge85to89()
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge90AndOver();
             // aCounts.allPeopleAge80AndOver =
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge80to84() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge85to89() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge90AndOver();
-            aCounts.allPeopleAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74();
-            aCounts.malesAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74();
-            aCounts.femalesAge16to74 = aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74();
-            aCounts.unemployedAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveUnemployed() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74UnemployedWhoHaveNeverWorked() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74WhoAreLongTermUnemployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveUnemployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74UnemployedWhoHaveNeverWorked() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74WhoAreLongTermUnemployed();
+            aCounts.allPeopleAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74();
+            aCounts.malesAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74();
+            aCounts.femalesAge16to74 = aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74();
+            aCounts.unemployedAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveUnemployed() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74UnemployedWhoHaveNeverWorked() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74WhoAreLongTermUnemployed()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveUnemployed() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74UnemployedWhoHaveNeverWorked() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74WhoAreLongTermUnemployed();
             // aCounts.retiredAge16to74 =
             // aCASDataRecord.tCASKS09bDataRecord.malesAged16to74EconomicallyInactiveRetired
             // +
             // aCASDataRecord.tCASKS09cDataRecord.femalesAged16to74EconomicallyInactiveRetired;
-            aCounts.maleEconomicallyActiveAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveEmployeesFullTime() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveEmployeesPartTime() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveFullTimeStudent() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveSelfEmployed() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveUnemployed();
-            aCounts.femaleEconomicallyActiveAge16to74 = aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveEmployeesFullTime() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveEmployeesPartTime() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveFullTimeStudent() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveSelfEmployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveUnemployed();
-            aCounts.ethnicityWhite = aCASDataRecord.tCASKS006DataRecord.getWhiteOtherWhite() + aCASDataRecord.tCASKS006DataRecord.getWhiteWhiteBritish() + aCASDataRecord.tCASKS006DataRecord.getWhiteWhiteIrish();
-            aCounts.noCarOwnership = aCASDataRecord.tCASKS017DataRecord.getHouseholdsWith0CarsOrVans();
+            aCounts.maleEconomicallyActiveAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveEmployeesFullTime() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveEmployeesPartTime() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveFullTimeStudent() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveSelfEmployed() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveUnemployed();
+            aCounts.femaleEconomicallyActiveAge16to74 = aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveEmployeesFullTime()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveEmployeesPartTime() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveFullTimeStudent()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveSelfEmployed()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveUnemployed();
+            aCounts.ethnicityWhite = aCASDataRecord.getCASKS006DataRecord().getWhiteOtherWhite()
+                    + aCASDataRecord.getCASKS006DataRecord().getWhiteWhiteBritish() 
+                    + aCASDataRecord.getCASKS006DataRecord().getWhiteWhiteIrish();
+            aCounts.noCarOwnership = aCASDataRecord.getCASKS017DataRecord().getHouseholdsWith0CarsOrVans();
             write(aCounts, String.valueOf(aCASDataRecord.getZone_Code()));
         }
     }
@@ -179,41 +209,63 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         for (long RecordID = startRecordID; RecordID <= endRecordID; RecordID++) {
             // System.out.println("RecordID " + RecordID);
             aCASDataRecord = (CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
-            aCounts.allPeople = aCASDataRecord.tCAS001DataRecord.getAllPeople();
-            aCounts.allHouseholds = aCASDataRecord.tCAS003DataRecord.getAllHouseholdsTotal();
-            aCounts.allPeopleAge0to4 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge0to4();
-            aCounts.allPeopleAge5to9 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge5to9();
-            aCounts.allPeopleAge10to14 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge10to14();
-            aCounts.allPeopleAge15to19 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge15to19();
-            aCounts.allPeopleAge20to24 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge20to24();
-            aCounts.allPeopleAge25to29 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge25to29();
-            aCounts.allPeopleAge30to44 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge30to34() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge35to39() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge40to44();
+            aCounts.allPeople = aCASDataRecord.getCAS001DataRecord().getAllPeople();
+            aCounts.allHouseholds = aCASDataRecord.getCAS003DataRecord().getAllHouseholdsTotal();
+            aCounts.allPeopleAge0to4 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge0to4();
+            aCounts.allPeopleAge5to9 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge5to9();
+            aCounts.allPeopleAge10to14 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge10to14();
+            aCounts.allPeopleAge15to19 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge15to19();
+            aCounts.allPeopleAge20to24 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge20to24();
+            aCounts.allPeopleAge25to29 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge25to29();
+            aCounts.allPeopleAge30to44 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge30to34() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge35to39() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge40to44();
             // aCounts.allPeopleAge30to44 =
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge30to34() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge35to39() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge40to44();
-            aCounts.allPeopleAge45to59 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge45to49() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge50to54() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge55to59();
-            aCounts.allPeopleAge60to64 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge60to64();
-            aCounts.allPeopleAge65to69 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge65to69();
-            aCounts.allPeopleAge70to74 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge70to74();
-            aCounts.allPeopleAge75to79 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge75to79();
-            aCounts.allPeopleAge80AndOver = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge80to84() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge85to89() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge90AndOver();
+            aCounts.allPeopleAge45to59 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge45to49() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge50to54() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge55to59();
+            aCounts.allPeopleAge60to64 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge60to64();
+            aCounts.allPeopleAge65to69 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge65to69();
+            aCounts.allPeopleAge70to74 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge70to74();
+            aCounts.allPeopleAge75to79 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge75to79();
+            aCounts.allPeopleAge80AndOver = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge80to84()
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge85to89()
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge90AndOver();
             // aCounts.allPeopleAge80AndOver =
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge80to84() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge85to89() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge90AndOver();
-            aCounts.allPeopleAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74();
-            aCounts.malesAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74();
-            aCounts.femalesAge16to74 = aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74();
-            aCounts.unemployedAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveUnemployed() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74UnemployedWhoHaveNeverWorked() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74WhoAreLongTermUnemployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveUnemployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74UnemployedWhoHaveNeverWorked() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74WhoAreLongTermUnemployed();
+            aCounts.allPeopleAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74();
+            aCounts.malesAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74();
+            aCounts.femalesAge16to74 = aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74();
+            aCounts.unemployedAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveUnemployed() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74UnemployedWhoHaveNeverWorked()
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74WhoAreLongTermUnemployed() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveUnemployed() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74UnemployedWhoHaveNeverWorked() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74WhoAreLongTermUnemployed();
             // aCounts.retiredAge16to74 =
             // aCASDataRecord.tCASKS09bDataRecord.malesAged16to74EconomicallyInactiveRetired
             // +
             // aCASDataRecord.tCASKS09cDataRecord.femalesAged16to74EconomicallyInactiveRetired;
-            aCounts.maleEconomicallyActiveAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveEmployeesFullTime() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveEmployeesPartTime() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveFullTimeStudent() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveSelfEmployed() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveUnemployed();
-            aCounts.femaleEconomicallyActiveAge16to74 = aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveEmployeesFullTime() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveEmployeesPartTime() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveFullTimeStudent() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveSelfEmployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveUnemployed();
-            aCounts.ethnicityWhite = aCASDataRecord.tCASKS006DataRecord.getWhiteOtherWhite() + aCASDataRecord.tCASKS006DataRecord.getWhiteWhiteBritish() + aCASDataRecord.tCASKS006DataRecord.getWhiteWhiteIrish();
-            aCounts.noCarOwnership = aCASDataRecord.tCASKS017DataRecord.getHouseholdsWith0CarsOrVans();
+            aCounts.maleEconomicallyActiveAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveEmployeesFullTime()
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveEmployeesPartTime()
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveFullTimeStudent() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveSelfEmployed()
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveUnemployed();
+            aCounts.femaleEconomicallyActiveAge16to74 = aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveEmployeesFullTime()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveEmployeesPartTime() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveFullTimeStudent()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveSelfEmployed() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveUnemployed();
+            aCounts.ethnicityWhite = aCASDataRecord.getCASKS006DataRecord().getWhiteOtherWhite() 
+                    + aCASDataRecord.getCASKS006DataRecord().getWhiteWhiteBritish()
+                    + aCASDataRecord.getCASKS006DataRecord().getWhiteWhiteIrish();
+            aCounts.noCarOwnership = aCASDataRecord.getCASKS017DataRecord().getHouseholdsWith0CarsOrVans();
             write(aCounts, String.valueOf(aCASDataRecord.getZone_Code()));
         }
     }
@@ -236,41 +288,63 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         for (long RecordID = startRecordID; RecordID <= endRecordID; RecordID++) {
             // System.out.println("RecordID " + RecordID);
             aCASDataRecord = (CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
-            aCounts.allPeople = aCASDataRecord.tCAS001DataRecord.getAllPeople();
-            aCounts.allHouseholds = aCASDataRecord.tCAS003DataRecord.getAllHouseholdsTotal();
-            aCounts.allPeopleAge0to4 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge0to4();
-            aCounts.allPeopleAge5to9 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge5to9();
-            aCounts.allPeopleAge10to14 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge10to14();
-            aCounts.allPeopleAge15to19 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge15to19();
-            aCounts.allPeopleAge20to24 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge20to24();
-            aCounts.allPeopleAge25to29 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge25to29();
-            aCounts.allPeopleAge30to44 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge30to34() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge35to39() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge40to44();
+            aCounts.allPeople = aCASDataRecord.getCAS001DataRecord().getAllPeople();
+            aCounts.allHouseholds = aCASDataRecord.getCAS003DataRecord().getAllHouseholdsTotal();
+            aCounts.allPeopleAge0to4 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge0to4();
+            aCounts.allPeopleAge5to9 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge5to9();
+            aCounts.allPeopleAge10to14 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge10to14();
+            aCounts.allPeopleAge15to19 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge15to19();
+            aCounts.allPeopleAge20to24 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge20to24();
+            aCounts.allPeopleAge25to29 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge25to29();
+            aCounts.allPeopleAge30to44 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge30to34() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge35to39() +
+                    aCASDataRecord.getCAS001DataRecord().getAllPeopleAge40to44();
             // aCounts.allPeopleAge30to44 =
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge30to34() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge35to39() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge40to44();
-            aCounts.allPeopleAge45to59 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge45to49() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge50to54() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge55to59();
-            aCounts.allPeopleAge60to64 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge60to64();
-            aCounts.allPeopleAge65to69 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge65to69();
-            aCounts.allPeopleAge70to74 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge70to74();
-            aCounts.allPeopleAge75to79 = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge75to79();
-            aCounts.allPeopleAge80AndOver = aCASDataRecord.tCAS001DataRecord.getAllPeopleAge80to84() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge85to89() + aCASDataRecord.tCAS001DataRecord.getAllPeopleAge90AndOver();
+            aCounts.allPeopleAge45to59 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge45to49() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge50to54() + 
+                    aCASDataRecord.getCAS001DataRecord().getAllPeopleAge55to59();
+            aCounts.allPeopleAge60to64 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge60to64();
+            aCounts.allPeopleAge65to69 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge65to69();
+            aCounts.allPeopleAge70to74 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge70to74();
+            aCounts.allPeopleAge75to79 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge75to79();
+            aCounts.allPeopleAge80AndOver = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge80to84()
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge85to89() 
+                    + aCASDataRecord.getCAS001DataRecord().getAllPeopleAge90AndOver();
             // aCounts.allPeopleAge80AndOver =
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge80to84() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge85to89() +
             // aCASDataRecord.tCAS002DataRecord.getAllPeopleTotalAge90AndOver();
-            aCounts.allPeopleAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74();
-            aCounts.malesAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74();
-            aCounts.femalesAge16to74 = aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74();
-            aCounts.unemployedAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveUnemployed() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74UnemployedWhoHaveNeverWorked() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74WhoAreLongTermUnemployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveUnemployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74UnemployedWhoHaveNeverWorked() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74WhoAreLongTermUnemployed();
+            aCounts.allPeopleAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74();
+            aCounts.malesAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74();
+            aCounts.femalesAge16to74 = aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74();
+            aCounts.unemployedAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveUnemployed() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74UnemployedWhoHaveNeverWorked() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74WhoAreLongTermUnemployed()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveUnemployed() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74UnemployedWhoHaveNeverWorked()
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74WhoAreLongTermUnemployed();
             // aCounts.retiredAge16to74 =
             // aCASDataRecord.tCASKS09bDataRecord.malesAged16to74EconomicallyInactiveRetired
             // +
             // aCASDataRecord.tCASKS09cDataRecord.femalesAged16to74EconomicallyInactiveRetired;
-            aCounts.maleEconomicallyActiveAge16to74 = aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveEmployeesFullTime() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveEmployeesPartTime() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveFullTimeStudent() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveSelfEmployed() + aCASDataRecord.tCASKS09bDataRecord.getMalesAged16to74EconomicallyActiveUnemployed();
-            aCounts.femaleEconomicallyActiveAge16to74 = aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveEmployeesFullTime() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveEmployeesPartTime() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveFullTimeStudent() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveSelfEmployed() + aCASDataRecord.tCASKS09cDataRecord.getFemalesAged16to74EconomicallyActiveUnemployed();
-            aCounts.ethnicityWhite = aCASDataRecord.tCASKS006DataRecord.getWhiteOtherWhite() + aCASDataRecord.tCASKS006DataRecord.getWhiteWhiteBritish() + aCASDataRecord.tCASKS006DataRecord.getWhiteWhiteIrish();
-            aCounts.noCarOwnership = aCASDataRecord.tCASKS017DataRecord.getHouseholdsWith0CarsOrVans();
+            aCounts.maleEconomicallyActiveAge16to74 = aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveEmployeesFullTime() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveEmployeesPartTime()
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveFullTimeStudent() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveSelfEmployed() 
+                    + aCASDataRecord.getCASKS09bDataRecord().getMalesAged16to74EconomicallyActiveUnemployed();
+            aCounts.femaleEconomicallyActiveAge16to74 = aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveEmployeesFullTime() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveEmployeesPartTime() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveFullTimeStudent() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveSelfEmployed() 
+                    + aCASDataRecord.getCASKS09cDataRecord().getFemalesAged16to74EconomicallyActiveUnemployed();
+            aCounts.ethnicityWhite = aCASDataRecord.getCASKS006DataRecord().getWhiteOtherWhite()
+                    + aCASDataRecord.getCASKS006DataRecord().getWhiteWhiteBritish() 
+                    + aCASDataRecord.getCASKS006DataRecord().getWhiteWhiteIrish();
+            aCounts.noCarOwnership = aCASDataRecord.getCASKS017DataRecord().getHouseholdsWith0CarsOrVans();
             write(aCounts, String.valueOf(aCASDataRecord.getZone_Code()));
         }
     }

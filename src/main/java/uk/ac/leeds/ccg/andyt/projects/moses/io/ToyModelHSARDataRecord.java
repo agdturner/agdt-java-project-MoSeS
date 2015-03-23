@@ -18,6 +18,8 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.StringTokenizer;
@@ -43,8 +45,7 @@ public class ToyModelHSARDataRecord extends AbstractCASDataRecord {
     public ToyModelHSARDataRecord(
             ToyModelDataRecord_2 _ToyModelDataRecord_2) {
         init(_ToyModelDataRecord_2);
-        this._RecordID = _ToyModelDataRecord_2._RecordID;
-
+        this._RecordID = _ToyModelDataRecord_2.get_RecordID();
     }
 
     /**

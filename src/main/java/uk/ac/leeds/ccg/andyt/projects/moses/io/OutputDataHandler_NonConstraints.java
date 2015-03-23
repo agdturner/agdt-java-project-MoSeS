@@ -18,6 +18,14 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS003DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,6 +36,7 @@ import java.io.StreamTokenizer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeMap;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS006DataRecord;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 
 /**
@@ -92,8 +101,11 @@ public class OutputDataHandler_NonConstraints extends AbstractOutputDataHandler 
         for (long RecordID = _StartRecordID; RecordID <= _EndRecordID; RecordID++) {
             // System.out.println("RecordID " + RecordID);
             _CASDataRecord = (CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
-            _Counts._EthnicityWhite = _CASDataRecord.tCASKS006DataRecord.getWhiteOtherWhite() + _CASDataRecord.tCASKS006DataRecord.getWhiteWhiteBritish() + _CASDataRecord.tCASKS006DataRecord.getWhiteWhiteIrish();
-            _Counts._NoCarOwnershipHouseholds = _CASDataRecord.tCASKS017DataRecord.getHouseholdsWith0CarsOrVans();
+            CASKS006DataRecord aCASKS006DataRecord;
+            aCASKS006DataRecord = _CASDataRecord.getCASKS006DataRecord();
+            _Counts._EthnicityWhite = _CASDataRecord.getCASKS006DataRecord().getWhiteOtherWhite()
+                    + aCASKS006DataRecord.getWhiteWhiteBritish() + aCASKS006DataRecord.getWhiteWhiteIrish();
+            _Counts._NoCarOwnershipHouseholds = _CASDataRecord.getCASKS017DataRecord().getHouseholdsWith0CarsOrVans();
             write(_Counts, String.valueOf(_CASDataRecord.getZone_Code()));
         }
     }

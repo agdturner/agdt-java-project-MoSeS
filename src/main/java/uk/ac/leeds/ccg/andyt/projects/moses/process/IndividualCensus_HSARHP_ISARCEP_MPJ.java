@@ -18,7 +18,7 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
-import uk.ac.leeds.ccg.andyt.projects.moses.utilities.MPJRun;
+import uk.ac.leeds.ccg.andyt.projects.moses.mpj.MPJRun;
 
 public abstract class IndividualCensus_HSARHP_ISARCEP_MPJ extends
 		IndividualCensus_HSARHP_ISARCEP {

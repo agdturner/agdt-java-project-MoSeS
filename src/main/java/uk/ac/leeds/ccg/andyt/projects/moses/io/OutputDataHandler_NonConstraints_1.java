@@ -18,6 +18,14 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS013DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS013DataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -93,12 +101,12 @@ public class OutputDataHandler_NonConstraints_1 extends AbstractOutputDataHandle
             // System.out.println("RecordID " + RecordID);
             _CASDataRecord = (CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
             _CASKS013DataRecord = (CASKS013DataRecord) _CASKS013DataHandler.getDataRecord(RecordID);
-            _Counts._PeopleAged16to74WithNoQualifications = _CASKS013DataRecord._PeopleAged16to74WithNoQualifications;
-            _Counts._PeopleAged16to74WithHighestQualificationAttainedLevel1 = _CASKS013DataRecord._PeopleAged16to74WithHighestQualificationAttainedLevel1;
-            _Counts._PeopleAged16to74WithHighestQualificationAttainedLevel2 = _CASKS013DataRecord._PeopleAged16to74WithHighestQualificationAttainedLevel2;
-            _Counts._PeopleAged16to74WithHighestQualificationAttainedLevel3 = _CASKS013DataRecord._PeopleAged16to74WithHighestQualificationAttainedLevel3;
-            _Counts._PeopleAged16to74WithHighestQualificationAttainedLevel4and5 = _CASKS013DataRecord._PeopleAged16to74WithHighestQualificationAttainedLevel4and5;
-            _Counts._NoCarOwnershipHouseholds = _CASDataRecord.tCASKS017DataRecord.getHouseholdsWith0CarsOrVans();
+            _Counts._PeopleAged16to74WithNoQualifications = _CASKS013DataRecord.get_PeopleAged16to74WithNoQualifications();
+            _Counts._PeopleAged16to74WithHighestQualificationAttainedLevel1 = _CASKS013DataRecord.get_PeopleAged16to74WithHighestQualificationAttainedLevel1();
+            _Counts._PeopleAged16to74WithHighestQualificationAttainedLevel2 = _CASKS013DataRecord.get_PeopleAged16to74WithHighestQualificationAttainedLevel2();
+            _Counts._PeopleAged16to74WithHighestQualificationAttainedLevel3 = _CASKS013DataRecord.get_PeopleAged16to74WithHighestQualificationAttainedLevel3();
+            _Counts._PeopleAged16to74WithHighestQualificationAttainedLevel4and5 = _CASKS013DataRecord.get_PeopleAged16to74WithHighestQualificationAttainedLevel4and5();
+            _Counts._NoCarOwnershipHouseholds = _CASDataRecord.getCASKS017DataRecord().getHouseholdsWith0CarsOrVans();
             write(_Counts, String.valueOf(_CASDataRecord.getZone_Code()));
         }
     }

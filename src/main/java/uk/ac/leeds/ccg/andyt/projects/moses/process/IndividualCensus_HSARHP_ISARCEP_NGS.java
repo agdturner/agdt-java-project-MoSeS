@@ -29,11 +29,11 @@ import mpi.MPIException;
 import mpi.MPI;
 import mpi.Request;
 import mpi.Status;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ParameterFileParser;
-import uk.ac.leeds.ccg.andyt.projects.moses.utilities.ErrorAndExceptionHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.utilities.MPJRun;
-import uk.ac.leeds.ccg.andyt.projects.moses.utilities.StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.utilities.ErrorAndExceptionHandler;
+import uk.ac.leeds.ccg.andyt.projects.moses.mpj.MPJRun;
+import uk.ac.leeds.ccg.andyt.generic.io.StaticIO;
 
 /**
  * Like IndividualCensus_HSARHP_ISARCEP_PC, but for distributed processing on

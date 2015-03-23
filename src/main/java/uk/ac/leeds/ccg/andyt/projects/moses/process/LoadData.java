@@ -19,9 +19,9 @@
 package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
 import java.io.File;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
 
 /**
  * A class for loading formatted data and generating serialised handlers.

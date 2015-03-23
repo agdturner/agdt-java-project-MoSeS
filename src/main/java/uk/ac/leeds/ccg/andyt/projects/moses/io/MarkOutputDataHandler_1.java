@@ -2,22 +2,26 @@
  * A component of a library for
  * <a href="http://www.geog.leeds.ac.uk/people/a.turner/projects/MoSeS">MoSeS</a>.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -51,8 +55,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
     }
 
     /**
-     * @param args
-     *            the command line arguments
+     * @param args the command line arguments
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
@@ -64,6 +67,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * TODO docs
+     *
      * @throws java.io.IOException
      */
     public void runWard() throws IOException {
@@ -74,6 +78,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * TODO docs
+     *
      * @throws java.io.IOException
      */
     public void runMSOA() throws IOException {
@@ -84,6 +89,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * TODO docs
+     *
      * @throws java.io.IOException
      */
     public void runOA() throws IOException {
@@ -94,6 +100,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * Initialises.
+     *
      * @throws java.io.IOException
      */
     public void initOA() throws IOException {
@@ -109,11 +116,12 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         this.toyModelDataHandler = new ToyModelDataHandler(
                 new ToyModelDataRecord_1(),
                 new File(
-                "C:/Work/Projects/MoSeS/Workspace/ToyModelOutfile0.4.1.dat"));
+                        "C:/Work/Projects/MoSeS/Workspace/ToyModelOutfile0.4.1.dat"));
     }
 
     /**
      * Initialises.
+     *
      * @throws java.io.IOException
      */
     public void initMSOA() throws IOException {
@@ -129,11 +137,12 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         this.toyModelDataHandler = new ToyModelDataHandler(
                 new ToyModelDataRecord_1(),
                 new File(
-                "C:/Work/Projects/MoSeS/Workspace/ToyModelOutfile0.4.1.dat"));
+                        "C:/Work/Projects/MoSeS/Workspace/ToyModelOutfile0.4.1.dat"));
     }
 
     /**
      * Initialises.
+     *
      * @throws java.io.IOException
      */
     public void initWard() throws IOException {
@@ -145,7 +154,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         this.toyModelDataHandler = new ToyModelDataHandler(
                 new ToyModelDataRecord_1(),
                 new File(
-                "C:/Work/Projects/MoSeS/Workspace/ToyModelOutfile0.4.1.dat"));
+                        "C:/Work/Projects/MoSeS/Workspace/ToyModelOutfile0.4.1.dat"));
     }
 
     /**
@@ -164,13 +173,56 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * Writes out MarkOutputDataRecord_1.
+     *
      * @param markOutput1DataRecord
      */
     public void write(MarkOutputDataRecord_1 markOutput1DataRecord) {
         try {
-            String record = String.valueOf(markOutput1DataRecord.Zone_Code) + "," + markOutput1DataRecord.allHouseholds + "," + markOutput1DataRecord.ethnicGroupWhite + "," + markOutput1DataRecord.ethnicGroupMixed + "," + markOutput1DataRecord.ethnicGroupAsian + "," + markOutput1DataRecord.ethnicGroupBlack + "," + markOutput1DataRecord.ethnicGroupOther + "," + markOutput1DataRecord.accomodationTypeDetached + "," + markOutput1DataRecord.accomodationTypeSemiDetatched + "," + markOutput1DataRecord.accomodationTypeTerracedOrBungalow + "," + markOutput1DataRecord.accomodationTypeFlats + "," + markOutput1DataRecord.tenureOwnerOccupied + "," + markOutput1DataRecord.tenureRented + "," + markOutput1DataRecord.econactUnemployed + "," + markOutput1DataRecord.nssecProfessional + "," + markOutput1DataRecord.nssecIntermediate + "," + markOutput1DataRecord.nssecManual + "," + markOutput1DataRecord.age0to15 + "," + markOutput1DataRecord.age16to24 + "," + markOutput1DataRecord.age25to44 + "," + markOutput1DataRecord.age45to64 + "," + markOutput1DataRecord.age65AndOver + "," + markOutput1DataRecord.sexMales + "," + markOutput1DataRecord.sexFemales + "," + markOutput1DataRecord.econactStudents + "," + // markOutput1DataRecord.students
-                    // //markOutput1DataRecord.nssecStudents + "," +
-                    markOutput1DataRecord.marstatMarried + "," + markOutput1DataRecord.famtypeCoHabiting + "," + markOutput1DataRecord.marstatSingle + "," + markOutput1DataRecord.famtypeSingleParent + "," + markOutput1DataRecord.llti + "," + markOutput1DataRecord.qualvewNone + "," + markOutput1DataRecord.qualvewLevel1 + "," + markOutput1DataRecord.qualvewLevel2 + "," + markOutput1DataRecord.qualvewLevel3 + "," + markOutput1DataRecord.qualvewLevel4 + "," + markOutput1DataRecord.averageCarOwnership + "," + markOutput1DataRecord.tranwrkPublic + "," + markOutput1DataRecord.tranwrkOwnVehicle + "," + markOutput1DataRecord.tranwrkWalk + "," + markOutput1DataRecord.econactPartTime + "," + markOutput1DataRecord.econactFullTime + "," + markOutput1DataRecord.roomsnumAverage;
+            String record = String.valueOf(
+                    markOutput1DataRecord.getZone_Code()) + ","
+                    + markOutput1DataRecord.allHouseholds + ","
+                    + markOutput1DataRecord.ethnicGroupWhite + ","
+                    + markOutput1DataRecord.ethnicGroupMixed + ","
+                    + markOutput1DataRecord.ethnicGroupAsian + ","
+                    + markOutput1DataRecord.ethnicGroupBlack + ","
+                    + markOutput1DataRecord.ethnicGroupOther + ","
+                    + markOutput1DataRecord.accomodationTypeDetached + ","
+                    + markOutput1DataRecord.accomodationTypeSemiDetatched + ","
+                    + markOutput1DataRecord.accomodationTypeTerracedOrBungalow + ","
+                    + markOutput1DataRecord.accomodationTypeFlats + ","
+                    + markOutput1DataRecord.tenureOwnerOccupied + ","
+                    + markOutput1DataRecord.tenureRented + ","
+                    + markOutput1DataRecord.econactUnemployed + ","
+                    + markOutput1DataRecord.nssecProfessional + ","
+                    + markOutput1DataRecord.nssecIntermediate + ","
+                    + markOutput1DataRecord.nssecManual + ","
+                    + markOutput1DataRecord.age0to15 + ","
+                    + markOutput1DataRecord.age16to24 + ","
+                    + markOutput1DataRecord.age25to44 + ","
+                    + markOutput1DataRecord.age45to64 + ","
+                    + markOutput1DataRecord.age65AndOver + ","
+                    + markOutput1DataRecord.sexMales + ","
+                    + markOutput1DataRecord.sexFemales + ","
+                    + markOutput1DataRecord.econactStudents + ","
+                    // + markOutput1DataRecord.students + ","
+                    // + markOutput1DataRecord.nssecStudents + ","
+                    + markOutput1DataRecord.marstatMarried + ","
+                    + markOutput1DataRecord.famtypeCoHabiting + ","
+                    + markOutput1DataRecord.marstatSingle + ","
+                    + markOutput1DataRecord.famtypeSingleParent + ","
+                    + markOutput1DataRecord.llti + ","
+                    + markOutput1DataRecord.qualvewNone + ","
+                    + markOutput1DataRecord.qualvewLevel1 + ","
+                    + markOutput1DataRecord.qualvewLevel2 + ","
+                    + markOutput1DataRecord.qualvewLevel3 + ","
+                    + markOutput1DataRecord.qualvewLevel4 + ","
+                    + markOutput1DataRecord.averageCarOwnership + ","
+                    + markOutput1DataRecord.tranwrkPublic + ","
+                    + markOutput1DataRecord.tranwrkOwnVehicle + ","
+                    + markOutput1DataRecord.tranwrkWalk + ","
+                    + markOutput1DataRecord.econactPartTime + ","
+                    + markOutput1DataRecord.econactFullTime + ","
+                    + markOutput1DataRecord.roomsnumAverage;
             System.out.println(record);
             this.fileOutputStream.write(record.getBytes());
             this.fileOutputStream.write(StreamTokenizer.TT_EOL);
@@ -182,6 +234,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * Writes out MarkOutputDataRecord_1 but with zoneCode as Zone_Code
+     *
      * @param markOutput1DataRecord
      * @param zoneCode
      */
@@ -202,6 +255,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * Aggregates estimates to wards
+     *
      * @throws java.io.IOException
      */
     public void aggregateAndWriteWards() throws IOException {
@@ -216,8 +270,8 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         long individualSARDataRecordID = toyModelDataRecord.ISARDataRecordID;
         ISARDataRecord individualSARDataRecord = _ISARDataHandler_AGE0HRPOrdered.getISARDataRecord(individualSARDataRecordID);
         MarkOutputDataRecord_1 markOutput1DataRecord = new MarkOutputDataRecord_1();
-        String zoneCode = String.valueOf(toyModelDataRecord.Zone_Code).substring(0, 6);
-        markOutput1DataRecord.Zone_Code = zoneCode.toCharArray();
+        String zoneCode = String.valueOf(toyModelDataRecord.getZone_Code()).substring(0, 6);
+        markOutput1DataRecord.setZone_Code(zoneCode.toCharArray());
         short RELTOHR = individualSARDataRecord.get_RELTOHR();
         if (RELTOHR == 1) {
             markOutput1DataRecord.allHouseholds = 1;
@@ -479,7 +533,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
             TRANWRK0 = individualSARDataRecord.get_TRANWRK0();
             ROOMSNUM = individualSARDataRecord.get_ROOMSNUM();
 
-            if (String.valueOf(toyModelDataRecord.Zone_Code).substring(0, 6).equalsIgnoreCase(zoneCode)) {
+            if (String.valueOf(toyModelDataRecord.getZone_Code()).substring(0, 6).equalsIgnoreCase(zoneCode)) {
 
                 if (RELTOHR == 1) {
                     markOutput1DataRecord.allHouseholds++;
@@ -620,9 +674,9 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
                 markOutput1DataRecord.averageCarOwnership = markOutput1DataRecord.averageCarOwnership / (double) markOutput1DataRecord.allHouseholds;
                 markOutput1DataRecord.roomsnumAverage = markOutput1DataRecord.roomsnumAverage / (double) markOutput1DataRecord.allHouseholds;
                 write(markOutput1DataRecord);
-                zoneCode = String.valueOf(toyModelDataRecord.Zone_Code).substring(0, 6);
+                zoneCode = String.valueOf(toyModelDataRecord.getZone_Code()).substring(0, 6);
                 markOutput1DataRecord = new MarkOutputDataRecord_1();
-                markOutput1DataRecord.Zone_Code = zoneCode.toCharArray();
+                markOutput1DataRecord.setZone_Code(zoneCode.toCharArray());
                 if (RELTOHR == 1) {
                     markOutput1DataRecord.allHouseholds = 1;
                 } else {
@@ -852,6 +906,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
     /**
      * Aggregates estimates to MSOA MSOAs do not appear in any particular order,
      * so this is non-trivial.
+     *
      * @throws java.io.IOException
      */
     public void aggregateAndWriteMSOA() throws IOException {
@@ -869,9 +924,9 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         MarkOutputDataRecord_1 markOutput1DataRecord = new MarkOutputDataRecord_1();
         // String zoneCode = String.valueOf( toyModelDataRecord.Zone_Code
         // ).substring( 0, 6 );
-        String zoneCode = (String) lookUpMSOAfromOAHashMap.get(String.valueOf(toyModelDataRecord.Zone_Code));
+        String zoneCode = (String) lookUpMSOAfromOAHashMap.get(String.valueOf(toyModelDataRecord.getZone_Code()));
         String thisZoneCode;
-        markOutput1DataRecord.Zone_Code = zoneCode.toCharArray();
+        markOutput1DataRecord.setZone_Code(zoneCode.toCharArray());
         markOutput1DataRecord.init(individualSARDataRecord);
         int RELTOHR;
         int ETHEW;
@@ -915,7 +970,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
             TRANWRK0 = individualSARDataRecord.get_TRANWRK0();
             ROOMSNUM = individualSARDataRecord.get_ROOMSNUM();
 
-            thisZoneCode = ((String) lookUpMSOAfromOAHashMap.get(String.valueOf(toyModelDataRecord.Zone_Code)));
+            thisZoneCode = ((String) lookUpMSOAfromOAHashMap.get(String.valueOf(toyModelDataRecord.getZone_Code())));
             if (aggregateHashMap.get(thisZoneCode) == null) {
                 markOutput1DataRecord = new MarkOutputDataRecord_1();
                 markOutput1DataRecord.init(individualSARDataRecord);
@@ -1060,7 +1115,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
             }
             markOutput1DataRecord.roomsnumAverage += ROOMSNUM;
             aggregateHashMap.put(thisZoneCode, markOutput1DataRecord);
-        // System.out.println("Done " + RecordID );
+            // System.out.println("Done " + RecordID );
         }
         write2(aggregateHashMap);
     }
@@ -1068,6 +1123,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
     /**
      * Aggregates estimates to OA MSOAs do not appear in any particular order,
      * so this is non-trivial.
+     *
      * @throws java.io.IOException
      */
     public void aggregateAndWriteOA() throws IOException {
@@ -1088,7 +1144,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         MarkOutputDataRecord_1 markOutput1DataRecord = new MarkOutputDataRecord_1();
         String zoneCode = new String(toyModelDataRecord.getZone_Code());
         String thisZoneCode;
-        markOutput1DataRecord.Zone_Code = zoneCode.toCharArray();
+        markOutput1DataRecord.setZone_Code(zoneCode.toCharArray());
         markOutput1DataRecord.init(individualSARDataRecord);
         int RELTOHR;
         int ETHEW;
@@ -1283,6 +1339,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * TODO docs
+     *
      * @param aggregateHashMap
      */
     public void write1(HashMap aggregateHashMap) {
@@ -1298,6 +1355,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
 
     /**
      * TODO docs
+     *
      * @param aggregateHashMap
      */
     public void write2(HashMap aggregateHashMap) {

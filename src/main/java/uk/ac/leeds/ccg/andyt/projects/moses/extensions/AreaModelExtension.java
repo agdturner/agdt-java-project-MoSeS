@@ -20,7 +20,7 @@ package uk.ac.leeds.ccg.andyt.projects.moses.extensions;
 
 import java.math.BigInteger;
 import java.util.Random;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
 import uk.ac.leeds.sog.moses.agent.AdultDependent;
 import uk.ac.leeds.sog.moses.agent.AreaModel;
 import uk.ac.leeds.sog.moses.agent.Child;

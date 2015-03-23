@@ -20,14 +20,14 @@ package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
 import java.util.HashMap;
 import java.util.Random;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CAS002DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS002DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS008DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS020DataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS09bDataRecord;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASKS09cDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS002DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS008DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS020DataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09bDataRecord;
+import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09cDataRecord;
 
 //import uk.ac.leeds.ccg.andyt.projects.moses.extensions.AreaModelExtension;
 
