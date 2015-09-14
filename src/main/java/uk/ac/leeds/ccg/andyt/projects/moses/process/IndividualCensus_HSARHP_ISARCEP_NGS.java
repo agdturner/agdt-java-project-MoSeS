@@ -30,10 +30,10 @@ import mpi.MPI;
 import mpi.Request;
 import mpi.Status;
 import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ParameterFileParser;
-import uk.ac.leeds.ccg.andyt.generic.utilities.ErrorAndExceptionHandler;
+import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.mpj.MPJRun;
-import uk.ac.leeds.ccg.andyt.generic.io.StaticIO;
 
 /**
  * Like IndividualCensus_HSARHP_ISARCEP_PC, but for distributed processing on
@@ -75,7 +75,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                     System.getProperty("file.separator") + _Area);
         } catch (IOException aIOException) {
             System.err.println(aIOException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.IOException);
+            System.exit(Generic_ErrorAndExceptionHandler.IOException);
         }
         if (!_OutputDirectory.exists()) {
             _OutputDirectory.mkdirs();
@@ -117,7 +117,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                     System.getProperty("file.separator") + _Area);
         } catch (IOException aIOException) {
             log(aIOException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.IOException);
+            System.exit(Generic_ErrorAndExceptionHandler.IOException);
         }
         if (!_OutputDirectory.exists()) {
             _OutputDirectory.mkdirs();
@@ -170,7 +170,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                     System.getProperty("file.separator") + _Area);
         } catch (IOException aIOException) {
             log(aIOException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.IOException);
+            System.exit(Generic_ErrorAndExceptionHandler.IOException);
         }
         if (!_OutputDirectory.exists()) {
             _OutputDirectory.mkdirs();
@@ -181,7 +181,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
         _Input_File = new File((String) tInput_Parameters[11] + "population_HashMap.thisFile");
         // if _InputFile.exists() then this run will be loading in a prior result and re-optimising
         // Copy Parameter file to _OutputDirectory as metadata
-        StaticIO.copy(
+        Generic_StaticIO.copy(
                 _Input_Parameter_File,
                 _OutputDirectory);
         // Initialise CASDataHandler.
@@ -216,7 +216,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                     " exists " + _Input_Parameter_File.exists());
         } catch (IOException aIOException) {
             System.err.print(aIOException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.IOException);
+            System.exit(Generic_ErrorAndExceptionHandler.IOException);
         }
         IndividualCensus_HSARHP_ISARCEP_NGS _IndividualCensus_HSARHP_ISARCEP_NGS = new IndividualCensus_HSARHP_ISARCEP_NGS(
                 _Input_Parameter_File);
@@ -239,11 +239,11 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
         } catch (Exception aException) {
             log(aException.getLocalizedMessage());
             System.err.println(aException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.Exception);
+            System.exit(Generic_ErrorAndExceptionHandler.Exception);
         } catch (Error aError) {
             log(aError.getLocalizedMessage());
             System.err.println(aError.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.Error);
+            System.exit(Generic_ErrorAndExceptionHandler.Error);
         }
     }
 
@@ -311,7 +311,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
         } catch (IOException aIOException) {
             log("Exception on " + rank);
             log(aIOException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.FileNotFoundException);
+            System.exit(Generic_ErrorAndExceptionHandler.FileNotFoundException);
         }
         String aLAD = "";
         String bLAD;
@@ -330,7 +330,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
             } catch (MPIException _MPIException) {
                 log("Exception on " + rank + " with MPI.COMM_WORLD.Recv(input, 0, 1, MPI.OBJECT, 0, tag);");
                 _MPIException.printStackTrace();
-                System.exit(ErrorAndExceptionHandler.MPIException);
+                System.exit(Generic_ErrorAndExceptionHandler.MPIException);
             }
             if (!(input[0] instanceof CASDataRecord)) {
                 worktodo = false;
@@ -355,12 +355,12 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                                 System.getProperty("file.separator") + "population_HashMap.thisFile");
                     } catch (IOException aIOException) {
                         log(aIOException.getLocalizedMessage());
-                        System.exit(ErrorAndExceptionHandler.FileNotFoundException);
+                        System.exit(Generic_ErrorAndExceptionHandler.FileNotFoundException);
                     }
                     if (!_Input_File.exists()) {
                         log("Result " + _Input_File.toString() + " missing for " + bLAD);
                         log("bLAD " + bLAD + " aZoneCode " + aZoneCode);
-                        System.exit(ErrorAndExceptionHandler.FileNotFoundException);
+                        System.exit(Generic_ErrorAndExceptionHandler.FileNotFoundException);
                     } else {
                         load_Population_HashMap();
                     }
@@ -423,7 +423,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                 log("Exception on " + rank +
                         " MPI.COMM_WORLD.Recv(Object[],0,1,MPI.OBJECT,0,tag)");
                 log(aMPIException.getLocalizedMessage());
-                System.exit(ErrorAndExceptionHandler.MPIException);
+                System.exit(Generic_ErrorAndExceptionHandler.MPIException);
             }
             if (input[0] instanceof CASDataRecord) {
                 aCASDataRecord = (CASDataRecord) input[0];
@@ -456,7 +456,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                     log("Exception on " + rank +
                             " MPI.COMM_WORLD.Send(Object[],0,1,MPI.OBJECT,0,tag)");
                     log(aMPIException.getLocalizedMessage());
-                    System.exit(ErrorAndExceptionHandler.MPIException);
+                    System.exit(Generic_ErrorAndExceptionHandler.MPIException);
                 }
                 log("Sent result for " + String.valueOf(aCASDataRecord.getZone_Code()));
             }
@@ -513,7 +513,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                     log("Exception on " + rank +
                             " MPI.COMM_WORLD.Isend(Object[],0,1,MPI.OBJECT," + source + ",tag)");
                     log(aMPIException.getLocalizedMessage());
-                    System.exit(ErrorAndExceptionHandler.MPIException);
+                    System.exit(Generic_ErrorAndExceptionHandler.MPIException);
                 }
                 try {
                     tRecvRequests[source - 1] = MPI.COMM_WORLD.Irecv(
@@ -527,7 +527,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                     log("Exception on " + rank +
                             " MPI.COMM_WORLD.Irecv(Object[],0,1,MPI.OBJECT," + source + ",tag)");
                     log(aMPIException.getLocalizedMessage());
-                    System.exit(ErrorAndExceptionHandler.MPIException);
+                    System.exit(Generic_ErrorAndExceptionHandler.MPIException);
                 }
                 RecordID++;
             }
@@ -584,7 +584,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                         log("Exception on " + rank +
                                 " MPI.COMM_WORLD.Isend(Object[],0,1,MPI.OBJECT," + source + ",tag)");
                         log(aMPIException.getLocalizedMessage());
-                        System.exit(ErrorAndExceptionHandler.MPIException);
+                        System.exit(Generic_ErrorAndExceptionHandler.MPIException);
                     }
                     try {
                         tRecvRequests[source - 1] = MPI.COMM_WORLD.Irecv(
@@ -598,7 +598,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                         log("Exception on " + rank +
                                 " MPI.COMM_WORLD.Irecv(Object[],0,1,MPI.OBJECT," + source + ",tag)");
                         log(aMPIException.getLocalizedMessage());
-                        System.exit(ErrorAndExceptionHandler.MPIException);
+                        System.exit(Generic_ErrorAndExceptionHandler.MPIException);
                     }
                 }
                 RecordID++;
@@ -647,7 +647,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
             tLADCodes = _CASDataHandler.getLADCodes_TreeSet();
         } catch (IOException aIOException) {
             log(aIOException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.IOException);
+            System.exit(Generic_ErrorAndExceptionHandler.IOException);
         }
         String aLADCode;
         if (tLADCodes.contains(_Area)) {
@@ -673,7 +673,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                 _OutputDirectory0 = _OutputDirectory.getCanonicalFile();
             } catch (IOException aIOException) {
                 log(aIOException.getLocalizedMessage());
-                System.exit(ErrorAndExceptionHandler.IOException);
+                System.exit(Generic_ErrorAndExceptionHandler.IOException);
             }
             Iterator aIterator = tLADCodes.iterator();
             while (aIterator.hasNext()) {
@@ -688,7 +688,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                                 System.getProperty("file.separator") + aLADCode);
                     } catch (IOException aIOException) {
                         log(aIOException.getLocalizedMessage());
-                        System.exit(ErrorAndExceptionHandler.IOException);
+                        System.exit(Generic_ErrorAndExceptionHandler.IOException);
                     }
                     _Area = aLADCode;
                     _StartRecordID_EndRecordID = get_StartRecordID_EndRecordID(_Area);
@@ -718,7 +718,7 @@ class IndividualCensus_HSARHP_ISARCEP_NGS extends IndividualCensus_HSARHP_ISARCE
                 log("Exception on " + rank +
                         " MPI.COMM_WORLD.Isend(Object[],0,1,MPI.OBJECT," + source + ",tag)");
                 log(aMPIException.getLocalizedMessage());
-                System.exit(ErrorAndExceptionHandler.MPIException);
+                System.exit(Generic_ErrorAndExceptionHandler.MPIException);
             }
             log("Sent halt request to rank " + source);
         }

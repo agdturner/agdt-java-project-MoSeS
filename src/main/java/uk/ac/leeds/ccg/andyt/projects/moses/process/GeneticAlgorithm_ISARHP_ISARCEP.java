@@ -36,8 +36,8 @@ import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler.AgeSexType;
 import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.scratch.AgeConverter;
-import uk.ac.leeds.ccg.andyt.generic.utilities.StaticCollections;
-import uk.ac.leeds.ccg.andyt.generic.utilities.StaticCopy;
+import uk.ac.leeds.ccg.andyt.generic.utilities.Generic_StaticCollections;
+import uk.ac.leeds.ccg.andyt.generic.utilities.Generic_StaticCopy;
 
 public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
 
@@ -502,12 +502,12 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                             aMaxNumberOfMutationsPerChild = parentHPHRPFemale_Vector.size();
                         }
                         childHPHRPFemale_Vector = (Vector) parentHPHRPFemale_Vector.clone();
-                        childHPHRPFemale_Age_Vector_HashMap = StaticCopy.copy_Key_Vector_HashMap(
+                        childHPHRPFemale_Age_Vector_HashMap = Generic_StaticCopy.copy_Key_Vector_HashMap(
                                 parentHPHRPFemale_Age_Vector_HashMap);
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     parentHPHRPFemale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -570,12 +570,12 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                             aMaxNumberOfMutationsPerChild = parentHPHRPMale_Vector.size();
                         }
                         childHPHRPMale_Vector = (Vector) parentHPHRPMale_Vector.clone();
-                        childHPHRPMale_Age_Vector_HashMap = StaticCopy.copy_Key_Vector_HashMap(
+                        childHPHRPMale_Age_Vector_HashMap = Generic_StaticCopy.copy_Key_Vector_HashMap(
                                 parentHPHRPMale_Age_Vector_HashMap);
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     parentHPHRPMale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -639,7 +639,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     parentHPNonHRP_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -701,12 +701,12 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                             aMaxNumberOfMutationsPerChild = parentCEPFemale_Vector.size();
                         }
                         childCEPFemale_Vector = (Vector) parentCEPFemale_Vector.clone();
-                        childCEPFemale_Age_Vector_HashMap = StaticCopy.copy_Key_Vector_HashMap(
+                        childCEPFemale_Age_Vector_HashMap = Generic_StaticCopy.copy_Key_Vector_HashMap(
                                 parentCEPFemale_Age_Vector_HashMap);
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     parentCEPFemale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -767,12 +767,12 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                             aMaxNumberOfMutationsPerChild = parentCEPMale_Vector.size();
                         }
                         childCEPMale_Vector = (Vector) parentCEPMale_Vector.clone();
-                        childCEPMale_Age_Vector_HashMap = StaticCopy.copy_Key_Vector_HashMap(
+                        childCEPMale_Age_Vector_HashMap = Generic_StaticCopy.copy_Key_Vector_HashMap(
                                 parentCEPMale_Age_Vector_HashMap);
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     parentCEPMale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -838,12 +838,12 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         aMaxNumberOfMutationsPerChild = parentHPHRPFemale_Vector.size();
                     }
                     childHPHRPFemale_Vector = (Vector) parentHPHRPFemale_Vector.clone();
-                    childHPHRPFemale_Age_Vector_HashMap = StaticCopy.copy_Key_Vector_HashMap(
+                    childHPHRPFemale_Age_Vector_HashMap = Generic_StaticCopy.copy_Key_Vector_HashMap(
                             parentHPHRPFemale_Age_Vector_HashMap);
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     childHPHRPFemale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -859,12 +859,12 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         aMaxNumberOfMutationsPerChild = parentHPHRPFemale_Vector.size();
                     }
                     childHPHRPMale_Vector = (Vector) parentHPHRPMale_Vector.clone();
-                    childHPHRPMale_Age_Vector_HashMap = StaticCopy.copy_Key_Vector_HashMap(
+                    childHPHRPMale_Age_Vector_HashMap = Generic_StaticCopy.copy_Key_Vector_HashMap(
                             parentHPHRPMale_Age_Vector_HashMap);
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     childHPHRPMale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -883,7 +883,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     childHPNonHRP_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -898,12 +898,12 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         aMaxNumberOfMutationsPerChild = parentCEPFemale_Vector.size();
                     }
                     childCEPFemale_Vector = (Vector) parentCEPFemale_Vector.clone();
-                    childCEPFemale_Age_Vector_HashMap = StaticCopy.copy_Key_Vector_HashMap(
+                    childCEPFemale_Age_Vector_HashMap = Generic_StaticCopy.copy_Key_Vector_HashMap(
                             parentCEPFemale_Age_Vector_HashMap);
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     childCEPFemale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -919,12 +919,12 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         aMaxNumberOfMutationsPerChild = parentCEPMale_Vector.size();
                     }
                     childCEPMale_Vector = (Vector) parentCEPMale_Vector.clone();
-                    childCEPMale_Age_Vector_HashMap = StaticCopy.copy_Key_Vector_HashMap(
+                    childCEPMale_Age_Vector_HashMap = Generic_StaticCopy.copy_Key_Vector_HashMap(
                             parentCEPMale_Age_Vector_HashMap);
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = StaticCollections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Generic_StaticCollections.getRandomIndexes_HashSet(
                                     parentCEPMale_Vector,
                                     aNumberOfMutations,
                                     _Random);

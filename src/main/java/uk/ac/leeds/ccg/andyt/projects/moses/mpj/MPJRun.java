@@ -18,7 +18,7 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.mpj;
 
-import uk.ac.leeds.ccg.andyt.generic.utilities.ErrorAndExceptionHandler;
+import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
 import mpi.MPIException;
 import mpi.MPI;
 
@@ -53,14 +53,14 @@ public class MPJRun {
             MPI.Init(args);
         } catch (MPIException _MPIException) {
             System.err.println(_MPIException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.MPIException);
+            System.exit(Generic_ErrorAndExceptionHandler.MPIException);
         }
         try {
             _Size = MPI.COMM_WORLD.Size();
             _Rank = MPI.COMM_WORLD.Rank();
         } catch (MPIException _MPIException) {
             System.err.println(_MPIException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.MPIException);
+            System.exit(Generic_ErrorAndExceptionHandler.MPIException);
         }
     }
 
@@ -72,7 +72,7 @@ public class MPJRun {
             MPI.Finalize();
         } catch (MPIException _MPIException) {
             System.err.println(_MPIException.getLocalizedMessage());
-            System.exit(ErrorAndExceptionHandler.MPIException);
+            System.exit(Generic_ErrorAndExceptionHandler.MPIException);
         }
     }
 

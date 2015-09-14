@@ -95,7 +95,7 @@ public class FertilityProbabilityCalculator {
 			}
 			in.close();
 			
-			// read sya female ward.csv (15 – 46)
+			// read sya female ward.csv (15 - 46)
 			in = new BufferedReader(new FileReader(new File(dataDir, "sya female ward.csv")));
 			s = in.readLine();
 			count = 0;

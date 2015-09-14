@@ -28,19 +28,18 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StreamTokenizer;
-import java.util.Vector;
-import org.apache.commons.math.stat.regression.SimpleRegression; //import org.eclipse.swt.SWT;
+import java.util.ArrayList;
+import org.apache.commons.math.stat.regression.SimpleRegression;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.DefaultDrawingSupplier;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.statistics.Regression;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.WebContentHandler;
-import uk.ac.leeds.ccg.andyt.generic.io.StaticIO;
 
 /**
  * A class for generating maps comparing CAS data with IndividualCensus outputs
@@ -159,7 +158,7 @@ public abstract class RegressionReport extends WebContentHandler {
             a_ScatterPlotXYPlot.setDataset(0, a_ScatterPlotXYPlot.getDataset());
             points_XYLineAndShapeRenderer.setSeriesPaint(0, Color.blue);
 
-            Shape[] _Shapes = DefaultDrawingSupplier.createStandardSeriesShapes();
+            //Shape[] _Shapes = DefaultDrawingSupplier.createStandardSeriesShapes();
             // System.out.println("There are " + _Shapes.length +
             // " number of Shapes to try...");
             // 0 are square
@@ -543,13 +542,13 @@ public abstract class RegressionReport extends WebContentHandler {
                 new InputStreamReader(new FileInputStream(_SARExpectedFile)));
         StreamTokenizer _SARExpectedStreamTokenizer = new StreamTokenizer(
                 _SARExpectedBufferedReader);
-        StaticIO.setStreamTokenizerSyntax3(_SARExpectedStreamTokenizer);
+        Generic_StaticIO.setStreamTokenizerSyntax3(_SARExpectedStreamTokenizer);
         int _SARExpectedTokenType = _SARExpectedStreamTokenizer.nextToken();
         BufferedReader _CASObservedBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(_CASObservedFile)));
         StreamTokenizer _CASObservedStreamTokenizer = new StreamTokenizer(
                 _CASObservedBufferedReader);
-        StaticIO.setStreamTokenizerSyntax3(_CASObservedStreamTokenizer);
+        Generic_StaticIO.setStreamTokenizerSyntax3(_CASObservedStreamTokenizer);
         int _CASObservedTokenType = _CASObservedStreamTokenizer.nextToken();
         // Read Headers
         String a_SARExpectedLine = _SARExpectedStreamTokenizer.sval;
@@ -572,12 +571,13 @@ public abstract class RegressionReport extends WebContentHandler {
         result[0] = _SARExpectedVariables; // Variable Names
         // Read Data
         double[] a_SARExpectedRow = new double[_NumberNumericalVariables];
-        Vector _SARExpectedRows = new Vector();
+        ArrayList<double[]> _SARExpectedRows = new ArrayList<double[]>();
         double[] a_CASObservedRow = new double[_NumberNumericalVariables];
-        Vector _CASObservedRows = new Vector();
+        ArrayList<double[]> _CASObservedRows = new ArrayList<double[]>();
         _SARExpectedTokenType = _SARExpectedStreamTokenizer.nextToken();
         _CASObservedTokenType = _CASObservedStreamTokenizer.nextToken();
-        Vector _ZoneCodes = new Vector();
+        //ArrayList<String> _ZoneCodes = new ArrayList<String>();
+        
         int _NumberOfAreas = 0;
         while (_SARExpectedTokenType != StreamTokenizer.TT_EOF
                 && _CASObservedTokenType != StreamTokenizer.TT_EOF) {
@@ -601,12 +601,12 @@ public abstract class RegressionReport extends WebContentHandler {
                         }
                         // if ( _CASObservedVariables[ 0 ].startsWith(
                         // _SARExpectedVariables[ 0 ] ) ) {
-                        _ZoneCodes.add(_CASObservedVariables[0]);
+                        //_ZoneCodes.add(_CASObservedVariables[0]);
                         for (int i = 0; i < _NumberNumericalVariables; i++) {
                             a_SARExpectedRow[i] = Double.valueOf(
-                                    _SARExpectedVariables[i + 1]).doubleValue();
+                                    _SARExpectedVariables[i + 1]);
                             a_CASObservedRow[i] = Double.valueOf(
-                                    _CASObservedVariables[i + 1]).doubleValue();
+                                    _CASObservedVariables[i + 1]);
                             if (i == 1
                                     && (a_SARExpectedRow[i] != a_CASObservedRow[i])) {
                                 System.out.println("Warning ! constraint that allHouseholds observed ( "
@@ -638,8 +638,8 @@ public abstract class RegressionReport extends WebContentHandler {
         double[][] _SARExpectedData = new double[_NumberNumericalVariables][_NumberOfAreas];
         double[][] _CASObservedData = new double[_NumberNumericalVariables][_NumberOfAreas];
         for (int j = 0; j < _NumberOfAreas; j++) {
-            a_SARExpectedRow = (double[]) _SARExpectedRows.elementAt(j);
-            a_CASObservedRow = (double[]) _CASObservedRows.elementAt(j);
+            a_SARExpectedRow = (double[]) _SARExpectedRows.get(j);
+            a_CASObservedRow = (double[]) _CASObservedRows.get(j);
             for (int i = 0; i < _NumberNumericalVariables; i++) {
                 _SARExpectedData[i][j] = a_SARExpectedRow[i];
                 _CASObservedData[i][j] = a_CASObservedRow[i];
