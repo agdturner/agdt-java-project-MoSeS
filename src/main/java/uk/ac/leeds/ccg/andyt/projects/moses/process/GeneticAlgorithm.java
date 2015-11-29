@@ -19,7 +19,9 @@
 package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Vector;
 import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
 import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataRecord;
 import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS002DataRecord;
@@ -36,6 +38,19 @@ import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09cDataRecord;
  * Individual and Household level data for the UK.
  */
 public class GeneticAlgorithm {
+
+    public static HashMap copy_Key_Vector_HashMap(HashMap aKey_Vector_Hashmap) {
+        HashMap result = new HashMap();
+        Vector aVector;
+        Object key;
+        Iterator iterator = aKey_Vector_Hashmap.keySet().iterator();
+        while (iterator.hasNext()) {
+            key = iterator.next();
+            aVector = (Vector) aKey_Vector_Hashmap.get(key);
+            result.put(key, aVector.clone());
+        }
+        return result;
+    }
 
 	// /** Use _IndividualCensus._LogPrintWriter
 	// * For logging
