@@ -58,5 +58,10 @@
             <name>GitHub agdturner agdt-geotools Repository</name>
             <url>https://github.com/agdturner/agdt-geotools</url>
         </repository>
+        <repository>
+            <id>agdt-census</id>
+            <name>GitHub agdturner agdt-census Repository</name>
+            <url>https://github.com/agdturner/agdt-census</url>
+        </repository>
     </repositories>
 </project>
