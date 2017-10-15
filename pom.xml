@@ -38,6 +38,10 @@
             <groupId>uk.ac.leeds.sog.moses</groupId>
             <artifactId>MoSeS_Toy_Model</artifactId>
             <version>0.1</version>
+            <!--
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/MoSeS_Toy_Model-0.1.jar</systemPath>
+            -->
         </dependency>
         <dependency>
             <groupId>uk.ac.leeds.ccg.andyt</groupId>
