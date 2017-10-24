@@ -2,19 +2,19 @@
  * A component of a library for
  * <a href="http://www.geog.leeds.ac.uk/people/a.turner/projects/MoSeS">MoSeS</a>.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
@@ -23,29 +23,36 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 
 /**
  * Class for generating Web Content.
  */
 public abstract class WebContentHandler {
 
-    /** Creates a new instance of RegressionPlots */
+    /**
+     * Creates a new instance of RegressionPlots
+     */
     public WebContentHandler() {
     }
 
-    public void writeHTML(String _BaseURL, String _Directory,
-            String _FilenamePrefix, String _FilenameSuffix,
+    public void writeHTML(
+            String _BaseURL,
+            String _Directory,
+            String _FilenamePrefix,
+            String _FilenameSuffix,
             int int_MainBodyControlSwitch) throws IOException {
-        FileOutputStream _FileOutputStream = new FileOutputStream(new File(
-                _Directory, _FilenamePrefix + _FilenameSuffix
-                + ".xhtml2.0.html"));
+        File f = new File(
+                _Directory,
+                _FilenamePrefix + _FilenameSuffix + ".xhtml2.0.html");
+        FileOutputStream fos = Generic_StaticIO.getFileOutputStream(f);
         byte[] _LineSeparator = System.getProperty("line.separator").getBytes();
-        writeHTMLDTD(_LineSeparator, _FileOutputStream);
-        writeHTMLHead(_LineSeparator, _FilenamePrefix, _FileOutputStream);
+        writeHTMLDTD(_LineSeparator, fos);
+        writeHTMLHead(_LineSeparator, _FilenamePrefix, fos);
         writeHTMLBody(_LineSeparator, _BaseURL, _FilenamePrefix,
-                _FilenameSuffix, _FileOutputStream, int_MainBodyControlSwitch);
-        _FileOutputStream.flush();
-        _FileOutputStream.close();
+                _FilenameSuffix, fos, int_MainBodyControlSwitch);
+        fos.flush();
+        fos.close();
     }
 
     public void writeHTML(
