@@ -28,8 +28,6 @@ import java.io.IOException;
 import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataHandler;
 import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
 import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler_GA_IPS;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataHandler;
 
 /**
  * Abstract class for handling data output.
