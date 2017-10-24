@@ -20,8 +20,8 @@ package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
 import java.io.File;
 import java.io.IOException;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASAreaEastingNorthingDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.SWSDataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CASAreaEastingNorthingDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sws.Census_SWSDataHandler;
 
 /**
  * A class for formatting all original census data into more readable forms.
@@ -42,8 +42,8 @@ public class FormatGENESISData {
         File directory = new File("C:/Work/Projects/GENESIS/Workspace/");
 		
         // SWS
-        SWSDataHandler a_SWSDataHandler = new SWSDataHandler();
-        //SWSDataHandler a_SWSDataHandler = new SWSDataHandler(directory);
+        Census_SWSDataHandler a_SWSDataHandler = new Census_SWSDataHandler();
+        //SWSDataHandler a_SWSDataHandler = new Census_SWSDataHandler(directory);
         //File sourceSWS = new File(
         //        "C:/Work/data/Census/2001/SWS_STS/w3/W301_OUT.csv" );
         //File formattedSWS = new File(directory,"SWSDataRecords.dat");
@@ -53,7 +53,7 @@ public class FormatGENESISData {
                 20);
 
         // Area Easting Northing
-        CASAreaEastingNorthingDataHandler a_CASAreaEastingNorthingDataHandler = new CASAreaEastingNorthingDataHandler();
+        Census_CASAreaEastingNorthingDataHandler a_CASAreaEastingNorthingDataHandler = new Census_CASAreaEastingNorthingDataHandler();
         a_CASAreaEastingNorthingDataHandler.formatSourceData(
                 new File(
                 "C:/Work/data/Census/2001/"),

@@ -18,12 +18,12 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,7 +44,7 @@ import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
  * A specialist handler for accessing CASKS002Records and information about the
  * collection.
  */
-public class ToyModelDataHandler extends AbstractCASDataHandler {
+public class ToyModelDataHandler extends Census_AbstractDataHandler {
 
     /**
      * A reference to a FileOutputStream for writing data
@@ -291,7 +291,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      *            The RecordID of the ISAR to be returned.
      * @return 
      */
-    public AbstractCASDataRecord getDataRecord(long RecordID) {
+    public Census_AbstractDataRecord getDataRecord(long RecordID) {
         // return getCASKS002Record( RecordID );
         return new ToyModelDataRecord(this._RandomAccessFile);
     }
@@ -343,8 +343,8 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      * @throws java.io.IOException
      */
     public long[] write1(
-            ISARDataRecord[] aISARDataRecords,
-            CASDataRecord aCASDataRecord,
+            Census_ISARDataRecord[] aISARDataRecords,
+            Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness,
             long[] aPersonIDHouseholdID, 
             Random random)
@@ -488,19 +488,19 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      */
     public long[] write2_SWR_HSARHP_ISARCEP(
             Object[] population,
-            HSARDataHandler tHSARDataHandler,
-            CASDataRecord aCASDataRecord,
+            Census_HSARDataHandler tHSARDataHandler,
+            Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness, 
             long[] aPersonIDHouseholdID)
             throws IOException {
         // Write tHP
         if (true) {
-            Vector tHP = tHSARDataHandler.getHSARDataRecords((HSARDataRecord[]) population[0]);
+            Vector tHP = tHSARDataHandler.getHSARDataRecords((Census_HSARDataRecord[]) population[0]);
             // Add from tHP
             Iterator tHPIterator = tHP.iterator();
-            HSARDataRecord aHSARDataRecord;
+            Census_HSARDataRecord aHSARDataRecord;
             while (tHPIterator.hasNext()) {
-                aHSARDataRecord = (HSARDataRecord) tHPIterator.next();
+                aHSARDataRecord = (Census_HSARDataRecord) tHPIterator.next();
                 aPersonIDHouseholdID = write2_HSARHP(aHSARDataRecord,
                         aCASDataRecord, fitness, aPersonIDHouseholdID);
             }
@@ -510,7 +510,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
         // Write CEP
         if (true) {
             aPersonIDHouseholdID[0] = -1;
-            ISARDataRecord[] tISARDataRecords = (ISARDataRecord[]) population[1];
+            Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[1];
             for (int i = 0; i < tISARDataRecords.length; i++) {
                 aPersonIDHouseholdID = write2_ISARCEP(tISARDataRecords[i],
                         aCASDataRecord, fitness, aPersonIDHouseholdID);
@@ -543,19 +543,19 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      */
     public long[] write2_SWR_HSARHP_ISARCEP(
             Object[] population,
-            HSARDataHandler tHSARDataHandler,
+            Census_HSARDataHandler tHSARDataHandler,
             CASDataRecord_1 _CASDataRecord_1,
             BigDecimal fitness, 
             long[] aPersonIDHouseholdID)
             throws IOException {
         // Write tHP
         if (true) {
-            Vector tHP = tHSARDataHandler.getHSARDataRecords((HSARDataRecord[]) population[0]);
+            Vector tHP = tHSARDataHandler.getHSARDataRecords((Census_HSARDataRecord[]) population[0]);
             // Add from tHP
             Iterator tHPIterator = tHP.iterator();
-            HSARDataRecord aHSARDataRecord;
+            Census_HSARDataRecord aHSARDataRecord;
             while (tHPIterator.hasNext()) {
-                aHSARDataRecord = (HSARDataRecord) tHPIterator.next();
+                aHSARDataRecord = (Census_HSARDataRecord) tHPIterator.next();
                 aPersonIDHouseholdID = write2_HSARHP(aHSARDataRecord,
                         _CASDataRecord_1, fitness, aPersonIDHouseholdID);
             }
@@ -565,7 +565,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
         // Write CEP
         if (true) {
             aPersonIDHouseholdID[0] = -1;
-            ISARDataRecord[] tISARDataRecords = (ISARDataRecord[]) population[1];
+            Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[1];
             for (int i = 0; i < tISARDataRecords.length; i++) {
                 aPersonIDHouseholdID = write2_ISARCEP(tISARDataRecords[i],
                         _CASDataRecord_1, fitness, aPersonIDHouseholdID);
@@ -597,7 +597,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      * @throws java.io.IOException
      */
     public long[] write2_HSARHP_ISARCEP(Object[] populations,
-            HSARDataHandler tHSARDataHandler, CASDataRecord aCASDataRecord,
+            Census_HSARDataHandler tHSARDataHandler, Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness, long[] aPersonIDHouseholdID) throws IOException {
         // Write constrained HP
         if (true) {
@@ -607,7 +607,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
                 Vector aHPVector = (Vector) tHSARVectorOfVectorsIterator.next();
                 Iterator aHPVectorIterator = aHPVector.iterator();
                 while (aHPVectorIterator.hasNext()) {
-                    HSARDataRecord aHSARDataRecord = (HSARDataRecord) aHPVectorIterator.next();
+                    Census_HSARDataRecord aHSARDataRecord = (Census_HSARDataRecord) aHPVectorIterator.next();
                     aPersonIDHouseholdID = write2_HSARHP(aHSARDataRecord,
                             aCASDataRecord, fitness, aPersonIDHouseholdID);
                 }
@@ -623,7 +623,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
                 Vector aHPVector = (Vector) tHSARVectorOfVectorsIterator.next();
                 Iterator aHPVectorIterator = aHPVector.iterator();
                 while (aHPVectorIterator.hasNext()) {
-                    HSARDataRecord aHSARDataRecord = (HSARDataRecord) aHPVectorIterator.next();
+                    Census_HSARDataRecord aHSARDataRecord = (Census_HSARDataRecord) aHPVectorIterator.next();
                     aPersonIDHouseholdID = write2_HSARHP(aHSARDataRecord,
                             aCASDataRecord, fitness, aPersonIDHouseholdID);
                 }
@@ -635,9 +635,9 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
         if (true) {
             HashSet aISARDataRecordsHashSet = (HashSet) populations[2];
             Iterator aISARDataRecordsHashSetIterator = aISARDataRecordsHashSet.iterator();
-            ISARDataRecord aISARDataRecord;
+            Census_ISARDataRecord aISARDataRecord;
             while (aISARDataRecordsHashSetIterator.hasNext()) {
-                aISARDataRecord = (ISARDataRecord) aISARDataRecordsHashSetIterator.next();
+                aISARDataRecord = (Census_ISARDataRecord) aISARDataRecordsHashSetIterator.next();
                 write2_ISARCEP(aISARDataRecord, aCASDataRecord, fitness,
                         aPersonIDHouseholdID);
                 aPersonIDHouseholdID[0] = 0;
@@ -670,14 +670,14 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
     public long[] write2_ISARHP_ISARCEP(
             Random tRandom,
             Object[] population,
-            CASDataRecord aCASDataRecord,
+            Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness,
             long[] aPersonIDHouseholdID)
             throws IOException {
         // // Arrange into households using AreaModel and write out
-        // ISARDataRecord[] tHPHRPs = ( ISARDataRecord[] ) population[ 0 ];
-        // ISARDataRecord[] tHPNonHRPs = ( ISARDataRecord[] ) population[ 1 ];
-        // ISARDataRecord[] tISARDataRecords = new ISARDataRecord[
+        // Census_ISARDataRecord[] tHPHRPs = ( Census_ISARDataRecord[] ) population[ 0 ];
+        // Census_ISARDataRecord[] tHPNonHRPs = ( Census_ISARDataRecord[] ) population[ 1 ];
+        // Census_ISARDataRecord[] tISARDataRecords = new Census_ISARDataRecord[
         // tHPHRPs.length + tHPNonHRPs.length ];
         // System.arraycopy( tHPHRPs, 0, tISARDataRecords, 0, tHPHRPs.length );
         // System.arraycopy( tHPNonHRPs, 0, tISARDataRecords, tHPHRPs.length,
@@ -712,7 +712,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
         // List tUnknownTypePerson = areaModelExtension.getUnknownTypePerson();
         // Write HP
         if (true) {
-            ISARDataRecord[] tISARDataRecords = (ISARDataRecord[]) population[0];
+            Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[0];
             for (int i = 0; i < tISARDataRecords.length; i++) {
                 aPersonIDHouseholdID = write2_ISARHP(tISARDataRecords[i],
                         aCASDataRecord, fitness, aPersonIDHouseholdID);
@@ -720,7 +720,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
         }
         // Write HPNonHRPs
         if (true) {
-            ISARDataRecord[] tISARDataRecords = (ISARDataRecord[]) population[1];
+            Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[1];
             for (int i = 0; i < tISARDataRecords.length; i++) {
                 aPersonIDHouseholdID = write2_ISARHP(tISARDataRecords[i],
                         aCASDataRecord, fitness, aPersonIDHouseholdID);
@@ -729,7 +729,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
         // Write CEP
         if (true) {
             aPersonIDHouseholdID[0] = -1;
-            ISARDataRecord[] tISARDataRecords = (ISARDataRecord[]) population[2];
+            Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[2];
             for (int i = 0; i < tISARDataRecords.length; i++) {
                 aPersonIDHouseholdID = write2_ISARCEP(tISARDataRecords[i],
                         aCASDataRecord, fitness, aPersonIDHouseholdID);
@@ -760,7 +760,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      */
     public void write2_ISARHP_ISARCEP(
             Object[] population,
-            CASDataRecord aCASDataRecord,
+            Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness,
             long[] aPersonIDHouseholdID) throws IOException {
         // Run AreaModel to work out and output who are in what households?
@@ -768,7 +768,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
         String line;
         String line0 = new String(aCASDataRecord.getZone_Code());
         if (true) {
-            ISARDataRecord[] tISARDataRecords = (ISARDataRecord[]) population[0];
+            Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[0];
             for (int i = 0; i < tISARDataRecords.length; i++) {
                 // line = line0 + ",HP," + tISARDataRecords[i].get_RecordID();
                 line = line0 + ",HP," + tISARDataRecords[i].get_ID();
@@ -778,7 +778,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
         }
         // Write CEP
         if (true) {
-            ISARDataRecord[] tISARDataRecords = (ISARDataRecord[]) population[1];
+            Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[1];
             for (int i = 0; i < tISARDataRecords.length; i++) {
                 // line = line0 + ",CEP," + tISARDataRecords[i].get_RecordID();
                 line = line0 + ",CEP," + tISARDataRecords[i].get_ID();
@@ -793,9 +793,9 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      * Writes out ToyModel output type 2 via this._ToyModelFileOutputStream
      *
      * @param aISARDataRecord
-     *            The ISARDataRecord.
+     *            The Census_ISARDataRecord.
      * @param aCASDataRecord
-     *            The CASDataRecord.
+     *            The Census_CASDataRecord.
      * @param fitness
      *            The BigDecimal.
      * @param aPersonIDHouseholdID
@@ -808,8 +808,8 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      * @throws java.io.IOException 
      */
     public long[] write2_ISARCEP(
-            ISARDataRecord aISARDataRecord,
-            CASDataRecord aCASDataRecord,
+            Census_ISARDataRecord aISARDataRecord,
+            Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness,
             long[] aPersonIDHouseholdID)
             throws IOException {
@@ -884,9 +884,9 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      *
      *
      * @param aISARDataRecord
-     *            The ISARDataRecord.
+     *            The Census_ISARDataRecord.
      * @param _CASDataRecord_1
-     *            The CASDataRecord.
+     *            The Census_CASDataRecord.
      * @param fitness
      *            The BigDecimal.
      * @param aPersonIDHouseholdID
@@ -899,7 +899,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      * @throws java.io.IOException 
      */
     public long[] write2_ISARCEP(
-            ISARDataRecord aISARDataRecord,
+            Census_ISARDataRecord aISARDataRecord,
             CASDataRecord_1 _CASDataRecord_1,
             BigDecimal fitness,
             long[] aPersonIDHouseholdID)
@@ -983,8 +983,8 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      * @throws java.io.IOException
      */
     public long[] write2_ISARHP(
-            ISARDataRecord aISARDataRecord,
-            CASDataRecord aCASDataRecord,
+            Census_ISARDataRecord aISARDataRecord,
+            Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness,
             long[] aPersonIDHouseholdID)
             throws IOException {
@@ -1073,8 +1073,8 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      * @throws java.io.IOException
      */
     public long[] write2_HSARHP(
-            HSARDataRecord aHSARDataRecord,
-            CASDataRecord aCASDataRecord,
+            Census_HSARDataRecord aHSARDataRecord,
+            Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness,
             long[] aPersonIDHouseholdID)
             throws IOException {
@@ -1142,7 +1142,7 @@ public class ToyModelDataHandler extends AbstractCASDataHandler {
      * @throws java.io.IOException
      */
     public long[] write2_HSARHP(
-            HSARDataRecord aHSARDataRecord,
+            Census_HSARDataRecord aHSARDataRecord,
             CASDataRecord_1 _CASDataRecord_1,
             BigDecimal fitness,
             long[] aPersonIDHouseholdID)

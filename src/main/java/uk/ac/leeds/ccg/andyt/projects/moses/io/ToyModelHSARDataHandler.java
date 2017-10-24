@@ -18,8 +18,8 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataHandler;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,7 +37,7 @@ import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
  * A specialist handler for accessing CASKS002Records and information about the
  * collection.
  */
-public class ToyModelHSARDataHandler extends AbstractCASDataHandler {
+public class ToyModelHSARDataHandler extends Census_AbstractDataHandler {
 
 	/**
 	 * A reference to a FileOutputStream for writing data
@@ -280,7 +280,7 @@ public class ToyModelHSARDataHandler extends AbstractCASDataHandler {
 	 *            The RecordID of the ISAR to be returned.
      * @return 
 	 */
-	public AbstractCASDataRecord getDataRecord(long RecordID) {
+	public Census_AbstractDataRecord getDataRecord(long RecordID) {
 		// return getCASKS002Record( RecordID );
 		return new ToyModelDataRecord_1();
 	}

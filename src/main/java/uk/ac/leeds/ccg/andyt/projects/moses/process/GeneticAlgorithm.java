@@ -22,14 +22,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS002DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS008DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS020DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09bDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09cDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS002DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS002DataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS008DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS020DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS09bDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS09cDataRecord;
 
 //import uk.ac.leeds.ccg.andyt.projects.moses.extensions.AreaModelExtension;
 
@@ -106,14 +106,14 @@ public class GeneticAlgorithm {
 	protected Object[] _FitnessCounts;
 
 	/**
-	 * For holding a reference to a CASDataRecord
+	 * For holding a reference to a Census_CASDataRecord
 	 */
-	protected CASDataRecord _CASDataRecord;
+	protected Census_CASDataRecord _CASDataRecord;
 
 	/**
-	 * For holding a reference to a CASKS002DataRecord
+	 * For holding a reference to a Census_CASKS002DataRecord
 	 */
-	protected CASKS002DataRecord _CASKS002DataRecord;
+	protected Census_CASKS002DataRecord _CASKS002DataRecord;
 
 	public GeneticAlgorithm() {
 	}
@@ -174,21 +174,21 @@ public class GeneticAlgorithm {
 	// // Initialise Count HashMaps to compare
 	// HashMap tCASCounts = new HashMap();
 	// HashMap _SARCounts = new HashMap();
-	// // Initialise age gender variables from CAS001DataRecord and
-	// CAS002DataRecord
-	// CAS001DataRecord aCAS001DataRecord =
+	// // Initialise age gender variables from Census_CAS001DataRecord and
+	// Census_CAS002DataRecord
+	// Census_CAS001DataRecord aCAS001DataRecord =
 	// this._CASDataRecord.getCAS001DataRecord();
-	// CAS002DataRecord aCAS002DataRecord =
+	// Census_CAS002DataRecord aCAS002DataRecord =
 	// this._CASDataRecord.getCAS002DataRecord();
-	// CASKS008DataRecord aCASKS008DataRecord =
+	// Census_CASKS008DataRecord aCASKS008DataRecord =
 	// this._CASDataRecord.getCASKS008DataRecord();
-	// CASKS020DataRecord aCASKS020DataRecord =
+	// Census_CASKS020DataRecord aCASKS020DataRecord =
 	// this._CASDataRecord.getCASKS020DataRecord();
-	// CASKS09bDataRecord aCASKS09bDataRecord =
+	// Census_CASKS09bDataRecord aCASKS09bDataRecord =
 	// this._CASDataRecord.getCASKS09bDataRecord();
-	// CASKS09cDataRecord aCASKS09cDataRecord =
+	// Census_CASKS09cDataRecord aCASKS09cDataRecord =
 	// this._CASDataRecord.getCASKS09cDataRecord();
-	// // CAS001DataRecord
+	// // Census_CAS001DataRecord
 	// // males
 	// String s_malesAge0to4 = new String( "malesAge0to4" );
 	// String s_malesAge5to9 = new String( "malesAge5to9" );
@@ -401,7 +401,7 @@ public class GeneticAlgorithm {
 	// // _SARCounts.put( s_femalesAge85to89, 0 );
 	// // _SARCounts.put( s_femalesAge90AndOver, 0 );
 	// _SARCounts.put( s_femalesAge80AndOver, 0 );
-	// // CAS002DataRecord
+	// // Census_CAS002DataRecord
 	// // males
 	// String s_malesMarriedAge0to15 = new String( "malesMarriedAge0to15" );
 	// String s_malesMarriedAge16to19 = new String( "malesMarriedAge16to19" );
@@ -564,7 +564,7 @@ public class GeneticAlgorithm {
 	// // _SARCounts.put( s_femalesMarriedAge85to89, 0 );
 	// // _SARCounts.put( s_femalesMarriedAge90AndOver, 0 );
 	// _SARCounts.put( s_femalesMarriedAge80AndOver, 0 );
-	// // Initialise health variables from CASKS008DataRecord
+	// // Initialise health variables from Census_CASKS008DataRecord
 	// String s_peopleWhoseGeneralHealthWasGood = new String(
 	// "peopleWhoseGeneralHealthWasGood" );
 	// String s_peopleWhoseGeneralHealthWasFairlyGood = new String(
@@ -585,7 +585,7 @@ public class GeneticAlgorithm {
 	// _SARCounts.put( s_peopleWhoseGeneralHealthWasFairlyGood, 0 );
 	// _SARCounts.put( s_peopleWhoseGeneralHealthWasNotGood, 0 );
 	// _SARCounts.put( s_peopleWithLimitingLongTermIllness, 0 );
-	// // Initialise Household Composition variables from CASKS020DataRecord
+	// // Initialise Household Composition variables from Census_CASKS020DataRecord
 	// String s_oneFamilyAndNoChildren = new String( "oneFamilyAndNoChildren" );
 	// String s_marriedOrCohabitingCoupleWithChildren = new String(
 	// "marriedOrCohabitingCoupleWithChildren" );
@@ -615,7 +615,7 @@ public class GeneticAlgorithm {
 	// _SARCounts.put( s_oneFamilyAndNoChildren, 0 );
 	// _SARCounts.put( s_marriedOrCohabitingCoupleWithChildren, 0 );
 	// _SARCounts.put( s_loneParentHouseholdsWithChildren, 0 );
-	// // Initialise Employment variables from CASKS09bDataRecord
+	// // Initialise Employment variables from Census_CASKS09bDataRecord
 	// String s_malesAge16to24Unemployed = new String(
 	// "malesAge16to24Unemployed" );
 	// String s_malesAge16to74 = new String( "malesAge16to74" );

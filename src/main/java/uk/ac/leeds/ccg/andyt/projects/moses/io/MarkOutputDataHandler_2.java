@@ -18,14 +18,14 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,7 +41,7 @@ import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 /**
  * A class for handling output data wanted by Mark Birkin.
  */
-public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
+public class MarkOutputDataHandler_2 extends Census_AbstractDataHandler {
 
     /**
      * A File for writing output to.
@@ -51,7 +51,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
      * A FileOutputStream for File.
      */
     protected FileOutputStream aFileOutputStream;
-    protected CASDataHandler tCASDataHandler;
+    protected Census_CASDataHandler tCASDataHandler;
 
     /**
      * Creates a new instance of MarkOutputDataHandler_2
@@ -116,16 +116,16 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         this.aOutputFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/MarkOutput2MSOA.csv");
         aFileOutputStream = new FileOutputStream(aOutputFile);
-        this.tCASDataHandler = new CASDataHandler(new File(
+        this.tCASDataHandler = new Census_CASDataHandler(new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/"), "MSOA");
         writeHeader();
         long startRecordID = 0;
         long endRecordID = this.tCASDataHandler.getNDataRecords() - 1;
-        CASDataRecord aCASDataRecord;
+        Census_CASDataRecord aCASDataRecord;
         Counts aCounts = new Counts();
         for (long RecordID = startRecordID; RecordID <= endRecordID; RecordID++) {
             // System.out.println("RecordID " + RecordID);
-            aCASDataRecord = (CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
+            aCASDataRecord = (Census_CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
             aCounts.allPeople = aCASDataRecord.getCAS001DataRecord().getAllPeople();
             aCounts.allHouseholds = aCASDataRecord.getCAS003DataRecord().getAllHouseholdsTotal();
             aCounts.allPeopleAge0to4 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge0to4();
@@ -195,20 +195,20 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         this.aOutputFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/MarkOutput2Ward.csv");
         aFileOutputStream = new FileOutputStream(aOutputFile);
-        this.tCASDataHandler = new CASDataHandler(new File(
+        this.tCASDataHandler = new Census_CASDataHandler(new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/"), "Ward");
-        // this.tCASDataHandler = new CASDataHandler( new File(
+        // this.tCASDataHandler = new Census_CASDataHandler( new File(
         // "C:/Work/Projects/MoSeS/Workspace/" ), "Ward" );
         writeHeader();
         // long startRecordID = 56749L;
         // long endRecordID = startRecordID + 2438L;
         long startRecordID = 0L;
         long endRecordID = startRecordID + 32L;
-        CASDataRecord aCASDataRecord;
+        Census_CASDataRecord aCASDataRecord;
         Counts aCounts = new Counts();
         for (long RecordID = startRecordID; RecordID <= endRecordID; RecordID++) {
             // System.out.println("RecordID " + RecordID);
-            aCASDataRecord = (CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
+            aCASDataRecord = (Census_CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
             aCounts.allPeople = aCASDataRecord.getCAS001DataRecord().getAllPeople();
             aCounts.allHouseholds = aCASDataRecord.getCAS003DataRecord().getAllHouseholdsTotal();
             aCounts.allPeopleAge0to4 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge0to4();
@@ -278,16 +278,16 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         this.aOutputFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/MarkOutput2OA.csv");
         aFileOutputStream = new FileOutputStream(aOutputFile);
-        this.tCASDataHandler = new CASDataHandler(new File(
+        this.tCASDataHandler = new Census_CASDataHandler(new File(
                 "C:/Work/Projects/MoSeS/Workspace/"), "");
         writeHeader();
         long startRecordID = 56749L;
         long endRecordID = startRecordID + 2438L;
-        CASDataRecord aCASDataRecord;
+        Census_CASDataRecord aCASDataRecord;
         Counts aCounts = new Counts();
         for (long RecordID = startRecordID; RecordID <= endRecordID; RecordID++) {
             // System.out.println("RecordID " + RecordID);
-            aCASDataRecord = (CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
+            aCASDataRecord = (Census_CASDataRecord) this.tCASDataHandler.getDataRecord(RecordID);
             aCounts.allPeople = aCASDataRecord.getCAS001DataRecord().getAllPeople();
             aCounts.allHouseholds = aCASDataRecord.getCAS003DataRecord().getAllHouseholdsTotal();
             aCounts.allPeopleAge0to4 = aCASDataRecord.getCAS001DataRecord().getAllPeopleAge0to4();
@@ -349,7 +349,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         }
     }
 
-    public AbstractCASDataRecord getDataRecord(long RecordID) {
+    public Census_AbstractDataRecord getDataRecord(long RecordID) {
         return null;
     }
 
@@ -373,7 +373,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         }
         this.aFileOutputStream = new FileOutputStream(aOutputFile);
         writeHeader();
-        CASDataRecord aCASDataRecord;
+        Census_CASDataRecord aCASDataRecord;
         int allPeople = 0;
         int allHouseholds = 0;
         int allPeopleAge0to4 = 0;
@@ -398,14 +398,14 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         int femaleEconomicallyActiveAge16to74 = 0;
         int ethnicityWhite = 0;
         int noCarOwnership = 0;
-        HSARDataHandler tHSARDataHandler = new HSARDataHandler(
+        Census_HSARDataHandler tHSARDataHandler = new Census_HSARDataHandler(
                 new File("C:/Work/Projects/MoSeS/Workspace/",
                 "uk.ac.leeds.ccg.andyt.projects.moses.io.HSARDataHandler.thisFile"));
-        ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new ISARDataHandler(
+        Census_ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new Census_ISARDataHandler(
                 new File("C:/Work/Projects/MoSeS/Workspace/",
                 "uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler.thisFile"));
-        HSARDataRecord aHSARDataRecord;
-        ISARDataRecord aISARDataRecord;
+        Census_HSARDataRecord aHSARDataRecord;
+        Census_ISARDataRecord aISARDataRecord;
         BufferedReader tBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(
                 tToyModelDataRecord2CSVFile)));
@@ -415,7 +415,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         ToyModelDataRecord_2 aToyModelDataRecord2;
         String aZoneCode;
         HashMap tLookUpMSOAfromOAHashMap = null;
-        CASDataHandler tCASDataHandler = new CASDataHandler();
+        Census_CASDataHandler tCASDataHandler = new Census_CASDataHandler();
         if (aggregation.equalsIgnoreCase("MSOA")) {
             tLookUpMSOAfromOAHashMap = tCASDataHandler.get_LookUpMSOAfromOAHashMap();
         }
@@ -465,7 +465,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
                         }
                     }
                     if (aToyModelDataRecord2.tHSARDataRecordID != -9) {
-                        aHSARDataRecord = (HSARDataRecord) tHSARDataHandler.getDataRecord(aToyModelDataRecord2.tHSARDataRecordID);
+                        aHSARDataRecord = (Census_HSARDataRecord) tHSARDataHandler.getDataRecord(aToyModelDataRecord2.tHSARDataRecordID);
                         if (aHSARDataRecord.get_HRP()) {
                             allHouseholds = 1;
                         }
@@ -550,7 +550,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
                             }
                         }
                     } else {
-                        aISARDataRecord = (ISARDataRecord) _ISARDataHandler_AGE0HRPOrdered.getDataRecord(aToyModelDataRecord2.tISARDataRecordID);
+                        aISARDataRecord = (Census_ISARDataRecord) _ISARDataHandler_AGE0HRPOrdered.getDataRecord(aToyModelDataRecord2.tISARDataRecordID);
                         aISARDataRecordAGE0 = aISARDataRecord.get_AGE0();
                         if (aISARDataRecordAGE0 < 5) {
                             allPeopleAge0to4 = 1;
@@ -718,7 +718,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         }
         this.aFileOutputStream = new FileOutputStream(aOutputFile);
         writeHeader();
-        CASDataRecord aCASDataRecord;
+        Census_CASDataRecord aCASDataRecord;
         int allPeople = 0;
         int allHouseholds = 0;
         int allPeopleAge0to4 = 0;
@@ -743,10 +743,10 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         int femaleEconomicallyActiveAge16to74 = 0;
         int ethnicityWhite = 0;
         int noCarOwnership = 0;
-        ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new ISARDataHandler(
+        Census_ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new Census_ISARDataHandler(
                 new File("C:/Work/Projects/MoSeS/Workspace/",
                 "uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler.thisFile"));
-        ISARDataRecord aISARDataRecord;
+        Census_ISARDataRecord aISARDataRecord;
         BufferedReader tBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(
                 tToyModelDataRecord2CSVFile)));
@@ -756,7 +756,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
         ToyModelDataRecord_2 aToyModelDataRecord2;
         String aZoneCode;
         HashMap tLookUpMSOAfromOAHashMap = null;
-        CASDataHandler tCASDataHandler = new CASDataHandler();
+        Census_CASDataHandler tCASDataHandler = new Census_CASDataHandler();
         if (aggregateToMSOA) {
             tLookUpMSOAfromOAHashMap = tCASDataHandler.get_LookUpMSOAfromOAHashMap();
         }
@@ -804,7 +804,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
                         aZoneCode = String.valueOf(aToyModelDataRecord2.getZone_Code());
                     }
                     if (aToyModelDataRecord2.tHouseholdID > 0) {
-                        aISARDataRecord = (ISARDataRecord) _ISARDataHandler_AGE0HRPOrdered.getDataRecord(aToyModelDataRecord2.tISARDataRecordID);
+                        aISARDataRecord = (Census_ISARDataRecord) _ISARDataHandler_AGE0HRPOrdered.getDataRecord(aToyModelDataRecord2.tISARDataRecordID);
                         if (aISARDataRecord.get_RELTOHR() == 1) {
                             allHouseholds = 1;
                         }
@@ -897,7 +897,7 @@ public class MarkOutputDataHandler_2 extends AbstractCASDataHandler {
                             noCarOwnership = 1;
                         }
                     } else {
-                        aISARDataRecord = (ISARDataRecord) _ISARDataHandler_AGE0HRPOrdered.getDataRecord(aToyModelDataRecord2.tISARDataRecordID);
+                        aISARDataRecord = (Census_ISARDataRecord) _ISARDataHandler_AGE0HRPOrdered.getDataRecord(aToyModelDataRecord2.tISARDataRecordID);
                         aISARDataRecordAGE0 = aISARDataRecord.get_AGE0();
                         if (aISARDataRecordAGE0 < 5) {
                             allPeopleAge0to4 = 1;

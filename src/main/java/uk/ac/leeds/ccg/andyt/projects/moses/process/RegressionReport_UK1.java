@@ -34,12 +34,12 @@ import java.util.TreeSet;
 import java.util.Vector;
 import org.jfree.chart.JFreeChart;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.OutputDataHandler_OptimisationConstraints;
 
 /**
@@ -54,9 +54,9 @@ public class RegressionReport_UK1 extends RegressionReport {
     String _AreaLevel;
     String _Type;
     File _Directory;
-    CASDataHandler _CASDataHandler;
-    HSARDataHandler _HSARDataHandler;
-    ISARDataHandler _ISARDataHandler;
+    Census_CASDataHandler _CASDataHandler;
+    Census_HSARDataHandler _HSARDataHandler;
+    Census_ISARDataHandler _ISARDataHandler;
     Random _Random;
 
     /**
@@ -70,8 +70,8 @@ public class RegressionReport_UK1 extends RegressionReport {
 
     public void run() throws Exception {
         _Directory = new File("/scratch01/Work/Projects/MoSeS/Workspace/");
-        _CASDataHandler = new CASDataHandler(_Directory, "");
-        _ISARDataHandler = new ISARDataHandler(new File(_Directory, "uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler.thisFile"));
+        _CASDataHandler = new Census_CASDataHandler(_Directory, "");
+        _ISARDataHandler = new Census_ISARDataHandler(new File(_Directory, "uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler.thisFile"));
         System.out.println(
                 "ISARDataHandler loaded with "
                 + _ISARDataHandler.getNDataRecords() + " data records");
@@ -95,7 +95,7 @@ public class RegressionReport_UK1 extends RegressionReport {
         // run( "ControlConstraints", "SSE" );
         // run( "OptimisationConstraints", "SSE" );
         // run( "NonConstraints", "SSE" );
-        _HSARDataHandler = new HSARDataHandler(new File(_Directory, "uk.ac.leeds.ccg.andyt.projects.moses.io.HSARDataHandler.thisFile"));
+        _HSARDataHandler = new Census_HSARDataHandler(new File(_Directory, "uk.ac.leeds.ccg.andyt.projects.moses.io.HSARDataHandler.thisFile"));
         System.out.println(
                 "HSARDataHandler loaded with "
                 + _HSARDataHandler.getNDataRecords() + " data records");
@@ -447,12 +447,12 @@ public class RegressionReport_UK1 extends RegressionReport {
         OutputDataHandler_OptimisationConstraints.writeISARHP_ISARCEPHeader(a_FileOutputStream);
         a_FileOutputStream.flush();
         TreeSet a_OACodes_TreeSet = _CASDataHandler.getOACodes_TreeSet();
-        CASDataRecord a_CASDataRecord;
+        Census_CASDataRecord a_CASDataRecord;
         Iterator a_OACodes_Iterator = a_OACodes_TreeSet.iterator();
         String a_OACode;
         while (a_OACodes_Iterator.hasNext()) {
             a_OACode = (String) a_OACodes_Iterator.next();
-            a_CASDataRecord = (CASDataRecord) _CASDataHandler.getDataRecord(a_OACode);
+            a_CASDataRecord = (Census_CASDataRecord) _CASDataHandler.getDataRecord(a_OACode);
             Object[] fitnessCounts = GeneticAlgorithm_ISARHP_ISARCEP.getFitnessCounts(a_CASDataRecord);
             OutputDataHandler_OptimisationConstraints.writeISARHP_ISARCEP(
                     (HashMap<String, Integer>) fitnessCounts[0],
@@ -473,12 +473,12 @@ public class RegressionReport_UK1 extends RegressionReport {
         OutputDataHandler_OptimisationConstraints.writeHSARHP_ISARCEPHeader(a_FileOutputStream);
         a_FileOutputStream.flush();
         TreeSet a_OACodes_TreeSet = _CASDataHandler.getOACodes_TreeSet();
-        CASDataRecord a_CASDataRecord;
+        Census_CASDataRecord a_CASDataRecord;
         Iterator a_OACodes_Iterator = a_OACodes_TreeSet.iterator();
         String a_OACode;
         while (a_OACodes_Iterator.hasNext()) {
             a_OACode = (String) a_OACodes_Iterator.next();
-            a_CASDataRecord = (CASDataRecord) _CASDataHandler.getDataRecord(a_OACode);
+            a_CASDataRecord = (Census_CASDataRecord) _CASDataHandler.getDataRecord(a_OACode);
             Object[] fitnessCounts = GeneticAlgorithm_HSARHP_ISARCEP.getFitnessCounts(a_CASDataRecord);
             OutputDataHandler_OptimisationConstraints.writeHSARHP_ISARCEP(
                     (HashMap<String, Integer>) fitnessCounts[0],
@@ -539,7 +539,7 @@ public class RegressionReport_UK1 extends RegressionReport {
                                 if (lineFields[1].equalsIgnoreCase("HP")) {
                                     //System.out.println("HP");
                                     long a_ISARRecordID = (Long) a_ID_RecordID_HashMap.get(new Long(lineFields[2]));
-                                    ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
+                                    Census_ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
                                     GeneticAlgorithm_ISARHP_ISARCEP.addToCountsHP(
                                             a_ISARDataRecord,
                                             a_SARCounts,
@@ -547,10 +547,10 @@ public class RegressionReport_UK1 extends RegressionReport {
                                     //System.out.println(a_HSARDataRecord.toString());
                                 } else {
                                     //System.out.println("CEP");
-                                    // From the id of the ISARDataRecord get the
+                                    // From the id of the Census_ISARDataRecord get the
                                     // ISARRecordID.
                                     long a_ISARRecordID = (Long) a_ID_RecordID_HashMap.get(new Long(lineFields[2]));
-                                    ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
+                                    Census_ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
                                     GeneticAlgorithm_ISARHP_ISARCEP.addToCountsCEP(
                                             a_ISARDataRecord,
                                             a_SARCounts,
@@ -568,14 +568,14 @@ public class RegressionReport_UK1 extends RegressionReport {
                                             a_SARCounts);
                                 }
                                 // Initialise/Re-initialise
-                                CASDataRecord a_CASDataRecord = (CASDataRecord) _CASDataHandler.getDataRecord(a_OA_String);
+                                Census_CASDataRecord a_CASDataRecord = (Census_CASDataRecord) _CASDataHandler.getDataRecord(a_OA_String);
                                 fitnessCounts = GeneticAlgorithm_ISARHP_ISARCEP.getFitnessCounts(a_CASDataRecord);
                                 a_SARCounts = (HashMap<String, Integer>) fitnessCounts[1];
                                 // Start a new aggregation
                                 if (lineFields[1].equalsIgnoreCase("HP")) {
                                     //System.out.println("HP");
                                     long a_ISARRecordID = (Long) a_ID_RecordID_HashMap.get(new Long(lineFields[2]));
-                                    ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
+                                    Census_ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
                                     GeneticAlgorithm_ISARHP_ISARCEP.addToCountsHP(
                                             a_ISARDataRecord,
                                             a_SARCounts,
@@ -583,10 +583,10 @@ public class RegressionReport_UK1 extends RegressionReport {
                                     //System.out.println(a_HSARDataRecord.toString());
                                 } else {
                                     //System.out.println("CEP");
-                                    // From the id of the ISARDataRecord get the
+                                    // From the id of the Census_ISARDataRecord get the
                                     // ISARRecordID.
                                     long a_ISARRecordID = (Long) a_ID_RecordID_HashMap.get(new Long(lineFields[2]));
-                                    ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
+                                    Census_ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
                                     GeneticAlgorithm_ISARHP_ISARCEP.addToCountsCEP(
                                             a_ISARDataRecord,
                                             a_SARCounts,
@@ -634,7 +634,7 @@ public class RegressionReport_UK1 extends RegressionReport {
         OutputDataHandler_OptimisationConstraints.writeHSARHP_ISARCEPHeader(a_FileOutputStream);
         a_FileOutputStream.flush();
         HashMap<String, Integer> a_SARCounts = null;
-        CASDataRecord a_CASDataRecord;
+        Census_CASDataRecord a_CASDataRecord;
         TreeSet<String> a_LADCodes_TreeSet = _CASDataHandler.getLADCodes_TreeSet();
         String s2;
         String s1;
@@ -674,9 +674,9 @@ public class RegressionReport_UK1 extends RegressionReport {
                                     // From the id of a household get a Vector 
                                     // of HSARDataRecords
                                     Vector household = (Vector) a_HID_HSARDataRecordVector_HashMap.get(new Integer(lineFields[2]));
-                                    HSARDataRecord a_HSARDataRecord;
+                                    Census_HSARDataRecord a_HSARDataRecord;
                                     for (int i = 0; i < household.size(); i++) {
-                                        a_HSARDataRecord = (HSARDataRecord) household.elementAt(i);
+                                        a_HSARDataRecord = (Census_HSARDataRecord) household.elementAt(i);
                                         GeneticAlgorithm_HSARHP_ISARCEP.addToCounts(
                                                 a_HSARDataRecord,
                                                 a_SARCounts,
@@ -685,10 +685,10 @@ public class RegressionReport_UK1 extends RegressionReport {
                                     //System.out.println(a_HSARDataRecord.toString());
                                 } else {
                                     //System.out.println("CEP");
-                                    // From the id of the ISARDataRecord get the
+                                    // From the id of the Census_ISARDataRecord get the
                                     // ISARRecordID.
                                     long a_ISARRecordID = (Long) a_ID_RecordID_HashMap.get(new Long(lineFields[2]));
-                                    ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
+                                    Census_ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
                                     GeneticAlgorithm_HSARHP_ISARCEP.addToCountsCEP(
                                             a_ISARDataRecord,
                                             a_SARCounts,
@@ -706,7 +706,7 @@ public class RegressionReport_UK1 extends RegressionReport {
                                             a_SARCounts);
                                 }
                                 // Initialise/Re-initialise
-                                a_CASDataRecord = (CASDataRecord) _CASDataHandler.getDataRecord(a_OA_String);
+                                a_CASDataRecord = (Census_CASDataRecord) _CASDataHandler.getDataRecord(a_OA_String);
                                 Object[] fitnessCounts = GeneticAlgorithm_HSARHP_ISARCEP.getFitnessCounts(a_CASDataRecord);
                                 a_SARCounts = (HashMap<String, Integer>) fitnessCounts[1];
                                 // Start a new aggregation
@@ -715,9 +715,9 @@ public class RegressionReport_UK1 extends RegressionReport {
                                     // From the id of a household get a Vector
                                     // of HSARDataRecords
                                     Vector household = (Vector) a_HID_HSARDataRecordVector_HashMap.get(new Integer(lineFields[2]));
-                                    HSARDataRecord a_HSARDataRecord;
+                                    Census_HSARDataRecord a_HSARDataRecord;
                                     for (int i = 0; i < household.size(); i++) {
-                                        a_HSARDataRecord = (HSARDataRecord) household.elementAt(i);
+                                        a_HSARDataRecord = (Census_HSARDataRecord) household.elementAt(i);
                                         GeneticAlgorithm_HSARHP_ISARCEP.addToCounts(
                                                 a_HSARDataRecord,
                                                 a_SARCounts,
@@ -726,10 +726,10 @@ public class RegressionReport_UK1 extends RegressionReport {
                                     //System.out.println(a_HSARDataRecord.toString());
                                 } else {
                                     //System.out.println("CEP");
-                                    // From the id of the ISARDataRecord get the
+                                    // From the id of the Census_ISARDataRecord get the
                                     // ISARRecordID.
                                     long a_ISARRecordID = (Long) a_ID_RecordID_HashMap.get(new Long(lineFields[2]));
-                                    ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
+                                    Census_ISARDataRecord a_ISARDataRecord = _ISARDataHandler.getISARDataRecord(a_ISARRecordID);
                                     GeneticAlgorithm_HSARHP_ISARCEP.addToCountsCEP(
                                             a_ISARDataRecord,
                                             a_SARCounts,

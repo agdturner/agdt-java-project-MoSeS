@@ -29,7 +29,7 @@ import mpi.MPIException;
 import mpi.MPI;
 import mpi.Request;
 import mpi.Status;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ParameterFileParser;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
@@ -128,7 +128,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
 //        } else {
 //            _Population_HashMap = new HashMap();
 //        }
-        // Initialise CASDataHandler.
+        // Initialise Census_CASDataHandler.
         init_CASDataHandler(_Directory, _CASLevel);
         // Initialise ISARDataHandler.
         init_ISARDataHandler(_Directory);
@@ -182,7 +182,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
         Generic_StaticIO.copy(
                 _Input_Parameter_File,
                 _OutputDirectory);
-        // Initialise CASDataHandler.
+        // Initialise Census_CASDataHandler.
         init_CASDataHandler(_Directory, _CASLevel);
         // Initialise ToyModelDataHandler.
         init_ToyModelDataHandler(_Output_File_0);
@@ -307,7 +307,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
         }
         String aLAD = "";
         String bLAD;
-        CASDataRecord aCASDataRecord = null;
+        Census_CASDataRecord aCASDataRecord = null;
         Object[] aResult = null;
         Object[] bResult = null;
         Object[] cResult = new Object[1];
@@ -324,10 +324,10 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
                 _MPIException.printStackTrace();
                 System.exit(Generic_ErrorAndExceptionHandler.MPIException);
             }
-            if (!(input[0] instanceof CASDataRecord)) {
+            if (!(input[0] instanceof Census_CASDataRecord)) {
                 worktodo = false;
             } else {
-                aCASDataRecord = (CASDataRecord) input[0];
+                aCASDataRecord = (Census_CASDataRecord) input[0];
             }
             if (worktodo) {
                 log("Received " + String.valueOf(aCASDataRecord.getZone_Code()) + " to process");
@@ -395,7 +395,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
             int size,
             int rank,
             int tag) {
-        CASDataRecord aCASDataRecord = null;
+        Census_CASDataRecord aCASDataRecord = null;
         Object[] aResult = null;
         Object[] bResult = null;
         Object[] cResult = new Object[1];
@@ -417,8 +417,8 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
                 log(aMPIException.getLocalizedMessage());
                 System.exit(Generic_ErrorAndExceptionHandler.MPIException);
             }
-            if (input[0] instanceof CASDataRecord) {
-                aCASDataRecord = (CASDataRecord) input[0];
+            if (input[0] instanceof Census_CASDataRecord) {
+                aCASDataRecord = (Census_CASDataRecord) input[0];
             } else {
                 worktodo = false;
                 log("Completed processing on rank " + rank);
@@ -466,7 +466,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
         int source;
         long _StartRecordID = _StartRecordID_EndRecordID[0];
         long _EndRecordID = _StartRecordID_EndRecordID[1];
-        CASDataRecord aCASDataRecord = null;
+        Census_CASDataRecord aCASDataRecord = null;
         Object[] aResult = null;
         Object[] bResult = null;
         Object[] cResult = new Object[1];
@@ -489,7 +489,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
 
             // Send first batch of processing
             for (source = 1; source < size; source++) {
-                aCASDataRecord = (CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
+                aCASDataRecord = (Census_CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
                 input[0] = aCASDataRecord;
                 log("Send input " + String.valueOf(aCASDataRecord.getZone_Code()) +
                         " to " + source + " and set up receive...");
@@ -531,7 +531,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
                 source = aStatus.source;
                 log("Received output from rank " + source);
                 bResult = (Object[]) cResult[0];
-                aCASDataRecord = (CASDataRecord) bResult[0];
+                aCASDataRecord = (Census_CASDataRecord) bResult[0];
                 // aResult is tConstraintAndPopulation and fitness
                 aResult = (Object[]) bResult[1];
                 aConstraintAndPopulation = (Object[]) aResult[0];
@@ -549,7 +549,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
                 log("Written result for " + String.valueOf(aCASDataRecord.getZone_Code()) +
                         " with fitness " + fitness);
                 if (RecordID <= _EndRecordID) {
-                    aCASDataRecord = (CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
+                    aCASDataRecord = (Census_CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
                     input[0] = aCASDataRecord;
                     log("Send input " + String.valueOf(aCASDataRecord.getZone_Code()) +
                             " to " + source + " and set up receive...");
@@ -591,7 +591,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
                 source = aStatus.source;
                 log("Received output from rank " + source);
                 bResult = (Object[]) cResult[0];
-                aCASDataRecord = (CASDataRecord) bResult[0];
+                aCASDataRecord = (Census_CASDataRecord) bResult[0];
                 // aResult is tConstraintAndPopulation and fitness
                 aResult = (Object[]) bResult[1];
                 aConstraintAndPopulation = (Object[]) aResult[0];
@@ -685,7 +685,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
         Object[] input = new Object[1];
         boolean halt = true;
         input[0] = halt;
-        //input[0] can be anything so long as it does not resolve as an instanceof CASDataRecord
+        //input[0] can be anything so long as it does not resolve as an instanceof Census_CASDataRecord
         for (int source = 1; source < size; source++) {
             try {
                 MPI.COMM_WORLD.Isend(

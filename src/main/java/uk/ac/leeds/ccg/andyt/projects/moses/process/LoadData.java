@@ -19,9 +19,9 @@
 package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
 import java.io.File;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 
 /**
  * A class for loading formatted data and generating serialised handlers.
@@ -52,17 +52,17 @@ public class LoadData {
         // HSAR
         file = new File(
                 directory,
-                HSARDataHandler.class.getCanonicalName() + ".thisFile");
-        HSARDataHandler aHSARDataHandler = new HSARDataHandler(
+                Census_HSARDataHandler.class.getCanonicalName() + ".thisFile");
+        Census_HSARDataHandler aHSARDataHandler = new Census_HSARDataHandler(
                 file);
         // ISAR
         file = new File(
                 directory,
-                ISARDataHandler.class.getCanonicalName() + ".thisFile");
-        ISARDataHandler aISARDataHandler = new ISARDataHandler(
+                Census_ISARDataHandler.class.getCanonicalName() + ".thisFile");
+        Census_ISARDataHandler aISARDataHandler = new Census_ISARDataHandler(
                 file);
         // CAS
-        CASDataHandler aCASDataHandler = new CASDataHandler(directory, "OA");
+        Census_CASDataHandler aCASDataHandler = new Census_CASDataHandler(directory, "OA");
     }
 
     public void loadFormattedData() {
@@ -70,31 +70,31 @@ public class LoadData {
         // File directory = new File("/home/andyt/projects/MoSeS/Workspace/" );
         File file;
         // HSAR
-        HSARDataHandler aHSARDataHandler;
+        Census_HSARDataHandler aHSARDataHandler;
         file = new File(
                 directory,
                 "HSARDataRecords.dat");
-        aHSARDataHandler = new HSARDataHandler(file);
+        aHSARDataHandler = new Census_HSARDataHandler(file);
         file = new File(
                 directory,
-                HSARDataHandler.class.getCanonicalName() + ".thisFile");
-        aHSARDataHandler = new HSARDataHandler(
+                Census_HSARDataHandler.class.getCanonicalName() + ".thisFile");
+        aHSARDataHandler = new Census_HSARDataHandler(
                 file);
 //        // ISAR
-//        ISARDataHandler aISARDataHandler;
+//        Census_ISARDataHandler aISARDataHandler;
 //        // Load source formatted data
 //        file = new File(
 //                directory,
 //                "ISARDataRecords.dat");
-//        aISARDataHandler = new ISARDataHandler(file);
+//        aISARDataHandler = new Census_ISARDataHandler(file);
 //        // Write out thisfile
 //        file = new File(
 //                directory,
 //                aISARDataHandler.getClass().getCanonicalName() + ".thisFile");
-//        aISARDataHandler = new ISARDataHandler(
+//        aISARDataHandler = new Census_ISARDataHandler(
 //                file);
         // CAS
-        CASDataHandler aCASDataHandler = new CASDataHandler(
+        Census_CASDataHandler aCASDataHandler = new Census_CASDataHandler(
                 directory,
                 "OA");
     }

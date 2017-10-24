@@ -19,13 +19,13 @@
 package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
 import java.io.File;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASAreaEastingNorthingDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASAreaEastingNorthingDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.SWSDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.SWSDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CASAreaEastingNorthingDataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CASAreaEastingNorthingDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sws.Census_SWSDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sws.Census_SWSDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 
 /**
@@ -57,56 +57,56 @@ public class LoadGENESISData {
 //        // HSAR
 //        file = new File(
 //                directory,
-//                HSARDataHandler.class.getCanonicalName() + ".thisFile");
-//        HSARDataHandler aHSARDataHandler = new HSARDataHandler(
+//                Census_HSARDataHandler.class.getCanonicalName() + ".thisFile");
+//        Census_HSARDataHandler aHSARDataHandler = new Census_HSARDataHandler(
 //                file);
 //        // ISAR
 //        file = new File(
 //                directory,
-//                ISARDataHandler.class.getCanonicalName() + ".thisFile");
-//        ISARDataHandler aISARDataHandler = new ISARDataHandler(
+//                Census_ISARDataHandler.class.getCanonicalName() + ".thisFile");
+//        Census_ISARDataHandler aISARDataHandler = new Census_ISARDataHandler(
 //                file);
 //        // CAS
-//        CASDataHandler aCASDataHandler = new CASDataHandler(directory, "OA");
+//        Census_CASDataHandler aCASDataHandler = new Census_CASDataHandler(directory, "OA");
 //    }
     public void loadFormattedData() {
         File directory = new File("C:/Work/Projects/GENESIS/Workspace/");
         // File directory = new File("/home/andyt/projects/MoSeS/Workspace/" );
         File file;
         // SWS
-        SWSDataHandler a_SWSDataHandler;
+        Census_SWSDataHandler a_SWSDataHandler;
         file = new File(
                 directory,
                 "SWSDataRecords.dat");
-        a_SWSDataHandler = new SWSDataHandler(file);
+        a_SWSDataHandler = new Census_SWSDataHandler(file);
         file = new File(
                 directory,
-                SWSDataHandler.class.getCanonicalName() + ".thisFile");
+                Census_SWSDataHandler.class.getCanonicalName() + ".thisFile");
         Generic_StaticIO.writeObject(
                 a_SWSDataHandler,
                 file);
-        a_SWSDataHandler = new SWSDataHandler(
+        a_SWSDataHandler = new Census_SWSDataHandler(
                 file);
         System.out.println("a_SWSDataHandler.getNDataRecords() " + a_SWSDataHandler.getNDataRecords());
-        SWSDataRecord a_SWSDataRecord = (SWSDataRecord) a_SWSDataHandler.getDataRecord(0L);
+        Census_SWSDataRecord a_SWSDataRecord = (Census_SWSDataRecord) a_SWSDataHandler.getDataRecord(0L);
         System.out.println("a_SWSDataRecord " + a_SWSDataRecord);
 
         // CASAreaEastingNorthingDataRecords.dat
-        CASAreaEastingNorthingDataHandler a_CASAreaEastingNorthingDataHandler;
+        Census_CASAreaEastingNorthingDataHandler a_CASAreaEastingNorthingDataHandler;
         file = new File(
                 directory,
                 "CASAreaEastingNorthingDataRecords.dat");
-        a_CASAreaEastingNorthingDataHandler = new CASAreaEastingNorthingDataHandler(file);
+        a_CASAreaEastingNorthingDataHandler = new Census_CASAreaEastingNorthingDataHandler(file);
         file = new File(
                 directory,
-                CASAreaEastingNorthingDataHandler.class.getCanonicalName() + ".thisFile");
+                Census_CASAreaEastingNorthingDataHandler.class.getCanonicalName() + ".thisFile");
         Generic_StaticIO.writeObject(
                 a_CASAreaEastingNorthingDataHandler,
                 file);
-        a_CASAreaEastingNorthingDataHandler = new CASAreaEastingNorthingDataHandler(
+        a_CASAreaEastingNorthingDataHandler = new Census_CASAreaEastingNorthingDataHandler(
                 file);
         System.out.println("a_CASAreaEastingNorthingDataHandler.getNDataRecords() " + a_CASAreaEastingNorthingDataHandler.getNDataRecords());
-        CASAreaEastingNorthingDataRecord a_CASAreaEastingNorthingDataRecord = (CASAreaEastingNorthingDataRecord) a_CASAreaEastingNorthingDataHandler.getDataRecord(0L);
+        Census_CASAreaEastingNorthingDataRecord a_CASAreaEastingNorthingDataRecord = (Census_CASAreaEastingNorthingDataRecord) a_CASAreaEastingNorthingDataHandler.getDataRecord(0L);
         System.out.println("a_CASAreaEastingNorthingDataRecord " + a_CASAreaEastingNorthingDataRecord);
     }
 }

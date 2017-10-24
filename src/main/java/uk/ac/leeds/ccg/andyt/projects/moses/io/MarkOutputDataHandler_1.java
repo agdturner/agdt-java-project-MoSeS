@@ -18,10 +18,10 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -33,7 +33,7 @@ import java.util.Iterator;
 /**
  * A class for handling output data wanted by Mark Birkin.
  */
-public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
+public class MarkOutputDataHandler_1 extends Census_AbstractDataHandler {
 
     /**
      * A File for writing output to.
@@ -265,10 +265,10 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         long toyModelDataHandlerRandomAccessFileLength;
         toyModelDataRecord = this.toyModelDataHandler.getToyModelDataRecord1(RecordID);
         long toyModelDataNRecords = toyModelDataHandler.getNDataRecords();
-        ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new ISARDataHandler(
+        Census_ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new Census_ISARDataHandler(
                 _File);
         long individualSARDataRecordID = toyModelDataRecord.ISARDataRecordID;
-        ISARDataRecord individualSARDataRecord = _ISARDataHandler_AGE0HRPOrdered.getISARDataRecord(individualSARDataRecordID);
+        Census_ISARDataRecord individualSARDataRecord = _ISARDataHandler_AGE0HRPOrdered.getISARDataRecord(individualSARDataRecordID);
         MarkOutputDataRecord_1 markOutput1DataRecord = new MarkOutputDataRecord_1();
         String zoneCode = String.valueOf(toyModelDataRecord.getZone_Code()).substring(0, 6);
         markOutput1DataRecord.setZone_Code(zoneCode.toCharArray());
@@ -918,9 +918,9 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         long toyModelDataHandlerRandomAccessFileLength;
         toyModelDataRecord = this.toyModelDataHandler.getToyModelDataRecord1(RecordID);
         long toyModelDataNRecords = toyModelDataHandler.getNDataRecords();
-        ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new ISARDataHandler();
+        Census_ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new Census_ISARDataHandler();
         long individualSARDataRecordID = toyModelDataRecord.ISARDataRecordID;
-        ISARDataRecord individualSARDataRecord = _ISARDataHandler_AGE0HRPOrdered.getISARDataRecord(individualSARDataRecordID);
+        Census_ISARDataRecord individualSARDataRecord = _ISARDataHandler_AGE0HRPOrdered.getISARDataRecord(individualSARDataRecordID);
         MarkOutputDataRecord_1 markOutput1DataRecord = new MarkOutputDataRecord_1();
         // String zoneCode = String.valueOf( toyModelDataRecord.Zone_Code
         // ).substring( 0, 6 );
@@ -1138,9 +1138,9 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
             ioe0.printStackTrace();
         }
         long toyModelDataNRecords = toyModelDataHandler.getNDataRecords();
-        ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new ISARDataHandler();
+        Census_ISARDataHandler _ISARDataHandler_AGE0HRPOrdered = new Census_ISARDataHandler();
         long individualSARDataRecordID = toyModelDataRecord.ISARDataRecordID;
-        ISARDataRecord individualSARDataRecord = _ISARDataHandler_AGE0HRPOrdered.getISARDataRecord(individualSARDataRecordID);
+        Census_ISARDataRecord individualSARDataRecord = _ISARDataHandler_AGE0HRPOrdered.getISARDataRecord(individualSARDataRecordID);
         MarkOutputDataRecord_1 markOutput1DataRecord = new MarkOutputDataRecord_1();
         String zoneCode = new String(toyModelDataRecord.getZone_Code());
         String thisZoneCode;
@@ -1369,7 +1369,7 @@ public class MarkOutputDataHandler_1 extends AbstractCASDataHandler {
         }
     }
 
-    public AbstractCASDataRecord getDataRecord(long RecordID) {
+    public Census_AbstractDataRecord getDataRecord(long RecordID) {
         return null;
     }
 }

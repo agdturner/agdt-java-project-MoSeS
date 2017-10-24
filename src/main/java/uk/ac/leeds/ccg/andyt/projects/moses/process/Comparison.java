@@ -34,13 +34,13 @@ import java.util.Iterator;
 import java.util.TreeMap;
 import org.jfree.chart.JFreeChart;
 import uk.ac.leeds.ccg.andyt.generic.math.Generic_BigDecimal;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASUV003DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASUV003DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS002DataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS002DataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.uv.Census_CASUV003DataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.uv.Census_CASUV003DataRecord;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataRecord_2;
@@ -76,13 +76,13 @@ public class Comparison extends RegressionReport {
 
     public void compareCAS001WithCAS002() throws Exception {
         String directory = "C:/Work/Projects/MoSeS/Workspace/";
-		// CAS001DataHandler tCAS001DataHandler = new CAS001DataHandler( new
+		// Census_CAS001DataHandler tCAS001DataHandler = new Census_CAS001DataHandler( new
         // File( directory, "CAS001DataRecordsMSOA.dat" ) );
-        // CAS002DataHandler tCAS002DataHandler = new CAS002DataHandler( new
+        // Census_CAS002DataHandler tCAS002DataHandler = new Census_CAS002DataHandler( new
         // File( directory, "CAS002DataRecordsMSOA.dat" ) );
-        CAS001DataHandler tCAS001DataHandler = new CAS001DataHandler(new File(
+        Census_CAS001DataHandler tCAS001DataHandler = new Census_CAS001DataHandler(new File(
                 directory, "CAS001DataRecords.dat"));
-        CAS002DataHandler tCAS002DataHandler = new CAS002DataHandler(new File(
+        Census_CAS002DataHandler tCAS002DataHandler = new Census_CAS002DataHandler(new File(
                 directory, "CAS002DataRecords.dat"));
 		// String filenamePrefix = new String(
         // "ToyModel_SWR_OA_HSARHP_ISARCEP_0_5_1000_3_30_12_20_MarkOutput2" );
@@ -100,8 +100,8 @@ public class Comparison extends RegressionReport {
         long RecordID = 0L;
         // RegressionReport _RegressionReport = new RegressionReport();
         long nRecords = tCAS001DataHandler.getNDataRecords();
-        CAS001DataRecord aCAS001DataRecord;
-        CAS002DataRecord aCAS002DataRecord;
+        Census_CAS001DataRecord aCAS001DataRecord;
+        Census_CAS002DataRecord aCAS002DataRecord;
         int t_NumberNumericalVariables = 14;
         String[] t_Variables = new String[t_NumberNumericalVariables + 1];
         t_Variables[1] = "PeopleAge0to15";
@@ -327,13 +327,13 @@ public class Comparison extends RegressionReport {
     public void compareCASUV003WithCAS001() throws Exception {
         File infile;
         infile = new File("C:/Work/Projects/MoSeS/Workspace/UV003.dat");
-        CASUV003DataHandler cASUV003DataHandler = new CASUV003DataHandler(
+        Census_CASUV003DataHandler cASUV003DataHandler = new Census_CASUV003DataHandler(
                 infile);
         infile = new File("C:/Work/Projects/MoSeS/Workspace/CAS001.dat");
-        CAS001DataHandler tCAS001DataHandler = new CAS001DataHandler(infile);
+        Census_CAS001DataHandler tCAS001DataHandler = new Census_CAS001DataHandler(infile);
 
-        CASUV003DataRecord aCASUV003DataRecord;
-        CAS001DataRecord aCAS001DataRecord;
+        Census_CASUV003DataRecord aCASUV003DataRecord;
+        Census_CAS001DataRecord aCAS001DataRecord;
         long difference;
         long maxDifference = Long.MIN_VALUE;
         long sumOfSquaredDifference = 0L;
@@ -396,7 +396,7 @@ public class Comparison extends RegressionReport {
 
     /**
      * Aim is to produce an aggregated data set for comparison totalling males
-     * and females by MSOA to compare with CASUV003DataRecord
+ and females by MSOA to compare with Census_CASUV003DataRecord
      */
     private void run3() throws IOException {
         boolean aggregateToMSOA = true;
@@ -423,27 +423,27 @@ public class Comparison extends RegressionReport {
         }
         PrintWriter tToyModelDataRecordMaleFemaleComparisonFilePrintWriter = new PrintWriter(
                 tToyModelDataRecordMaleFemaleComparisonFile);
-		// CASUV003DataHandler tCASUV003DataHandler = new CASUV003DataHandler(
+		// Census_CASUV003DataHandler tCASUV003DataHandler = new Census_CASUV003DataHandler(
         // new File(
         // "C:/Work/Projects/MoSeS/Workspace/Leeds/CASUV003DataRecordsMSOA.dat"
         // ) );
-        CASUV003DataHandler tCASUV003DataHandler;
-        CAS001DataHandler tCAS001DataHandler;
+        Census_CASUV003DataHandler tCASUV003DataHandler;
+        Census_CAS001DataHandler tCAS001DataHandler;
         if (aggregateToMSOA) {
-            tCASUV003DataHandler = new CASUV003DataHandler(
+            tCASUV003DataHandler = new Census_CASUV003DataHandler(
                     new File(
                             "C:/Work/Projects/MoSeS/Workspace/Leeds/CASUV003DataRecordsMSOA.dat"));
-            tCAS001DataHandler = new CAS001DataHandler(
+            tCAS001DataHandler = new Census_CAS001DataHandler(
                     new File(
                             "C:/Work/Projects/MoSeS/Workspace/Leeds/CAS001DataRecordsMSOA.dat"));
         } else {
-            tCASUV003DataHandler = new CASUV003DataHandler(new File(
+            tCASUV003DataHandler = new Census_CASUV003DataHandler(new File(
                     "C:/Work/Projects/MoSeS/Workspace/CASUV003DataRecords.dat"));
-            tCAS001DataHandler = new CAS001DataHandler(new File(
+            tCAS001DataHandler = new Census_CAS001DataHandler(new File(
                     "C:/Work/Projects/MoSeS/Workspace/CAS001DataRecords.dat"));
         }
-        CASUV003DataRecord aCASUV003DataRecord;
-        CAS001DataRecord aCAS001DataRecord;
+        Census_CASUV003DataRecord aCASUV003DataRecord;
+        Census_CAS001DataRecord aCAS001DataRecord;
         BufferedReader tBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(
                                 tToyModelDataRecord2CSVFile)));
@@ -460,7 +460,7 @@ public class Comparison extends RegressionReport {
         ToyModelDataRecord_2 aToyModelDataRecord2;
         String aZoneCode;
         HashMap tLookUpMSOAfromOAHashMap = null;
-        CASDataHandler tCASDataHandler = new CASDataHandler();
+        Census_CASDataHandler tCASDataHandler = new Census_CASDataHandler();
         if (aggregateToMSOA) {
             tLookUpMSOAfromOAHashMap = tCASDataHandler
                     .get_LookUpMSOAfromOAHashMap();
@@ -529,9 +529,9 @@ public class Comparison extends RegressionReport {
             key = aIterator.next();
             aCounts = (Counts) result.get(key);
             aZoneCode = (String) key;
-            aCASUV003DataRecord = (CASUV003DataRecord) tCASUV003DataHandler
+            aCASUV003DataRecord = (Census_CASUV003DataRecord) tCASUV003DataHandler
                     .getDataRecord(aZoneCode);
-            aCAS001DataRecord = (CAS001DataRecord) tCAS001DataHandler
+            aCAS001DataRecord = (Census_CAS001DataRecord) tCAS001DataHandler
                     .getDataRecord(aZoneCode);
             tToyModelDataRecordMaleFemaleComparisonFilePrintWriter
                     .println(""

@@ -27,14 +27,14 @@ import java.util.Iterator;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS003DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS003DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler_GA_IPS;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.logging.AbstractLog;
@@ -111,7 +111,7 @@ public abstract class IndividualCensus extends AbstractLog {
     /**
      * For holding a reference to the AbstractISARDataHandler
      */
-    protected ISARDataHandler _ISARDataHandler;
+    protected Census_ISARDataHandler _ISARDataHandler;
     /**
      * Stores the number of ISARDataRecords as a long
      */
@@ -121,11 +121,11 @@ public abstract class IndividualCensus extends AbstractLog {
      */
     protected long _LongNumberOfHSARDataRecords;
     /**
-     * Reference to the CASDataHandler for handling CASDataRecords
+     * Reference to the Census_CASDataHandler for handling CASDataRecords
      */
-    protected CASDataHandler _CASDataHandler;
+    protected Census_CASDataHandler _CASDataHandler;
     /**
-     * Reference to the CASDataHandler for handling CASDataRecords
+     * Reference to the Census_CASDataHandler for handling CASDataRecords
      */
     //protected CASDataHandler_GA_IPS _CASDataHandler_GA_IPS;
     // /**
@@ -274,7 +274,7 @@ public abstract class IndividualCensus extends AbstractLog {
      * For returning the _CASDataHandler to be used
      * @return 
      */
-    public AbstractCASDataHandler get_CASDataHandler() {
+    public Census_AbstractDataHandler get_CASDataHandler() {
         return this._CASDataHandler;
     }
 
@@ -334,7 +334,7 @@ public abstract class IndividualCensus extends AbstractLog {
     public void init_CASDataHandler(
             File directory,
             String tCASLevel) {
-        this._CASDataHandler = new CASDataHandler(
+        this._CASDataHandler = new Census_CASDataHandler(
                 directory,
                 tCASLevel);
     }
@@ -368,15 +368,15 @@ public abstract class IndividualCensus extends AbstractLog {
 
     /**
      * @return Object[] _GeneralPopulationContraints:
-     * _GeneralPopulationContraints[0] is a HashMap
-     * _ZoneCode_AllHouseholdsTotal_HashMap with keys as String Zone_Code and
-     * values being Integer counts of Total Household Population from the
-     * respective CAS003DataRecord.
-     * (Number of Households)
-     * _GeneralPopulationContraints[1] is a HashMap
-     * _ZoneCode_CommunalEstablishmentPopulation_HashMap with keys as String
-     * Zone_Code and values being Integer counts of Total Communal Establishment
-     * Population from the respective CAS001DataRecord.
+ _GeneralPopulationContraints[0] is a HashMap
+ _ZoneCode_AllHouseholdsTotal_HashMap with keys as String Zone_Code and
+ values being Integer counts of Total Household Population from the
+ respective Census_CAS003DataRecord.
+ (Number of Households)
+ _GeneralPopulationContraints[1] is a HashMap
+ _ZoneCode_CommunalEstablishmentPopulation_HashMap with keys as String
+ Zone_Code and values being Integer counts of Total Communal Establishment
+ Population from the respective Census_CAS001DataRecord.
      */
     public Object[] loadGeneralPopulationContraints() {
         _Logger.entering(
@@ -422,15 +422,15 @@ public abstract class IndividualCensus extends AbstractLog {
      * @param _StartRecordID
      * @param _EndRecordID
      * @return Object[] _GeneralPopulationContraints:
-     * _GeneralPopulationContraints[0] is a HashMap
-     * _ZoneCode_AllHouseholdsTotal_HashMap with keys as String Zone_Code and
-     * values being Integer counts of Total Household Population from the
-     * respective CAS003DataRecord.
-     * (Number of Households)
-     * _GeneralPopulationContraints[1] is a HashMap
-     * _ZoneCode_CommunalEstablishmentPopulation_HashMap with keys as String
-     * Zone_Code and values being Integer counts of Total Communal Establishment
-     * Population from the respective CAS001DataRecord.
+ _GeneralPopulationContraints[0] is a HashMap
+ _ZoneCode_AllHouseholdsTotal_HashMap with keys as String Zone_Code and
+ values being Integer counts of Total Household Population from the
+ respective Census_CAS003DataRecord.
+ (Number of Households)
+ _GeneralPopulationContraints[1] is a HashMap
+ _ZoneCode_CommunalEstablishmentPopulation_HashMap with keys as String
+ Zone_Code and values being Integer counts of Total Communal Establishment
+ Population from the respective Census_CAS001DataRecord.
      */
     public Object[] getGeneralPopulationContraints(
             long _StartRecordID,
@@ -444,10 +444,10 @@ public abstract class IndividualCensus extends AbstractLog {
         HashMap _ZoneCode_CommunalEstablishmentPopulation_HashMap = new HashMap();
         int _AllHouseholdsTotal;
         int _CommunalEstablishmentPopulation;
-        CAS001DataRecord _CAS001DataRecord = null;
-        CAS003DataRecord _CAS003DataRecord = null;
-        CAS001DataHandler _CAS001DataHandler = this.get_CASDataHandler().getCAS001DataHandler();
-        CAS003DataHandler _CAS003DataHandler = this.get_CASDataHandler().getCAS003DataHandler();
+        Census_CAS001DataRecord _CAS001DataRecord = null;
+        Census_CAS003DataRecord _CAS003DataRecord = null;
+        Census_CAS001DataHandler _CAS001DataHandler = this.get_CASDataHandler().getCAS001DataHandler();
+        Census_CAS003DataHandler _CAS003DataHandler = this.get_CASDataHandler().getCAS003DataHandler();
         long _RecordID;
         for (_RecordID = _StartRecordID; _RecordID <= _EndRecordID; _RecordID++) {
             _CAS001DataRecord = _CAS001DataHandler.getCAS001DataRecord(_RecordID);
@@ -492,7 +492,7 @@ public abstract class IndividualCensus extends AbstractLog {
 
     public HashSet get_UK_OA_ID_HashSet() throws IOException {
         HashSet result = new HashSet();
-        // AbstractCASDataHandler _CASDataHandler = this.getCASDataHandler();
+        // Census_AbstractDataHandler _CASDataHandler = this.getCASDataHandler();
         long _NDataRecords = _CASDataHandler.getNDataRecords();
         System.out.println("_NDataRecords " + _NDataRecords);
         String _ZoneCode;

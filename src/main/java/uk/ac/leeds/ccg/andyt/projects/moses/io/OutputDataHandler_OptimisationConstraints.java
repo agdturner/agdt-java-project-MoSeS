@@ -18,9 +18,9 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,10 +45,10 @@ import uk.ac.leeds.ccg.andyt.projects.moses.process.GeneticAlgorithm_ISARHP_ISAR
 //public class OutputDataHandler_OptimisationConstraints extends AbstractOutputDataHandler {
 public class OutputDataHandler_OptimisationConstraints {
 
-    CASDataHandler _CASDataHandler;
+    Census_CASDataHandler _CASDataHandler;
 
     public OutputDataHandler_OptimisationConstraints(
-            CASDataHandler a_CASDataHandler) {
+            Census_CASDataHandler a_CASDataHandler) {
         this._CASDataHandler = a_CASDataHandler;
     }
 
@@ -214,7 +214,7 @@ public class OutputDataHandler_OptimisationConstraints {
 //                + "MalesAge50AndOverUnemployed";
 //    }
 //    public void writeObserved(
-//            CASDataHandler a_CASDataHandler,
+//            Census_CASDataHandler a_CASDataHandler,
 //            String _OutputFileName)
 //            throws IOException {
 //        long _StartRecordID = 0;
@@ -236,9 +236,9 @@ public class OutputDataHandler_OptimisationConstraints {
 //            long _StartRecordID,
 //            long _EndRecordID,
 //            String _AreaLevel,
-//            ISARDataHandler tISARDataHandler)
+//            Census_ISARDataHandler tISARDataHandler)
 //            throws IOException {
-//        this._CASDataHandler = new CASDataHandler(
+//        this._CASDataHandler = new Census_CASDataHandler(
 //                new File(_CASDataDirectory),
 //                "");
 //        writeObservedISARHP_ISARCEP(
@@ -252,15 +252,15 @@ public class OutputDataHandler_OptimisationConstraints {
 
     public void writeObservedISARHP_ISARCEP(
             String a_OutputFileName,
-            CASDataHandler a_CASDataHandler,
-            ISARDataHandler tISARDataHandler)
+            Census_CASDataHandler a_CASDataHandler,
+            Census_ISARDataHandler tISARDataHandler)
             throws IOException {
         File outputFile = new File(a_OutputFileName);
         outputFile.getParentFile().mkdir();
         FileOutputStream a_FileOutputStream = new FileOutputStream(outputFile);
         writeHSARHP_ISARCEPHeader(a_FileOutputStream);
         TreeSet oa_Codes = a_CASDataHandler.getOACodes_TreeSet();
-        CASDataRecord a_CASDataRecord;
+        Census_CASDataRecord a_CASDataRecord;
         GeneticAlgorithm_ISARHP_ISARCEP a_GeneticAlgorithm_ISARHP_ISARCEP;
         Object[] a_FitnessCountsISARHP_ISARCEP;
         HashMap<String, Integer> a_CASCounts;
@@ -268,7 +268,7 @@ public class OutputDataHandler_OptimisationConstraints {
         Iterator iterator = oa_Codes.iterator();
         while (iterator.hasNext()){
             oa_Code = (String) iterator.next();
-            a_CASDataRecord = (CASDataRecord) a_CASDataHandler.getDataRecord(oa_Code);
+            a_CASDataRecord = (Census_CASDataRecord) a_CASDataHandler.getDataRecord(oa_Code);
             a_GeneticAlgorithm_ISARHP_ISARCEP = new GeneticAlgorithm_ISARHP_ISARCEP(
                     a_CASDataRecord);
             a_FitnessCountsISARHP_ISARCEP = a_GeneticAlgorithm_ISARHP_ISARCEP.getFitnessCounts();
@@ -280,15 +280,15 @@ public class OutputDataHandler_OptimisationConstraints {
 
     public void writeObservedHSARHP_ISARCEP(
             String a_OutputFileName,
-            CASDataHandler a_CASDataHandler,
-            ISARDataHandler tISARDataHandler)
+            Census_CASDataHandler a_CASDataHandler,
+            Census_ISARDataHandler tISARDataHandler)
             throws IOException {
         File outputFile = new File(a_OutputFileName);
         outputFile.getParentFile().mkdir();
         FileOutputStream a_FileOutputStream = new FileOutputStream(outputFile);
         writeHSARHP_ISARCEPHeader(a_FileOutputStream);
         TreeSet oa_Codes = a_CASDataHandler.getOACodes_TreeSet();
-        CASDataRecord a_CASDataRecord;
+        Census_CASDataRecord a_CASDataRecord;
         GeneticAlgorithm_HSARHP_ISARCEP a_GeneticAlgorithm_HSARHP_ISARCEP;
         Object[] a_FitnessCountsHSARHP_ISARCEP;
         HashMap<String, Integer> a_CASCounts;
@@ -296,7 +296,7 @@ public class OutputDataHandler_OptimisationConstraints {
         Iterator iterator = oa_Codes.iterator();
         while (iterator.hasNext()){
             oa_Code = (String) iterator.next();
-            a_CASDataRecord = (CASDataRecord) a_CASDataHandler.getDataRecord(oa_Code);
+            a_CASDataRecord = (Census_CASDataRecord) a_CASDataHandler.getDataRecord(oa_Code);
             a_GeneticAlgorithm_HSARHP_ISARCEP = new GeneticAlgorithm_HSARHP_ISARCEP(
                     a_CASDataRecord);
             a_FitnessCountsHSARHP_ISARCEP = a_GeneticAlgorithm_HSARHP_ISARCEP.getFitnessCounts();
@@ -337,7 +337,7 @@ public class OutputDataHandler_OptimisationConstraints {
 //        _OutputFile.getParentFile().mkdirs();
 //        this._FileOutputStream = new FileOutputStream(_OutputFile);
 //        writeHeader();
-//        CASDataRecord _CASDataRecord;
+//        Census_CASDataRecord _CASDataRecord;
 //        int _PeopleWhoseGeneralHealthWasGood;
 //        int _PeopleWhoseGeneralHealthWasFairlyGood;
 //        int _PeopleWhoseGeneralHealthWasNotGood;
@@ -422,7 +422,7 @@ public class OutputDataHandler_OptimisationConstraints {
 //        HSARDataHandler tHSARDataHandler = new HSARDataHandler(
 //                new File("C:/Work/Projects/MoSeS/Workspace/",
 //                "uk.ac.leeds.ccg.andyt.projects.moses.io.HSARDataHandler.thisFile"));
-//        ISARDataHandler tISARDataHandler = new ISARDataHandler(
+//        Census_ISARDataHandler tISARDataHandler = new Census_ISARDataHandler(
 //                new File("C:/Work/Projects/MoSeS/Workspace/",
 //                "uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler_AGE0Indexed.thisFile"));
 //        HSARDataRecord _HSARDataRecord;
@@ -435,7 +435,7 @@ public class OutputDataHandler_OptimisationConstraints {
 //        ToyModelDataRecord_2 aToyModelDataRecord2;
 //        String aZoneCode;
 //        HashMap tLookUpMSOAfromOAHashMap = null;
-//        CASDataHandler tCASDataHandler = new CASDataHandler();
+//        Census_CASDataHandler tCASDataHandler = new Census_CASDataHandler();
 //        if (_Aggregation.equalsIgnoreCase("MSOA")) {
 //            tLookUpMSOAfromOAHashMap = tCASDataHandler.get_LookUpMSOAfromOAHashMap();
 //        }

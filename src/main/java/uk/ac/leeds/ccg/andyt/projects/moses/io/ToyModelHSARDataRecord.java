@@ -18,8 +18,8 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.StringTokenizer;
@@ -27,9 +27,9 @@ import java.util.StringTokenizer;
 /**
  * For representing ToyModelDataRecords and providing safe access to the data.
  */
-public class ToyModelHSARDataRecord extends AbstractCASDataRecord {
+public class ToyModelHSARDataRecord extends Census_AbstractDataRecord {
 
-    public HSARDataRecord t_HSARDataRecord;
+    public Census_HSARDataRecord t_HSARDataRecord;
 
     /** Creates a new ToyModelDataRecord */
     public ToyModelHSARDataRecord() {
@@ -66,7 +66,7 @@ public class ToyModelHSARDataRecord extends AbstractCASDataRecord {
             this.Zone_Code[i] = Zone_Code[i];
         }
         this._RecordID = RecordID;
-        this.t_HSARDataRecord = new HSARDataRecord(RecordID, aStringTokenizer);
+        this.t_HSARDataRecord = new Census_HSARDataRecord(RecordID, aStringTokenizer);
     }
 
     /**
@@ -81,7 +81,7 @@ public class ToyModelHSARDataRecord extends AbstractCASDataRecord {
         for (int i = 0; i < this.Zone_Code.length; i++) {
             Zone_Code[i] = aRandomAccessFile.readChar();
         }
-        this.t_HSARDataRecord = new HSARDataRecord(aRandomAccessFile);
+        this.t_HSARDataRecord = new Census_HSARDataRecord(aRandomAccessFile);
     }
 
     /**
@@ -98,7 +98,7 @@ public class ToyModelHSARDataRecord extends AbstractCASDataRecord {
      */
     protected void _Init() {
         super._Init();
-        this.t_HSARDataRecord = new HSARDataRecord();
+        this.t_HSARDataRecord = new Census_HSARDataRecord();
     }
 
     /**

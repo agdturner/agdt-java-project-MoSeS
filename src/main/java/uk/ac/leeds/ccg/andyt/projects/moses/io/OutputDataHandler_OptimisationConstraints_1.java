@@ -18,12 +18,12 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -77,7 +77,7 @@ public class OutputDataHandler_OptimisationConstraints_1 extends AbstractOutputD
             long _StartRecordID,
             long _EndRecordID,
             String _AreaLevel,
-            ISARDataHandler tISARDataHandler)
+            Census_ISARDataHandler tISARDataHandler)
             throws IOException {
 //        this._OutputFile = new File(_OutputFileName);
 //        this._OutputFile.getParentFile().mkdir();
@@ -87,9 +87,9 @@ public class OutputDataHandler_OptimisationConstraints_1 extends AbstractOutputD
 //        _FileOutputStream = new FileOutputStream(_OutputFile);
 //        this._CASDataHandler_1 = new CASDataHandler_GA_IPS(new File(
 //                _CASDataDirectory), _AreaLevel);
-//        // this._CASDataHandler = new CASDataHandler( new File(
+//        // this._CASDataHandler = new Census_CASDataHandler( new File(
 //        // _CASDataDirectory ), "" );
-//        // this._CASDataHandler = new CASDataHandler( new File(
+//        // this._CASDataHandler = new Census_CASDataHandler( new File(
 //        // "C:/Work/Projects/MoSeS/Workspace/" ), "" );
 //        writeHeader();
 //        CASDataRecord_1 _CASDataRecord_1;
@@ -161,7 +161,7 @@ public class OutputDataHandler_OptimisationConstraints_1 extends AbstractOutputD
         _OutputFile.getParentFile().mkdirs();
         this._FileOutputStream = new FileOutputStream(_OutputFile);
         writeHeader();
-        CASDataRecord _CASDataRecord;
+        Census_CASDataRecord _CASDataRecord;
         int _PeopleWhoseGeneralHealthWasGood;
         int _PeopleWhoseGeneralHealthWasFairlyGood;
         int _PeopleWhoseGeneralHealthWasNotGood;
@@ -177,14 +177,14 @@ public class OutputDataHandler_OptimisationConstraints_1 extends AbstractOutputD
         int _HRP_NSSEC_SemiRoutineOccupations;
         int _HRP_NSSEC_RoutineOccupations;
         int _HRP_NSSEC_NeverWorkedOrLongTermUnemployed;
-        HSARDataHandler tHSARDataHandler = new HSARDataHandler(
+        Census_HSARDataHandler tHSARDataHandler = new Census_HSARDataHandler(
                 new File("C:/Work/Projects/MoSeS/Workspace/",
                 "uk.ac.leeds.ccg.andyt.projects.moses.io.HSARDataHandler.thisFile"));
-        ISARDataHandler tISARDataHandler = new ISARDataHandler(
+        Census_ISARDataHandler tISARDataHandler = new Census_ISARDataHandler(
                 new File("C:/Work/Projects/MoSeS/Workspace/",
                 "uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler_AGE0Indexed.thisFile"));
-        HSARDataRecord _HSARDataRecord;
-        ISARDataRecord _ISARDataRecord;
+        Census_HSARDataRecord _HSARDataRecord;
+        Census_ISARDataRecord _ISARDataRecord;
         BufferedReader tBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(_InputFile)));
         StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
@@ -193,7 +193,7 @@ public class OutputDataHandler_OptimisationConstraints_1 extends AbstractOutputD
         ToyModelDataRecord_2 aToyModelDataRecord2;
         String aZoneCode;
         HashMap tLookUpMSOAfromOAHashMap = null;
-        CASDataHandler tCASDataHandler = new CASDataHandler();
+        Census_CASDataHandler tCASDataHandler = new Census_CASDataHandler();
         if (_Aggregation.equalsIgnoreCase("MSOA")) {
             tLookUpMSOAfromOAHashMap = tCASDataHandler.get_LookUpMSOAfromOAHashMap();
         }
@@ -234,7 +234,7 @@ public class OutputDataHandler_OptimisationConstraints_1 extends AbstractOutputD
                         }
                     }
                     if (aToyModelDataRecord2.tHSARDataRecordID != -9) {
-                        _HSARDataRecord = (HSARDataRecord) tHSARDataHandler.getDataRecord(aToyModelDataRecord2.tHSARDataRecordID);
+                        _HSARDataRecord = (Census_HSARDataRecord) tHSARDataHandler.getDataRecord(aToyModelDataRecord2.tHSARDataRecordID);
                         _HSARDataRecordAGEH = _HSARDataRecord.get_AGEH();
                         if (_HSARDataRecord.get_HRP()) {
                             short _HSARDataRecordNSSEC = _HSARDataRecord.get_NSSEC();
@@ -279,7 +279,7 @@ public class OutputDataHandler_OptimisationConstraints_1 extends AbstractOutputD
                         }
                         _HEALTH = _HSARDataRecord.get_HEALTH();
                     } else {
-                        _ISARDataRecord = (ISARDataRecord) tISARDataHandler.getDataRecord(aToyModelDataRecord2.tISARDataRecordID);
+                        _ISARDataRecord = (Census_ISARDataRecord) tISARDataHandler.getDataRecord(aToyModelDataRecord2.tISARDataRecordID);
                         _ISARDataRecordETHEW = _ISARDataRecord.get_ETHEW();
                         _ISARDataRecordETHS = _ISARDataRecord.get_ETHS();
                         _ISARDataRecordETHN = _ISARDataRecord.get_ETHN();

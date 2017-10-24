@@ -18,14 +18,14 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import java.io.RandomAccessFile;
 
 /**
  * A class for storing a format of data record wanted by Mark Birkin.
  */
-public class MarkOutputDataRecord_1 extends AbstractCASDataRecord {
+public class MarkOutputDataRecord_1 extends Census_AbstractDataRecord {
 
     // see ISAR reltohr
     protected int allHouseholds; // reltohr == 1
@@ -167,7 +167,7 @@ public class MarkOutputDataRecord_1 extends AbstractCASDataRecord {
      * Initialises all fields.
      * @param individualSARDataRecord
      */
-    protected void init(ISARDataRecord individualSARDataRecord) {
+    protected void init(Census_ISARDataRecord individualSARDataRecord) {
         short RELTOHR = individualSARDataRecord.get_RELTOHR();
         if (RELTOHR == 1) {
             this.allHouseholds = 1;

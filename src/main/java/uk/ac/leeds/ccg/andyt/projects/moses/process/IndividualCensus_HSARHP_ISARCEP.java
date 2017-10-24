@@ -26,14 +26,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS003DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler.AgeSexType;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler.AgeSexType;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.execution.AgeConverter;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
@@ -41,7 +41,7 @@ import uk.ac.leeds.ccg.andyt.projects.moses.io.ParameterFileParser;
 
 public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
 
-    public HSARDataHandler _HSARDataHandler;
+    public Census_HSARDataHandler _HSARDataHandler;
 
     public void init(
             File _Input_Parameter_File) {
@@ -96,11 +96,11 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
         } else {
             _Population_HashMap = new HashMap();
         }
-        // Initialise CASDataHandler.
+        // Initialise Census_CASDataHandler.
         init_CASDataHandler(_Directory, _CASLevel);
-        // Initialise ISARDataHandler.
+        // Initialise Census_ISARDataHandler.
         init_ISARDataHandler(_Directory);
-        // Initialise ISARDataHandler.
+        // Initialise Census_ISARDataHandler.
         init_HSARDataHandler(_Directory);
         // Initialise ToyModelDataHandler.
         init_ToyModelDataHandler(_Output_File_0);
@@ -124,10 +124,10 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
     }
 
     public Object[] getConstraints_HSARHP_ISARCEP(
-            CASDataRecord aCASDataRecord) {
+            Census_CASDataRecord aCASDataRecord) {
         Object[] constraints = new Object[4];
-        CAS001DataRecord aCAS001DataRecord = aCASDataRecord.getCAS001DataRecord();
-        CAS003DataRecord aCAS003DataRecord = aCASDataRecord.getCAS003DataRecord();
+        Census_CAS001DataRecord aCAS001DataRecord = aCASDataRecord.getCAS001DataRecord();
+        Census_CAS003DataRecord aCAS003DataRecord = aCASDataRecord.getCAS003DataRecord();
         /*
          * constraintCAS003HPHRPAgeFemaleCount_HashMap
          * constraintCAS003HPHRPAgeFemaleCount_HashMap
@@ -176,10 +176,10 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
      * population[6] = tCEPMale_Age_Vector_HashMap;
      * population[7] = tCEPMale_Vector;
      * @param aCASDataRecord
-     *            The CASDataRecord being processed.
+     *            The Census_CASDataRecord being processed.
      */
     public Object[] getConstraintsAndPopulation_HSARHP_ISARCEP(
-            CASDataRecord aCASDataRecord) {
+            Census_CASDataRecord aCASDataRecord) {
         _Logger.entering(
                 this.getClass().getName(),
                 "getConstraintsAndPopulation_HSARHP_ISARCEP(CASDataRecord)");
@@ -216,10 +216,10 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
         int age;
         boolean sex;
         short type;
-        HSARDataHandler.AgeSex aAgeSex;
-        HSARDataRecord aHSARDataRecord;
-        ISARDataHandler.AgeSexType aAgeSexType;
-        ISARDataRecord aISARDataRecord;
+        Census_HSARDataHandler.AgeSex aAgeSex;
+        Census_HSARDataRecord aHSARDataRecord;
+        Census_ISARDataHandler.AgeSexType aAgeSexType;
+        Census_ISARDataRecord aISARDataRecord;
         int aConstraint;
 
         log("Initialise tHPHRPFemale_Age_Vector_HashMap and tHPHRPFemale_Vector.");
@@ -463,7 +463,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
     /**
      * Initialises _ISARDataHandler and _LongNumberOfISARDataRecords
      * @param directory
-     * The directory from which ISARDataHandler is loaded.
+     * The directory from which Census_ISARDataHandler is loaded.
      */
     public void init_ISARDataHandler(
             File directory) {
@@ -472,8 +472,8 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
                 "init_ISARDataHandler(File)");
         File file = new File(
                 directory,
-                ISARDataHandler.class.getCanonicalName() + ".thisFile");
-        this._ISARDataHandler = new ISARDataHandler(file);
+                Census_ISARDataHandler.class.getCanonicalName() + ".thisFile");
+        this._ISARDataHandler = new Census_ISARDataHandler(file);
         this._LongNumberOfISARDataRecords = this._ISARDataHandler.getNDataRecords();
         _Logger.exiting(
                 this.getClass().getName(),
@@ -483,7 +483,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
     /**
      * Initialises _HSARDataHandler and _LongNumberOfHSARDataRecords
      * @param directory
-     * The directory from which HSARDataHandler is loaded.
+     * The directory from which Census_HSARDataHandler is loaded.
      */
     public void init_HSARDataHandler(
             File directory) {
@@ -492,8 +492,8 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
                 "init_HSARDataHandler(File)");
         File file = new File(
                 directory,
-                HSARDataHandler.class.getCanonicalName() + ".thisFile");
-        this._HSARDataHandler = new HSARDataHandler(file);
+                Census_HSARDataHandler.class.getCanonicalName() + ".thisFile");
+        this._HSARDataHandler = new Census_HSARDataHandler(file);
         this._LongNumberOfHSARDataRecords = this._HSARDataHandler.getNDataRecords();
         _Logger.exiting(
                 this.getClass().getName(),
@@ -515,7 +515,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
      */
     public void write_HSARHP_ISARCEP(
             Object[] population,
-            CASDataRecord aCASDataRecord,
+            Census_CASDataRecord aCASDataRecord,
             BigDecimal fitness) {
         _Logger.entering(
                 this.getClass().getCanonicalName(),
@@ -526,7 +526,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
         for (int i = 0; i < tHPHRPFemale_Vector.size(); i++) {
             line = aZoneCode +
                     ",HP," +
-                    ((HSARDataRecord) tHPHRPFemale_Vector.elementAt(i)).get_HHID();
+                    ((Census_HSARDataRecord) tHPHRPFemale_Vector.elementAt(i)).get_HHID();
             try {
                 this._ToyModelDataHandler._ToyModelFileOutputStream.write(line.getBytes());
                 this._ToyModelDataHandler._ToyModelFileOutputStream.write(StreamTokenizer.TT_EOL);
@@ -539,7 +539,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
         for (int i = 0; i < tHPHRPMale_Vector.size(); i++) {
             line = aZoneCode +
                     ",HP," +
-                    ((HSARDataRecord) tHPHRPMale_Vector.elementAt(i)).get_HHID();
+                    ((Census_HSARDataRecord) tHPHRPMale_Vector.elementAt(i)).get_HHID();
             try {
                 this._ToyModelDataHandler._ToyModelFileOutputStream.write(line.getBytes());
                 this._ToyModelDataHandler._ToyModelFileOutputStream.write(StreamTokenizer.TT_EOL);
@@ -552,7 +552,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
         for (int i = 0; i < tCEPFemale_Vector.size(); i++) {
             line = aZoneCode +
                     ",CEP," +
-                    ((ISARDataRecord) tCEPFemale_Vector.elementAt(i)).get_ID();
+                    ((Census_ISARDataRecord) tCEPFemale_Vector.elementAt(i)).get_ID();
             try {
                 this._ToyModelDataHandler._ToyModelFileOutputStream.write(line.getBytes());
                 this._ToyModelDataHandler._ToyModelFileOutputStream.write(StreamTokenizer.TT_EOL);
@@ -565,7 +565,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
         for (int i = 0; i < tCEPMale_Vector.size(); i++) {
             line = aZoneCode +
                     ",CEP," +
-                    ((ISARDataRecord) tCEPMale_Vector.elementAt(i)).get_ID();
+                    ((Census_ISARDataRecord) tCEPMale_Vector.elementAt(i)).get_ID();
             try {
                 this._ToyModelDataHandler._ToyModelFileOutputStream.write(line.getBytes());
                 this._ToyModelDataHandler._ToyModelFileOutputStream.write(StreamTokenizer.TT_EOL);

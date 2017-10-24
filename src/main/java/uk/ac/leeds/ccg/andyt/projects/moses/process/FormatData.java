@@ -20,9 +20,9 @@ package uk.ac.leeds.ccg.andyt.projects.moses.process;
 
 import java.io.File;
 import java.io.IOException;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 
 /**
  * A class for formatting all original census data into more readable forms.
@@ -46,7 +46,7 @@ public class FormatData {
 		// ISARDataHandler_AGE0Indexed.main(args);
         
         // HSAR
-        HSARDataHandler aHSARDataHandler = new HSARDataHandler();
+        Census_HSARDataHandler aHSARDataHandler = new Census_HSARDataHandler();
         aHSARDataHandler.init(directory);
         File sourceHSAR = new File(
                 "C:/Work/data/Census/2001/SAR/household/5278TAB/UKDA-5278-tab/tab/lichhd-051019.tab");
@@ -56,7 +56,7 @@ public class FormatData {
                 formattedHSAR);
 
         // ISAR
-        ISARDataHandler aISARDataHandler_AGE0HRPOrdered = new ISARDataHandler();
+        Census_ISARDataHandler aISARDataHandler_AGE0HRPOrdered = new Census_ISARDataHandler();
         aISARDataHandler_AGE0HRPOrdered.init(directory);
         File sourceISAR = new File(
                 "C:/work/data/census/2001/SAR/01uklicind-20050401.dat");
@@ -68,7 +68,7 @@ public class FormatData {
                 formattedISAR);
 
         // CAS
-        CASDataHandler aCASDataHandler = new CASDataHandler(directory);
+        Census_CASDataHandler aCASDataHandler = new Census_CASDataHandler(directory);
         aCASDataHandler.formatSourceData();
 
         // CAS

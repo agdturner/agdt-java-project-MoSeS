@@ -18,18 +18,18 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS008DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS044DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS044DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS006DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS006DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS003DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS003DataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS008DataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS008DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS044DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS044DataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS006DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS006DataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS008DataHandler;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,11 +40,11 @@ import java.io.RandomAccessFile; //import java.util.HashMap;
  * <code>AbstractCASDataHandlers</code> so as to access respective
  * <code>AbstractCASDataRecords</code>:
  * <ul>
- * <li>CAS001DataHandler</li>
- * <li>CAS003DataHandler</li>
- * <li>CAS044DataHandler</li>
- * <li>CASKS006DataHandler</li>
- * <li>CASKS008DataHandler</li>
+ * <li>Census_CAS001DataHandler</li>
+ * <li>Census_CAS003DataHandler</li>
+ * <li>Census_CAS044DataHandler</li>
+ * <li>Census_CASKS006DataHandler</li>
+ * <li>Census_CASKS008DataHandler</li>
  * </ul>
  * <ul>
  * <li>Developed for <a href="http://www.ncess.ac.uk/moses">MoSeS</a>.</li>
@@ -58,7 +58,7 @@ import java.io.RandomAccessFile; //import java.util.HashMap;
  * @version 1.0.0, 2007-06-13
  * @see CASDataRecord
  */
-public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
+public class CASDataHandler_GA_IPS extends Census_AbstractDataHandler {
 
     /**
      * Serializable class version number for swapping
@@ -67,26 +67,26 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
     private static final long serialVersionUID = 1L;
 
     // /**
-    // * CAS001DataHandler
+    // * Census_CAS001DataHandler
     // */
-    // protected CAS001DataHandler _CAS001DataHandler;
+    // protected Census_CAS001DataHandler _CAS001DataHandler;
 
     // /**
-    // * CAS003DataHandler
+    // * Census_CAS003DataHandler
     // */
-    // protected CAS003DataHandler _CAS003DataHandler;
+    // protected Census_CAS003DataHandler _CAS003DataHandler;
     /**
-     * CAS044DataHandler
+     * Census_CAS044DataHandler
      */
-    protected CAS044DataHandler _CAS044DataHandler;
+    protected Census_CAS044DataHandler _CAS044DataHandler;
     /**
-     * CASKS006DataHandler
+     * Census_CASKS006DataHandler
      */
-    protected CASKS006DataHandler _CASKS006DataHandler;
+    protected Census_CASKS006DataHandler _CASKS006DataHandler;
     /**
-     * CASKS008DataHandler
+     * Census_CASKS008DataHandler
      */
-    protected CASKS008DataHandler _CASKS008DataHandler;
+    protected Census_CASKS008DataHandler _CASKS008DataHandler;
 
     /**
      * Creates a new CASDataHandler_GA_IPS
@@ -109,11 +109,11 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
     public CASDataHandler_GA_IPS(File directory, String aggregation)
             throws IOException {
         this.init(directory);
-        this._CAS001DataHandler = new CAS001DataHandler(new File(directory, ("CAS001DataRecords" + aggregation + ".dat")));
-        this._CAS003DataHandler = new CAS003DataHandler(new File(directory, ("CAS003DataRecords" + aggregation + ".dat")));
-        this._CAS044DataHandler = new CAS044DataHandler(new File(directory, ("CAS044DataRecords" + aggregation + ".dat")));
-        this._CASKS006DataHandler = new CASKS006DataHandler(new File(directory, ("CASKS006DataRecords" + aggregation + ".dat")));
-        this._CASKS008DataHandler = new CASKS008DataHandler(new File(directory, ("CASKS008DataRecords" + aggregation + ".dat")));
+        this._CAS001DataHandler = new Census_CAS001DataHandler(new File(directory, ("CAS001DataRecords" + aggregation + ".dat")));
+        this._CAS003DataHandler = new Census_CAS003DataHandler(new File(directory, ("CAS003DataRecords" + aggregation + ".dat")));
+        this._CAS044DataHandler = new Census_CAS044DataHandler(new File(directory, ("CAS044DataRecords" + aggregation + ".dat")));
+        this._CASKS006DataHandler = new Census_CASKS006DataHandler(new File(directory, ("CASKS006DataRecords" + aggregation + ".dat")));
+        this._CASKS008DataHandler = new Census_CASKS008DataHandler(new File(directory, ("CASKS008DataRecords" + aggregation + ".dat")));
     }
 
     /**
@@ -121,11 +121,11 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
      * @throws java.io.IOException
      */
     protected void init() throws IOException {
-        this._CAS001DataHandler = new CAS001DataHandler();
-        this._CAS003DataHandler = new CAS003DataHandler();
-        this._CAS044DataHandler = new CAS044DataHandler();
-        this._CASKS006DataHandler = new CASKS006DataHandler();
-        this._CASKS008DataHandler = new CASKS008DataHandler();
+        this._CAS001DataHandler = new Census_CAS001DataHandler();
+        this._CAS003DataHandler = new Census_CAS003DataHandler();
+        this._CAS044DataHandler = new Census_CAS044DataHandler();
+        this._CASKS006DataHandler = new Census_CASKS006DataHandler();
+        this._CASKS008DataHandler = new Census_CASKS008DataHandler();
     }
 
     /**
@@ -153,21 +153,21 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
     // /**
     // * Returns this._CAS001DataHandler
     // */
-    // public CAS001DataHandler getCAS001DataHandler() {
+    // public Census_CAS001DataHandler getCAS001DataHandler() {
     // return this._CAS001DataHandler;
     // }
 
     // /**
     // * Returns this._CAS003DataHandler
     // */
-    // public CAS003DataHandler getCAS003DataHandler() {
+    // public Census_CAS003DataHandler getCAS003DataHandler() {
     // return this._CAS003DataHandler;
     // }
     /**
      * Returns this._CAS044DataHandler
      * @return 
      */
-    public CAS044DataHandler getCAS044DataHandler() {
+    public Census_CAS044DataHandler getCAS044DataHandler() {
         return this._CAS044DataHandler;
     }
 
@@ -175,7 +175,7 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
      * Returns this._CASKS006DataHandler
      * @return 
      */
-    public CASKS006DataHandler getCASKS006DataHandler() {
+    public Census_CASKS006DataHandler getCASKS006DataHandler() {
         return this._CASKS006DataHandler;
     }
 
@@ -183,16 +183,16 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
      * Returns this._CASKS008DataHandler
      * @return 
      */
-    public CASKS008DataHandler getCASKS008DataHandler() {
+    public Census_CASKS008DataHandler getCASKS008DataHandler() {
         return this._CASKS008DataHandler;
     }
 
     /**
      * @param aRecordID
-     * The RecordID of the AbstractCASDataRecord to be returned.
+     * The RecordID of the Census_AbstractDataRecord to be returned.
      * @return 
      */
-    public AbstractCASDataRecord getDataRecord(long aRecordID) {
+    public Census_AbstractDataRecord getDataRecord(long aRecordID) {
         return new CASDataRecord_1(
                 this, aRecordID);
     }
@@ -229,10 +229,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CAS001DataHandler.aggregateOAToWard(_RandomAccessFile, startRecordID,
                 endRecordID);
         _RandomAccessFile.close();
-        _CAS001DataHandler = new CAS001DataHandler(aFile);
+        _CAS001DataHandler = new Census_CAS001DataHandler(aFile);
         nDataRecords = _CAS001DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CAS001DataRecord _CAS001DataRecord = new CAS001DataRecord();
+        Census_CAS001DataRecord _CAS001DataRecord = new Census_CAS001DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CAS001DataRecordsWard.csv");
         _PrintWriter = new PrintWriter(aFile);
@@ -253,10 +253,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CAS003DataHandler.aggregateOAToWard(_RandomAccessFile, startRecordID,
                 endRecordID);
         _RandomAccessFile.close();
-        _CAS003DataHandler = new CAS003DataHandler(aFile);
+        _CAS003DataHandler = new Census_CAS003DataHandler(aFile);
         nDataRecords = _CAS003DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CAS003DataRecord _CAS003DataRecord = new CAS003DataRecord();
+        Census_CAS003DataRecord _CAS003DataRecord = new Census_CAS003DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CAS003DataRecordsWard.csv");
         _PrintWriter = new PrintWriter(aFile);
@@ -277,10 +277,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CAS003DataHandler.aggregateOAToWard(_RandomAccessFile, startRecordID,
                 endRecordID);
         _RandomAccessFile.close();
-        _CAS044DataHandler = new CAS044DataHandler(aFile);
+        _CAS044DataHandler = new Census_CAS044DataHandler(aFile);
         nDataRecords = _CAS044DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CAS044DataRecord _CAS044DataRecord = new CAS044DataRecord();
+        Census_CAS044DataRecord _CAS044DataRecord = new Census_CAS044DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CAS044DataRecordsWard.csv");
         _PrintWriter = new PrintWriter(aFile);
@@ -301,10 +301,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CASKS006DataHandler.aggregateOAToWard(_RandomAccessFile,
                 startRecordID, endRecordID);
         _RandomAccessFile.close();
-        _CASKS006DataHandler = new CASKS006DataHandler(aFile);
+        _CASKS006DataHandler = new Census_CASKS006DataHandler(aFile);
         nDataRecords = _CASKS006DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CASKS006DataRecord aCASKS006DataRecord = new CASKS006DataRecord();
+        Census_CASKS006DataRecord aCASKS006DataRecord = new Census_CASKS006DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CASKS006DataRecordsWard.csv");
         _PrintWriter = new PrintWriter(aFile);
@@ -325,10 +325,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CASKS008DataHandler.aggregateOAToWard(_RandomAccessFile,
                 startRecordID, endRecordID);
         _RandomAccessFile.close();
-        _CASKS008DataHandler = new CASKS008DataHandler(aFile);
+        _CASKS008DataHandler = new Census_CASKS008DataHandler(aFile);
         nDataRecords = _CASKS008DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CASKS008DataRecord aCASKS008DataRecord = new CASKS008DataRecord();
+        Census_CASKS008DataRecord aCASKS008DataRecord = new Census_CASKS008DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CASKS008DataRecordsWard.csv");
         _PrintWriter = new PrintWriter(aFile);
@@ -366,10 +366,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CAS001DataHandler.aggregateOAToMSOA(aRandomAccessFile, startRecordID,
                 endRecordID);
         aRandomAccessFile.close();
-        _CAS001DataHandler = new CAS001DataHandler(aFile);
+        _CAS001DataHandler = new Census_CAS001DataHandler(aFile);
         nDataRecords = _CAS001DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CAS001DataRecord aCAS001DataRecord = new CAS001DataRecord();
+        Census_CAS001DataRecord aCAS001DataRecord = new Census_CAS001DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CAS001DataRecordsMSOA.csv");
         aPrintWriter = new PrintWriter(aFile);
@@ -390,10 +390,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CAS003DataHandler.aggregateOAToMSOA(aRandomAccessFile, startRecordID,
                 endRecordID);
         aRandomAccessFile.close();
-        _CAS003DataHandler = new CAS003DataHandler(aFile);
+        _CAS003DataHandler = new Census_CAS003DataHandler(aFile);
         nDataRecords = _CAS003DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CAS003DataRecord aCAS003DataRecord = new CAS003DataRecord();
+        Census_CAS003DataRecord aCAS003DataRecord = new Census_CAS003DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CAS003DataRecordsMSOA.csv");
         aPrintWriter = new PrintWriter(aFile);
@@ -414,10 +414,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CAS044DataHandler.aggregateOAToMSOA(aRandomAccessFile, startRecordID,
                 endRecordID);
         aRandomAccessFile.close();
-        _CAS044DataHandler = new CAS044DataHandler(aFile);
+        _CAS044DataHandler = new Census_CAS044DataHandler(aFile);
         nDataRecords = _CAS044DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CAS044DataRecord aCAS044DataRecord = new CAS044DataRecord();
+        Census_CAS044DataRecord aCAS044DataRecord = new Census_CAS044DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CAS044DataRecordsMSOA.csv");
         aPrintWriter = new PrintWriter(aFile);
@@ -438,10 +438,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CASKS006DataHandler.aggregateOAToMSOA(aRandomAccessFile,
                 startRecordID, endRecordID);
         aRandomAccessFile.close();
-        _CASKS006DataHandler = new CASKS006DataHandler(aFile);
+        _CASKS006DataHandler = new Census_CASKS006DataHandler(aFile);
         nDataRecords = _CASKS006DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CASKS006DataRecord aCASKS006DataRecord = new CASKS006DataRecord();
+        Census_CASKS006DataRecord aCASKS006DataRecord = new Census_CASKS006DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CASKS006DataRecordsMSOA.csv");
         aPrintWriter = new PrintWriter(aFile);
@@ -462,10 +462,10 @@ public class CASDataHandler_GA_IPS extends AbstractCASDataHandler {
         _CASKS008DataHandler.aggregateOAToMSOA(aRandomAccessFile,
                 startRecordID, endRecordID);
         aRandomAccessFile.close();
-        _CASKS008DataHandler = new CASKS008DataHandler(aFile);
+        _CASKS008DataHandler = new Census_CASKS008DataHandler(aFile);
         nDataRecords = _CASKS008DataHandler.getNDataRecords();
         System.out.println("nDataRecords " + nDataRecords);
-        CASKS008DataRecord aCASKS008DataRecord = new CASKS008DataRecord();
+        Census_CASKS008DataRecord aCASKS008DataRecord = new Census_CASKS008DataRecord();
         aFile = new File(
                 "C:/Work/Projects/MoSeS/Workspace/Leeds/CASKS008DataRecordsMSOA.csv");
         aPrintWriter = new PrintWriter(aFile);

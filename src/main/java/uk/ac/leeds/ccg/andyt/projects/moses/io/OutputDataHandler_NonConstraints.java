@@ -18,14 +18,14 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS003DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +36,7 @@ import java.io.StreamTokenizer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeMap;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS006DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS006DataRecord;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 
 /**
@@ -82,26 +82,26 @@ public class OutputDataHandler_NonConstraints extends AbstractOutputDataHandler 
             long _StartRecordID,
             long _EndRecordID,
             String _AreaLevel,
-            ISARDataHandler tISARDataHandler)
+            Census_ISARDataHandler tISARDataHandler)
             throws IOException {
         this._OutputFile = new File(_OutputFileName);
         this._OutputFile.getParentFile().mkdir();
         _FileOutputStream = new FileOutputStream(_OutputFile);
-        this._CASDataHandler = new CASDataHandler(
+        this._CASDataHandler = new Census_CASDataHandler(
                 new File(_CASDataDirectory),
                 "");
         writeHeader();
-        CASDataRecord _CASDataRecord;
-        CAS003DataRecord _CAS003DataRecord;
-        CAS001DataRecord _CAS001DataRecord;
+        Census_CASDataRecord _CASDataRecord;
+        Census_CAS003DataRecord _CAS003DataRecord;
+        Census_CAS001DataRecord _CAS001DataRecord;
         Counts _Counts = new Counts();
         HashMap _CAS003AgeCountConstraintHashMap;
         HashMap _CAS001AgeCountHPConstraintHashMap;
         HashMap _CAS001AgeCountCEPConstraintHashMap;
         for (long RecordID = _StartRecordID; RecordID <= _EndRecordID; RecordID++) {
             // System.out.println("RecordID " + RecordID);
-            _CASDataRecord = (CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
-            CASKS006DataRecord aCASKS006DataRecord;
+            _CASDataRecord = (Census_CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
+            Census_CASKS006DataRecord aCASKS006DataRecord;
             aCASKS006DataRecord = _CASDataRecord.getCASKS006DataRecord();
             _Counts._EthnicityWhite = _CASDataRecord.getCASKS006DataRecord().getWhiteOtherWhite()
                     + aCASKS006DataRecord.getWhiteWhiteBritish() + aCASKS006DataRecord.getWhiteWhiteIrish();
@@ -139,17 +139,17 @@ public class OutputDataHandler_NonConstraints extends AbstractOutputDataHandler 
         _OutputFile.getParentFile().mkdirs();
         this._FileOutputStream = new FileOutputStream(_OutputFile);
         writeHeader();
-        CASDataRecord aCASDataRecord;
+        Census_CASDataRecord aCASDataRecord;
         int _EthnicityWhite;
         int _NoCarOwnershipHouseholds;
-        HSARDataHandler tHSARDataHandler = new HSARDataHandler(
+        Census_HSARDataHandler tHSARDataHandler = new Census_HSARDataHandler(
                 new File("C:/Work/Projects/MoSeS/Workspace/",
                 "uk.ac.leeds.ccg.andyt.projects.moses.io.HSARDataHandler.thisFile"));
-        ISARDataHandler tISARDataHandler = new ISARDataHandler(
+        Census_ISARDataHandler tISARDataHandler = new Census_ISARDataHandler(
                 new File("C:/Work/Projects/MoSeS/Workspace/",
                 "uk.ac.leeds.ccg.andyt.projects.moses.io.ISARDataHandler_AGE0Indexed.thisFile"));
-        HSARDataRecord _HSARDataRecord;
-        ISARDataRecord _ISARDataRecord;
+        Census_HSARDataRecord _HSARDataRecord;
+        Census_ISARDataRecord _ISARDataRecord;
         BufferedReader tBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(_InputFile)));
         StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
@@ -158,7 +158,7 @@ public class OutputDataHandler_NonConstraints extends AbstractOutputDataHandler 
         ToyModelDataRecord_2 aToyModelDataRecord2;
         String aZoneCode;
         HashMap tLookUpMSOAfromOAHashMap = null;
-        CASDataHandler tCASDataHandler = new CASDataHandler();
+        Census_CASDataHandler tCASDataHandler = new Census_CASDataHandler();
         if (_Aggregation.equalsIgnoreCase("MSOA")) {
             tLookUpMSOAfromOAHashMap = tCASDataHandler.get_LookUpMSOAfromOAHashMap();
         }
@@ -184,7 +184,7 @@ public class OutputDataHandler_NonConstraints extends AbstractOutputDataHandler 
                         }
                     }
                     if (aToyModelDataRecord2.tHSARDataRecordID != -9) {
-                        _HSARDataRecord = (HSARDataRecord) tHSARDataHandler.getDataRecord(aToyModelDataRecord2.tHSARDataRecordID);
+                        _HSARDataRecord = (Census_HSARDataRecord) tHSARDataHandler.getDataRecord(aToyModelDataRecord2.tHSARDataRecordID);
                         _HSARDataRecordETHEW = _HSARDataRecord.get_ETHEW();
                         if (_HSARDataRecordETHEW > 0 && _HSARDataRecordETHEW < 4) {
                             _EthnicityWhite = 1;
@@ -195,7 +195,7 @@ public class OutputDataHandler_NonConstraints extends AbstractOutputDataHandler 
                             }
                         }
                     } else {
-                        _ISARDataRecord = (ISARDataRecord) tISARDataHandler.getDataRecord(
+                        _ISARDataRecord = (Census_ISARDataRecord) tISARDataHandler.getDataRecord(
                                 aToyModelDataRecord2.tISARDataRecordID);
                         _ISARDataRecordETHEW = _ISARDataRecord.get_ETHEW();
                         _ISARDataRecordETHN = _ISARDataRecord.get_ETHN();

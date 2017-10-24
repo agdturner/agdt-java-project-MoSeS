@@ -18,7 +18,7 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
@@ -26,7 +26,7 @@ import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
 /**
  * For representing ToyModelDataRecords and providing safe access to the data.
  */
-public class ToyModelDataRecord_1 extends AbstractCASDataRecord {
+public class ToyModelDataRecord_1 extends Census_AbstractDataRecord {
 
     // protected long PID; // this.RecordID
     protected long ISARDataRecordID;

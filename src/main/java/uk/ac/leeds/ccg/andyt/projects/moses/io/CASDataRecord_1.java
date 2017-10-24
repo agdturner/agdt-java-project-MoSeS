@@ -20,23 +20,23 @@ package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS003DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS044DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS006DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS008DataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS044DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS006DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS008DataRecord;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler_GA_IPS;
 
 /**
  * A <code>class</code> collection of the following
  * <code>AbstractCASDataRecords</code>:
  * <ul>
- * <li>CAS001DataRecord</li>
- * <li>CAS003DataRecord</li>
- * <li>CAS044DataRecord</li>
- * <li>CASKS006DataRecord</li>
- * <li>CASKS008DataRecord</li>
+ * <li>Census_CAS001DataRecord</li>
+ * <li>Census_CAS003DataRecord</li>
+ * <li>Census_CAS044DataRecord</li>
+ * <li>Census_CASKS006DataRecord</li>
+ * <li>Census_CASKS008DataRecord</li>
  * </ul>
  * <ul>
  * <li>Developed for <a href="http://www.ncess.ac.uk/moses">MoSeS</a>.</li>
@@ -50,7 +50,7 @@ import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler_GA_IPS;
  * @version 1.0.0, 2007-06-13
  * @see CASDataHandler_GA_IPS
  */
-public class CASDataRecord_1 extends AbstractCASDataRecord {
+public class CASDataRecord_1 extends Census_AbstractDataRecord {
 
 	/**
 	 * Serializable class version number for swapping
@@ -59,29 +59,29 @@ public class CASDataRecord_1 extends AbstractCASDataRecord {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * CAS001DataRecord
+	 * Census_CAS001DataRecord
 	 */
-	protected CAS001DataRecord _CAS001DataRecord;
+	protected Census_CAS001DataRecord _CAS001DataRecord;
 
 	/**
-	 * CAS003DataRecord
+	 * Census_CAS003DataRecord
 	 */
-	protected CAS003DataRecord _CAS003DataRecord;
+	protected Census_CAS003DataRecord _CAS003DataRecord;
 
 	/**
-	 * CAS044DataRecord
+	 * Census_CAS044DataRecord
 	 */
-	protected CAS044DataRecord _CAS044DataRecord;
+	protected Census_CAS044DataRecord _CAS044DataRecord;
 
 	/**
-	 * CASKS006DataRecord
+	 * Census_CASKS006DataRecord
 	 */
-	protected CASKS006DataRecord _CASKS006DataRecord;
+	protected Census_CASKS006DataRecord _CASKS006DataRecord;
 
 	/**
-	 * CASKS008DataRecord
+	 * Census_CASKS008DataRecord
 	 */
-	protected CASKS008DataRecord _CASKS008DataRecord;
+	protected Census_CASKS008DataRecord _CASKS008DataRecord;
 
 	/** Creates a new CASDataRecord_1 */
 	public CASDataRecord_1() {
@@ -103,11 +103,11 @@ public class CASDataRecord_1 extends AbstractCASDataRecord {
 	 * Initialises all fields.
 	 */
 	protected void _Init() {
-		this._CAS001DataRecord = new CAS001DataRecord();
-		this._CAS003DataRecord = new CAS003DataRecord();
-		this._CAS044DataRecord = new CAS044DataRecord();
-		this._CASKS006DataRecord = new CASKS006DataRecord();
-		this._CASKS008DataRecord = new CASKS008DataRecord();
+		this._CAS001DataRecord = new Census_CAS001DataRecord();
+		this._CAS003DataRecord = new Census_CAS003DataRecord();
+		this._CAS044DataRecord = new Census_CAS044DataRecord();
+		this._CASKS006DataRecord = new Census_CASKS006DataRecord();
+		this._CASKS008DataRecord = new Census_CASKS008DataRecord();
 	}
 
 	/**
@@ -118,15 +118,15 @@ public class CASDataRecord_1 extends AbstractCASDataRecord {
 	protected void init(
             CASDataHandler_GA_IPS _CASDataHandler_1,
             long _RecordID) {
-		this._CAS001DataRecord = (CAS001DataRecord) _CASDataHandler_1
+		this._CAS001DataRecord = (Census_CAS001DataRecord) _CASDataHandler_1
 				.getCAS001DataHandler().getDataRecord(_RecordID);
-		this._CAS003DataRecord = (CAS003DataRecord) _CASDataHandler_1
+		this._CAS003DataRecord = (Census_CAS003DataRecord) _CASDataHandler_1
 				.getCAS003DataHandler().getDataRecord(_RecordID);
-		this._CAS044DataRecord = (CAS044DataRecord) _CASDataHandler_1
+		this._CAS044DataRecord = (Census_CAS044DataRecord) _CASDataHandler_1
 				.getCAS044DataHandler().getDataRecord(_RecordID);
-		this._CASKS006DataRecord = (CASKS006DataRecord) _CASDataHandler_1
+		this._CASKS006DataRecord = (Census_CASKS006DataRecord) _CASDataHandler_1
 				.getCASKS006DataHandler().getDataRecord(_RecordID);
-		this._CASKS008DataRecord = (CASKS008DataRecord) _CASDataHandler_1
+		this._CASKS008DataRecord = (Census_CASKS008DataRecord) _CASDataHandler_1
 				.getCASKS008DataHandler().getDataRecord(_RecordID);
 	}
 
@@ -160,7 +160,7 @@ public class CASDataRecord_1 extends AbstractCASDataRecord {
 	 * Returns this._CAS001DataRecord
      * @return 
 	 */
-	public CAS001DataRecord getCAS001DataRecord() {
+	public Census_CAS001DataRecord getCAS001DataRecord() {
 		return this._CAS001DataRecord;
 	}
 
@@ -168,7 +168,7 @@ public class CASDataRecord_1 extends AbstractCASDataRecord {
 	 * Returns this._CAS003DataRecord
      * @return 
 	 */
-	public CAS003DataRecord getCAS003DataRecord() {
+	public Census_CAS003DataRecord getCAS003DataRecord() {
 		return this._CAS003DataRecord;
 	}
 
@@ -176,7 +176,7 @@ public class CASDataRecord_1 extends AbstractCASDataRecord {
 	 * Returns this._CAS044DataRecord
      * @return 
 	 */
-	public CAS044DataRecord getCAS044DataRecord() {
+	public Census_CAS044DataRecord getCAS044DataRecord() {
 		return this._CAS044DataRecord;
 	}
 
@@ -184,7 +184,7 @@ public class CASDataRecord_1 extends AbstractCASDataRecord {
 	 * Returns this._CASKS006DataRecord
      * @return 
 	 */
-	public CASKS006DataRecord getCASKS006DataRecord() {
+	public Census_CASKS006DataRecord getCASKS006DataRecord() {
 		return this._CASKS006DataRecord;
 	}
 
@@ -192,7 +192,7 @@ public class CASDataRecord_1 extends AbstractCASDataRecord {
 	 * Returns this._CASKS008DataRecord
      * @return 
 	 */
-	public CASKS008DataRecord getCASKS008DataRecord() {
+	public Census_CASKS008DataRecord getCASKS008DataRecord() {
 		return this._CASKS008DataRecord;
 	}
 

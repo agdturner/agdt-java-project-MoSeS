@@ -20,7 +20,7 @@ package uk.ac.leeds.ccg.andyt.projects.moses.extensions;
 
 import java.math.BigInteger;
 import java.util.Random;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import uk.ac.leeds.sog.moses.agent.AdultDependent;
 import uk.ac.leeds.sog.moses.agent.AreaModel;
 import uk.ac.leeds.sog.moses.agent.Child;
@@ -93,7 +93,7 @@ public class AreaModelExtension extends AreaModel {
 	 * @return BigInteger which is a measure of how well households have been
 	 *         formed.
 	 */
-	public BigInteger getFitness(ISARDataRecord[] tISARDataRecords) {
+	public BigInteger getFitness(Census_ISARDataRecord[] tISARDataRecords) {
 		BigInteger result = new BigInteger("0");
 		createAgents(tISARDataRecords);
 		buildHouseholds();
@@ -124,7 +124,7 @@ public class AreaModelExtension extends AreaModel {
 	 * This method creates different agents by consideration of their attributes
      * @param tISARDataRecords
 	 */
-	public void createAgents(ISARDataRecord[] tISARDataRecords) {
+	public void createAgents(Census_ISARDataRecord[] tISARDataRecords) {
 		this.tNumberOfChildren = 0;
 		this.tNumberOfSpouses = 0;
 		this.tNumberOfElderlyDependents = 0;
@@ -188,7 +188,7 @@ public class AreaModelExtension extends AreaModel {
 	 * for social class, location and fitness.
 	 */
 	private void setCharacteristics(Person person,
-			ISARDataRecord tISARDataRecord, int[] personIDHouseholdID) {
+			Census_ISARDataRecord tISARDataRecord, int[] personIDHouseholdID) {
 		int ageInt;
 		long tISARDataRecordID;
 		long ID;

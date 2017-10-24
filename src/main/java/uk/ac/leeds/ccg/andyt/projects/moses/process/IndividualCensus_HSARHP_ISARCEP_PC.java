@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Level;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
 
 /**
@@ -231,13 +231,13 @@ public class IndividualCensus_HSARHP_ISARCEP_PC extends IndividualCensus_HSARHP_
                 "initialOptimise()");
         // Get_StartRecordID and _EndRecordID for _Area
         long[] _StartRecordID_EndRecordID = get_StartRecordID_EndRecordID(_Area);
-        CASDataRecord aCASDataRecord;
+        Census_CASDataRecord aCASDataRecord;
         Object[] result;
         Object[] solution;
         Object[] population;
         BigDecimal fitness;
         for (long RecordID = _StartRecordID_EndRecordID[0]; RecordID <= _StartRecordID_EndRecordID[1]; RecordID++) {
-            aCASDataRecord = (CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
+            aCASDataRecord = (Census_CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
             String aZoneCode = String.valueOf(aCASDataRecord.getZone_Code());
             GeneticAlgorithm_HSARHP_ISARCEP _GeneticAlgorithm_HSARHP_ISARCEP = new GeneticAlgorithm_HSARHP_ISARCEP(
                     this,
@@ -266,14 +266,14 @@ public class IndividualCensus_HSARHP_ISARCEP_PC extends IndividualCensus_HSARHP_
                 "reloadAndOptimise()");
         // Find _StartRecordID and _EndRecordID for _Area
         long[] _StartRecordID_EndRecordID = get_StartRecordID_EndRecordID(_Area);
-        CASDataRecord aCASDataRecord;
+        Census_CASDataRecord aCASDataRecord;
         Object[] result;
         Object[] solution;
         Object[] population;
         BigDecimal fitness;
         //LoadPopulationHashMap this._Population_HashMap =
         for (long RecordID = _StartRecordID_EndRecordID[0]; RecordID <= _StartRecordID_EndRecordID[1]; RecordID++) {
-            aCASDataRecord = (CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
+            aCASDataRecord = (Census_CASDataRecord) this._CASDataHandler.getDataRecord(RecordID);
             String aZoneCode = String.valueOf(aCASDataRecord.getZone_Code());
             GeneticAlgorithm_HSARHP_ISARCEP aGeneticAlgorithm_HSARHP_ISARCEP = new GeneticAlgorithm_HSARHP_ISARCEP(
                     this,

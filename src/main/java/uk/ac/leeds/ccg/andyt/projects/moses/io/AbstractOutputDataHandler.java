@@ -21,20 +21,20 @@
  */
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.AbstractCASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataHandler;
+import uk.ac.leeds.ccg.andyt.census.core.Census_AbstractDataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler_GA_IPS;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataHandler;
 
 /**
  * Abstract class for handling data output.
  */
-public abstract class AbstractOutputDataHandler extends AbstractCASDataHandler {
+public abstract class AbstractOutputDataHandler extends Census_AbstractDataHandler {
 
     /**
      * File for writing output to.
@@ -49,9 +49,9 @@ public abstract class AbstractOutputDataHandler extends AbstractCASDataHandler {
      */
     protected ToyModelDataHandler _ToyModelDataHandler;
     /**
-     * CASDataHandler.
+     * Census_CASDataHandler.
      */
-    protected CASDataHandler _CASDataHandler;
+    protected Census_CASDataHandler _CASDataHandler;
     /**
      * CASDataHandler_GA_IPS.
      */
@@ -60,7 +60,7 @@ public abstract class AbstractOutputDataHandler extends AbstractCASDataHandler {
     /** Required method
      * @return  */
     @Override
-    public AbstractCASDataRecord getDataRecord(long RecordID) {
+    public Census_AbstractDataRecord getDataRecord(long RecordID) {
         return null;
     }
 
@@ -76,7 +76,7 @@ public abstract class AbstractOutputDataHandler extends AbstractCASDataHandler {
             long _StartRecordID,
             long _EndRecordID,
             String _AreaLevel,
-            ISARDataHandler tISARDataHandler)
+            Census_ISARDataHandler tISARDataHandler)
             throws IOException;
 
     public abstract void writeEstimated_HSARHP(

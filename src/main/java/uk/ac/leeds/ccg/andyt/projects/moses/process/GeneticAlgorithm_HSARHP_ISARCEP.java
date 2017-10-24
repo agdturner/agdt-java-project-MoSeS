@@ -25,18 +25,18 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.TreeMap;
 import java.util.Vector;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS001DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CAS002DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS008DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS020DataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09bDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.cas.CASKS09cDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataHandler.AgeSex;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.HSARDataRecord;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataHandler.AgeSexType;
-import uk.ac.leeds.ccg.andyt.agdtcensus.sar.ISARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS002DataRecord;
+import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS008DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS020DataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS09bDataRecord;
+import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS09cDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler.AgeSex;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler.AgeSexType;
+import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.execution.AgeConverter;
 import uk.ac.leeds.ccg.andyt.generic.utilities.Generic_Collections;
 
@@ -50,7 +50,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
 
     /** Creates a new instance of GeneticAlgorithm
      * @param aCASDataRecord */
-    public GeneticAlgorithm_HSARHP_ISARCEP(CASDataRecord aCASDataRecord) {
+    public GeneticAlgorithm_HSARHP_ISARCEP(Census_CASDataRecord aCASDataRecord) {
         this._CASDataRecord = aCASDataRecord;
     }
 
@@ -59,7 +59,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
      * @param _CASDataRecord */
     public GeneticAlgorithm_HSARHP_ISARCEP(
             IndividualCensus_HSARHP_ISARCEP _IndividualCensus_HSARHP_ISARCEP,
-            CASDataRecord _CASDataRecord) {
+            Census_CASDataRecord _CASDataRecord) {
         this._IndividualCensus = _IndividualCensus_HSARHP_ISARCEP;
         this._IndividualCensus_HSARHP_ISARCEP = _IndividualCensus_HSARHP_ISARCEP;
         this._CASDataRecord = _CASDataRecord;
@@ -816,8 +816,8 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         HashMap toSwapInCEP_Age_Vector_HashMap = new HashMap();
         Vector toSwapInCEP_Vector = new Vector();
         Iterator aIterator;
-        ISARDataRecord aISARDataRecord;
-        ISARDataRecord bISARDataRecord;
+        Census_ISARDataRecord aISARDataRecord;
+        Census_ISARDataRecord bISARDataRecord;
         int aAge_int;
         short aAge_short;
         short bAge_short;
@@ -830,10 +830,10 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         short type;
         aIterator = dataRecordsIndexesToSwapHashSet.iterator();
         while (aIterator.hasNext()) {
-            aISARDataRecord = (ISARDataRecord) tCEP_Vector.elementAt((Integer) aIterator.next());
+            aISARDataRecord = (Census_ISARDataRecord) tCEP_Vector.elementAt((Integer) aIterator.next());
             aAge_int = aISARDataRecord.getAgeInt();
             sex = aISARDataRecord.get_SEX();
-            type = ISARDataHandler.getRELTOHRType1(aISARDataRecord);
+            type = Census_ISARDataHandler.getRELTOHRType1(aISARDataRecord);
             // type is only not 3 if there was a struggle to initialise with type = 3
             aAge_short = AgeConverter.getAgeClass4(aAge_int);
             boolean got = false;
@@ -898,7 +898,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
             if (aCEP_Age_Vector != null) {
                 for (int i = 0; i < aVector.size(); i++) {
                     for (int j = 0; j < aCEP_Age_Vector.size(); j++) {
-                        aISARDataRecord = (ISARDataRecord) aCEP_Age_Vector.elementAt(j);
+                        aISARDataRecord = (Census_ISARDataRecord) aCEP_Age_Vector.elementAt(j);
                         bAge_short = AgeConverter.getAgeClass4(aISARDataRecord.getAgeInt());
                         if (aAge_short == bAge_short) {
                             aCEP_Age_Vector.setElementAt(
@@ -945,8 +945,8 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         HashMap toSwapInHPHRP_Age_Vector_HashMap = new HashMap();
         Vector toSwapInHPHRP_Vector = new Vector();
         Iterator aIterator;
-        HSARDataRecord aHSARDataRecord;
-        HSARDataRecord bHSARDataRecord;
+        Census_HSARDataRecord aHSARDataRecord;
+        Census_HSARDataRecord bHSARDataRecord;
         int aAge_int;
         short aAge_short;
         short bAge_short;
@@ -959,7 +959,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         Object value;
         aIterator = dataRecordsIndexesToSwapHashSet.iterator();
         while (aIterator.hasNext()) {
-            aHSARDataRecord = (HSARDataRecord) tHPHRP_Vector.elementAt((Integer) aIterator.next());
+            aHSARDataRecord = (Census_HSARDataRecord) tHPHRP_Vector.elementAt((Integer) aIterator.next());
             aAge_int = aHSARDataRecord.getAgeInt();
             sex = aHSARDataRecord.get_SEX();
             aAge_short = AgeConverter.getAgeClass2(aAge_int);
@@ -1024,7 +1024,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
             if (aHPHRP_Vector != null) {
                 for (int i = 0; i < aVector.size(); i++) {
                     for (int j = 0; j < aHPHRP_Vector.size(); j++) {
-                        aHSARDataRecord = (HSARDataRecord) aHPHRP_Vector.elementAt(j);
+                        aHSARDataRecord = (Census_HSARDataRecord) aHPHRP_Vector.elementAt(j);
                         bAge_short = AgeConverter.getAgeClass2(aHSARDataRecord.getAgeInt());
                         if (aAge_short == bAge_short) {
                             aHPHRP_Vector.setElementAt(
@@ -1053,8 +1053,8 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
 
     /**
      * @return A BigDecimal indicating goodness of fit. This is a sum of the
-     * sum of squared difference between CASDataRecord values and estimated
-     * aggregate measures. The lower the number returned the better the fit.
+ sum of squared difference between Census_CASDataRecord values and estimated
+ aggregate measures. The lower the number returned the better the fit.
      * @param tConstraintsAndPopulation_HSARHP_ISARCEP
      * An Object[]:
      * tConstraintsAndPopulation_HSARHP_ISARCEP[0] constraints:
@@ -1079,19 +1079,18 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         HashMap tCASCounts = (HashMap) tFitnessCounts[0];
         HashMap tSARCounts = new HashMap((HashMap) tFitnessCounts[1]);
         Object[] population = (Object[]) tConstraintsAndPopulation_HSARHP_ISARCEP[1];
-        ISARDataRecord aISARDataRecord;
-        HSARDataRecord aHSARDataRecord;
+        Census_ISARDataRecord aISARDataRecord;
+        Census_HSARDataRecord aHSARDataRecord;
         Iterator iterator;
         Object key;
         Object value;
         // addToCounts from tHPHRPFemale_Vector
         Vector tHPHRPFemale_Vector = (Vector) population[1];
         for (int i = 0; i < tHPHRPFemale_Vector.size(); i++) {
-            aHSARDataRecord = (HSARDataRecord) tHPHRPFemale_Vector.elementAt(i);
+            aHSARDataRecord = (Census_HSARDataRecord) tHPHRPFemale_Vector.elementAt(i);
             Vector aHousehold = (Vector) _IndividualCensus_HSARHP_ISARCEP._HSARDataHandler.get_HID_HSARDataRecordVector_HashMap().get(aHSARDataRecord.get_HHID());
             for (int j = 0; j < aHousehold.size(); j++) {
-                addToCounts(
-                        (HSARDataRecord) aHousehold.elementAt(j),
+                addToCounts((Census_HSARDataRecord) aHousehold.elementAt(j),
                         tSARCounts,
                         this._Random);
             }
@@ -1099,11 +1098,10 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         // addToCounts from tHPHRPMale_Vector
         Vector tHPHRPMale_Vector = (Vector) population[3];
         for (int i = 0; i < tHPHRPMale_Vector.size(); i++) {
-            aHSARDataRecord = (HSARDataRecord) tHPHRPMale_Vector.elementAt(i);
+            aHSARDataRecord = (Census_HSARDataRecord) tHPHRPMale_Vector.elementAt(i);
             Vector aHousehold = (Vector) _IndividualCensus_HSARHP_ISARCEP._HSARDataHandler.get_HID_HSARDataRecordVector_HashMap().get(aHSARDataRecord.get_HHID());
             for (int j = 0; j < aHousehold.size(); j++) {
-                addToCounts(
-                        (HSARDataRecord) aHousehold.elementAt(j),
+                addToCounts((Census_HSARDataRecord) aHousehold.elementAt(j),
                         tSARCounts,
                         this._Random);
             }
@@ -1111,7 +1109,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         // addToCounts from tCEPFemale_Vector
         Vector tCEPFemale_Vector = (Vector) population[5];
         for (int i = 0; i < tCEPFemale_Vector.size(); i++) {
-            aISARDataRecord = (ISARDataRecord) tCEPFemale_Vector.elementAt(i);
+            aISARDataRecord = (Census_ISARDataRecord) tCEPFemale_Vector.elementAt(i);
             addToCountsCEP(
                     aISARDataRecord,
                     tSARCounts,
@@ -1120,7 +1118,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         // addToCounts from tCEPFemale_Vector
         Vector tCEPMale_Vector = (Vector) population[7];
         for (int i = 0; i < tCEPMale_Vector.size(); i++) {
-            aISARDataRecord = (ISARDataRecord) tCEPMale_Vector.elementAt(i);
+            aISARDataRecord = (Census_ISARDataRecord) tCEPMale_Vector.elementAt(i);
             addToCountsCEP(
                     aISARDataRecord,
                     tSARCounts,
@@ -1149,13 +1147,13 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
     /**
      * aISARDataRecord does not comprise part of Household Population
      * @param aISARDataRecord
-     * The ISARDataRecord to be accounted for in tSARCounts
+     * The Census_ISARDataRecord to be accounted for in tSARCounts
      * @param tSARCounts
      *  A HashMap of Aggregate Counts
      * @param a_Random
      */
     protected static void addToCountsCEP(
-            ISARDataRecord aISARDataRecord,
+            Census_ISARDataRecord aISARDataRecord,
             HashMap tSARCounts,
             Random a_Random) {
         // Initialise
@@ -2817,12 +2815,12 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
 
 //    /**
 //     * @param aHSARDataRecord
-//     * The HSARDataRecord that will be accounted in tSARCounts
+//     * The Census_HSARDataRecord that will be accounted in tSARCounts
 //     * @param tSARCounts
 //     * A HashMap of aggregate counts
 //     */
 //    protected static void addToCounts(
-//            HSARDataRecord aHSARDataRecord,
+//            Census_HSARDataRecord aHSARDataRecord,
 //            HashMap tSARCounts,
 //            Random a_Random) {
 //        // Initialise
@@ -4448,13 +4446,13 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
 
     /**
      * @param aHSARDataRecord
-     * The HSARDataRecord that will be accounted in tSARCounts
+     * The Census_HSARDataRecord that will be accounted in tSARCounts
      * @param tSARCounts
      * A HashMap of aggregate counts
      * @param a_Random
      */
     protected static void addToCounts(
-            HSARDataRecord aHSARDataRecord,
+            Census_HSARDataRecord aHSARDataRecord,
             HashMap tSARCounts,
             Random a_Random) {
         // Initialise
@@ -6079,117 +6077,117 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
     /**
      * @param a_CASDataRecord
      * @return Object[] tFitnessCounts:
-     * tFitnessCounts[0] is a HashMap where;
-     * keys are Strings
-     * Keys with values derived from CAS001:
-     * malesAge0to4
-     * malesAge5to9
-     * malesAge10to14
-     * malesAge15to19
-     * malesAge20to24
-     * malesAge25to29
-     * malesAge30to34
-     * malesAge35to39
-     * malesAge40to44
-     * malesAge45to49
-     * malesAge50to54
-     * malesAge55to59
-     * malesAge60to64
-     * malesAge65to69
-     * malesAge70to74
-     * malesAge75to79
-     * malesAge80AndOver
-     * femalesAge0to4
-     * femalesAge5to9
-     * femalesAge10to14
-     * femalesAge15to19
-     * femalesAge20to24
-     * femalesAge25to29
-     * femalesAge30to34
-     * femalesAge35to39
-     * femalesAge40to44
-     * femalesAge45to49
-     * femalesAge50to54
-     * femalesAge55to59
-     * femalesAge60to64
-     * femalesAge65to69
-     * femalesAge70to74
-     * femalesAge75to79
-     * femalesAge80AndOver
-     *
-     * Keys with values derived from CAS002:
-     * malesMarriedAge0to15
-     * malesMarriedAge16to19
-     * malesMarriedAge20to24
-     * malesMarriedAge25to29
-     * malesMarriedAge30to34
-     * malesMarriedAge35to39
-     * malesMarriedAge40to44
-     * malesMarriedAge45to49
-     * malesMarriedAge50to54
-     * malesMarriedAge55to59
-     * malesMarriedAge60to64
-     * malesMarriedAge65to74
-     * malesMarriedAge75to79
-     * malesMarriedAge80AndOver
-     * femalesMarriedAge0to15
-     * femalesMarriedAge16to19
-     * femalesMarriedAge20to24
-     * femalesMarriedAge25to29
-     * femalesMarriedAge30to34
-     * femalesMarriedAge35to39
-     * femalesMarriedAge40to44
-     * femalesMarriedAge45to49
-     * femalesMarriedAge50to54
-     * femalesMarriedAge55to59
-     * femalesMarriedAge60to64
-     * femalesMarriedAge65to74
-     * femalesMarriedAge75to79
-     * femalesMarriedAge80AndOver
-     *
-     * Keys with values derived from CASKS008
-     * peopleWhoseGeneralHealthWasGood
-     * peopleWhoseGeneralHealthWasFairlyGood
-     * peopleWhoseGeneralHealthWasNotGood
-     * peopleWithLimitingLongTermIllness
-     *
-     * Keys with values derived from CASKS020DataRecord
-     * oneFamilyAndNoChildren
-     * marriedOrCohabitingCoupleWithChildren
-     * loneParentHouseholdsWithChildren
-     *
-     * Keys with values derived from CASKS09bDataRecord
-     * malesAge16to24Unemployed
-     * malesAge16to74
-     * malesAge16to74EconomicallyActiveEmployed
-     * malesAge16to74EconomicallyActiveUnemployed
-     * malesAge50AndOverUnemployed
-     *
-     * Keys with values derived from CASKS09cDataRecord
-     * femalesAge16to24Unemployed
-     * femalesAge16to74
-     * femalesAge16to74EconomicallyActiveEmployed
-     * femalesAge16to74EconomicallyActiveUnemployed
-     * femalesAge50AndOverUnemployed
-     *
-     * tFitnessCounts[1] is a HashMap where;
-     * keys are Strings as in tFitnessCounts[0]
-     * values are all 0.
+ tFitnessCounts[0] is a HashMap where;
+ keys are Strings
+ Keys with values derived from CAS001:
+ malesAge0to4
+ malesAge5to9
+ malesAge10to14
+ malesAge15to19
+ malesAge20to24
+ malesAge25to29
+ malesAge30to34
+ malesAge35to39
+ malesAge40to44
+ malesAge45to49
+ malesAge50to54
+ malesAge55to59
+ malesAge60to64
+ malesAge65to69
+ malesAge70to74
+ malesAge75to79
+ malesAge80AndOver
+ femalesAge0to4
+ femalesAge5to9
+ femalesAge10to14
+ femalesAge15to19
+ femalesAge20to24
+ femalesAge25to29
+ femalesAge30to34
+ femalesAge35to39
+ femalesAge40to44
+ femalesAge45to49
+ femalesAge50to54
+ femalesAge55to59
+ femalesAge60to64
+ femalesAge65to69
+ femalesAge70to74
+ femalesAge75to79
+ femalesAge80AndOver
+
+ Keys with values derived from CAS002:
+ malesMarriedAge0to15
+ malesMarriedAge16to19
+ malesMarriedAge20to24
+ malesMarriedAge25to29
+ malesMarriedAge30to34
+ malesMarriedAge35to39
+ malesMarriedAge40to44
+ malesMarriedAge45to49
+ malesMarriedAge50to54
+ malesMarriedAge55to59
+ malesMarriedAge60to64
+ malesMarriedAge65to74
+ malesMarriedAge75to79
+ malesMarriedAge80AndOver
+ femalesMarriedAge0to15
+ femalesMarriedAge16to19
+ femalesMarriedAge20to24
+ femalesMarriedAge25to29
+ femalesMarriedAge30to34
+ femalesMarriedAge35to39
+ femalesMarriedAge40to44
+ femalesMarriedAge45to49
+ femalesMarriedAge50to54
+ femalesMarriedAge55to59
+ femalesMarriedAge60to64
+ femalesMarriedAge65to74
+ femalesMarriedAge75to79
+ femalesMarriedAge80AndOver
+
+ Keys with values derived from CASKS008
+ peopleWhoseGeneralHealthWasGood
+ peopleWhoseGeneralHealthWasFairlyGood
+ peopleWhoseGeneralHealthWasNotGood
+ peopleWithLimitingLongTermIllness
+
+ Keys with values derived from Census_CASKS020DataRecord
+ oneFamilyAndNoChildren
+ marriedOrCohabitingCoupleWithChildren
+ loneParentHouseholdsWithChildren
+
+ Keys with values derived from Census_CASKS09bDataRecord
+ malesAge16to24Unemployed
+ malesAge16to74
+ malesAge16to74EconomicallyActiveEmployed
+ malesAge16to74EconomicallyActiveUnemployed
+ malesAge50AndOverUnemployed
+
+ Keys with values derived from Census_CASKS09cDataRecord
+ femalesAge16to24Unemployed
+ femalesAge16to74
+ femalesAge16to74EconomicallyActiveEmployed
+ femalesAge16to74EconomicallyActiveUnemployed
+ femalesAge50AndOverUnemployed
+
+ tFitnessCounts[1] is a HashMap where;
+ keys are Strings as in tFitnessCounts[0]
+ values are all 0.
      */
-    public static Object[] getFitnessCounts(CASDataRecord a_CASDataRecord) {
+    public static Object[] getFitnessCounts(Census_CASDataRecord a_CASDataRecord) {
         Object[] result = new Object[2];
         // Initialise Count HashMaps to compare
         HashMap<String,Integer> tCASCounts = new HashMap();
         HashMap<String,Integer> tSARCounts = new HashMap();
-        // Initialise age gender variables from CAS001DataRecord and
-        // CAS002DataRecord
-        CAS001DataRecord aCAS001DataRecord = a_CASDataRecord.getCAS001DataRecord();
-        CAS002DataRecord aCAS002DataRecord = a_CASDataRecord.getCAS002DataRecord();
-        CASKS008DataRecord aCASKS008DataRecord = a_CASDataRecord.getCASKS008DataRecord();
-        CASKS020DataRecord aCASKS020DataRecord = a_CASDataRecord.getCASKS020DataRecord();
-        CASKS09bDataRecord aCASKS09bDataRecord = a_CASDataRecord.getCASKS09bDataRecord();
-        CASKS09cDataRecord aCASKS09cDataRecord = a_CASDataRecord.getCASKS09cDataRecord();
-        // CAS001DataRecord
+        // Initialise age gender variables from Census_CAS001DataRecord and
+        // Census_CAS002DataRecord
+        Census_CAS001DataRecord aCAS001DataRecord = a_CASDataRecord.getCAS001DataRecord();
+        Census_CAS002DataRecord aCAS002DataRecord = a_CASDataRecord.getCAS002DataRecord();
+        Census_CASKS008DataRecord aCASKS008DataRecord = a_CASDataRecord.getCASKS008DataRecord();
+        Census_CASKS020DataRecord aCASKS020DataRecord = a_CASDataRecord.getCASKS020DataRecord();
+        Census_CASKS09bDataRecord aCASKS09bDataRecord = a_CASDataRecord.getCASKS09bDataRecord();
+        Census_CASKS09cDataRecord aCASKS09cDataRecord = a_CASDataRecord.getCASKS09cDataRecord();
+        // Census_CAS001DataRecord
         // males
         String s_malesAge0to4 = "malesAge0to4";
         String s_malesAge5to9 = "malesAge5to9";
@@ -6406,7 +6404,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         tSARCounts.put(s_femalesAge70to74, 0);
         tSARCounts.put(s_femalesAge75to79, 0);
         tSARCounts.put(s_femalesAge80AndOver, 0);
-        // CAS002DataRecord
+        // Census_CAS002DataRecord
         // males
         String s_malesMarriedAge0to15 = "malesMarriedAge0to15";
         String s_malesMarriedAge16to19 = "malesMarriedAge16to19";
@@ -6556,7 +6554,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         tSARCounts.put(s_femalesMarriedAge65to74, 0);
         tSARCounts.put(s_femalesMarriedAge75to79, 0);
         tSARCounts.put(s_femalesMarriedAge80AndOver, 0);
-        // Initialise health variables from CASKS008DataRecord
+        // Initialise health variables from Census_CASKS008DataRecord
         String s_peopleWhoseGeneralHealthWasGood = "peopleWhoseGeneralHealthWasGood";
         String s_peopleWhoseGeneralHealthWasFairlyGood = "peopleWhoseGeneralHealthWasFairlyGood";
         String s_peopleWhoseGeneralHealthWasNotGood = "peopleWhoseGeneralHealthWasNotGood";
@@ -6578,7 +6576,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         tSARCounts.put(s_peopleWhoseGeneralHealthWasNotGood, 0);
         tSARCounts.put(s_peopleWithLimitingLongTermIllness, 0);
         // Initialise Household Composition variables from
-        // CASKS020DataRecord
+        // Census_CASKS020DataRecord
         String s_oneFamilyAndNoChildren = "oneFamilyAndNoChildren";
         String s_marriedOrCohabitingCoupleWithChildren = "marriedOrCohabitingCoupleWithChildren";
         String s_loneParentHouseholdsWithChildren = "loneParentHouseholdsWithChildren";
@@ -6594,7 +6592,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         tSARCounts.put(s_oneFamilyAndNoChildren, 0);
         tSARCounts.put(s_marriedOrCohabitingCoupleWithChildren, 0);
         tSARCounts.put(s_loneParentHouseholdsWithChildren, 0);
-        // Initialise Employment variables from CASKS09bDataRecord
+        // Initialise Employment variables from Census_CASKS09bDataRecord
         String s_malesAge16to24Unemployed = "malesAge16to24Unemployed";
         String s_malesAge16to74 = "malesAge16to74";
         String s_malesAge16to74EconomicallyActiveEmployed = "malesAge16to74EconomicallyActiveEmployed";
@@ -6622,7 +6620,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
         tSARCounts.put(s_malesAge16to74EconomicallyActiveEmployed, 0);
         tSARCounts.put(s_malesAge16to74EconomicallyActiveUnemployed, 0);
         tSARCounts.put(s_malesAge50AndOverUnemployed, 0);
-        // Initialise Employment variables from CASKS09cDataRecord
+        // Initialise Employment variables from Census_CASKS09cDataRecord
         String s_femalesAge16to24Unemployed = "femalesAge16to24Unemployed";
         String s_femalesAge16to74 = "femalesAge16to74";
         String s_femalesAge16to74EconomicallyActiveEmployed = "femalesAge16to74EconomicallyActiveEmployed";
