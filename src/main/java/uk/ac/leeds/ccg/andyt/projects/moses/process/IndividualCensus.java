@@ -37,13 +37,13 @@ import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler_GA_IPS;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataRecord;
-import uk.ac.leeds.ccg.andyt.generic.logging.AbstractLog;
+import uk.ac.leeds.ccg.andyt.generic.logging.Generic_AbstractLog;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 
 /**
  * Abstract class
  */
-public abstract class IndividualCensus extends AbstractLog {
+public abstract class IndividualCensus extends Generic_AbstractLog {
 
     /**
      * This at minimum stores the fields for: _InitialPopulationSize;
