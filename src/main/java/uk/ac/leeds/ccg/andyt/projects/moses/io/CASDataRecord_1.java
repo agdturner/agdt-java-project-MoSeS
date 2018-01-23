@@ -85,7 +85,7 @@ public class CASDataRecord_1 extends Census_AbstractDataRecord {
 
 	/** Creates a new CASDataRecord_1 */
 	public CASDataRecord_1() {
-		_Init();
+		init();
 	}
 
 	/** Creates a new CASDataRecord_1
@@ -102,7 +102,7 @@ public class CASDataRecord_1 extends Census_AbstractDataRecord {
 	/**
 	 * Initialises all fields.
 	 */
-	protected void _Init() {
+	protected void init() {
 		this._CAS001DataRecord = new Census_CAS001DataRecord();
 		this._CAS003DataRecord = new Census_CAS003DataRecord();
 		this._CAS044DataRecord = new Census_CAS044DataRecord();

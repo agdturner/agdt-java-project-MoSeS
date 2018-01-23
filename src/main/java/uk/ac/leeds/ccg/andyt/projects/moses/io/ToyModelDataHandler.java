@@ -370,7 +370,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
         for (int aISARDataRecordIndex = 0; aISARDataRecordIndex < aISARDataRecords.length; aISARDataRecordIndex++) {
             aPersonIDHouseholdID[0]++;
             toyModelRecord = "" + aPersonIDHouseholdID[0] + ",";
-            aISARDataRecordID = aISARDataRecords[aISARDataRecordIndex].get_RecordID();
+            aISARDataRecordID = aISARDataRecords[aISARDataRecordIndex].getRecordID();
             toyModelRecord = toyModelRecord + aISARDataRecordID + ",";
             ID = aISARDataRecords[aISARDataRecordIndex].get_ID();
             toyModelRecord = toyModelRecord + ID + ",";
@@ -770,7 +770,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
         if (true) {
             Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[0];
             for (int i = 0; i < tISARDataRecords.length; i++) {
-                // line = line0 + ",HP," + tISARDataRecords[i].get_RecordID();
+                // line = line0 + ",HP," + tISARDataRecords[i].getRecordID();
                 line = line0 + ",HP," + tISARDataRecords[i].get_ID();
                 this._ToyModelFileOutputStream.write(line.getBytes());
                 this._ToyModelFileOutputStream.write(StreamTokenizer.TT_EOL);
@@ -780,7 +780,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
         if (true) {
             Census_ISARDataRecord[] tISARDataRecords = (Census_ISARDataRecord[]) population[1];
             for (int i = 0; i < tISARDataRecords.length; i++) {
-                // line = line0 + ",CEP," + tISARDataRecords[i].get_RecordID();
+                // line = line0 + ",CEP," + tISARDataRecords[i].getRecordID();
                 line = line0 + ",CEP," + tISARDataRecords[i].get_ID();
                 this._ToyModelFileOutputStream.write(line.getBytes());
                 this._ToyModelFileOutputStream.write(StreamTokenizer.TT_EOL);
@@ -821,7 +821,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
         toyModelRecord += "," + Long.toString(aPersonIDHouseholdID[0]);
         toyModelRecord += ",-9";
         toyModelRecord += ",-9";
-        toyModelRecord += "," + aISARDataRecord.get_RecordID();
+        toyModelRecord += "," + aISARDataRecord.getRecordID();
         toyModelRecord += "," + aISARDataRecord.get_AGE0();
         boolean SEX = aISARDataRecord.get_SEX();
         if (SEX) {
@@ -912,7 +912,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
         toyModelRecord += "," + Long.toString(aPersonIDHouseholdID[0]);
         toyModelRecord += ",-9";
         toyModelRecord += ",-9";
-        toyModelRecord += "," + aISARDataRecord.get_RecordID();
+        toyModelRecord += "," + aISARDataRecord.getRecordID();
         toyModelRecord += "," + aISARDataRecord.get_AGE0();
         boolean SEX = aISARDataRecord.get_SEX();
         if (SEX) {
@@ -999,7 +999,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
         toyModelRecord += "," + Long.toString(aPersonIDHouseholdID[0]);
         toyModelRecord += "," + Long.toString(aPersonIDHouseholdID[1]);
         toyModelRecord += ",-9";
-        toyModelRecord += "," + aISARDataRecord.get_RecordID();
+        toyModelRecord += "," + aISARDataRecord.getRecordID();
         toyModelRecord += "," + aISARDataRecord.get_AGE0();
         boolean SEX = aISARDataRecord.get_SEX();
         if (SEX) {
@@ -1089,7 +1089,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
         toyModelRecord += "," + Long.toString(aPersonIDHouseholdID[0]);
         // toyModelRecord += "," + aHSARDataRecord.getPNUM();
         toyModelRecord += "," + Long.toString(aPersonIDHouseholdID[1]);
-        toyModelRecord += "," + aHSARDataRecord.get_RecordID();
+        toyModelRecord += "," + aHSARDataRecord.getRecordID();
         toyModelRecord += ",-9";
         toyModelRecord += "," + aHSARDataRecord.get_AGEH();
         boolean SEX = aHSARDataRecord.get_SEX();
@@ -1158,7 +1158,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
         toyModelRecord += "," + Long.toString(aPersonIDHouseholdID[0]);
         // toyModelRecord += "," + aHSARDataRecord.getPNUM();
         toyModelRecord += "," + Long.toString(aPersonIDHouseholdID[1]);
-        toyModelRecord += "," + aHSARDataRecord.get_RecordID();
+        toyModelRecord += "," + aHSARDataRecord.getRecordID();
         toyModelRecord += ",-9";
         toyModelRecord += "," + aHSARDataRecord.get_AGEH();
         boolean SEX = aHSARDataRecord.get_SEX();

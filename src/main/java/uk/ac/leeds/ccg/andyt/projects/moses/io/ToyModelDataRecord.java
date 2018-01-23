@@ -35,7 +35,7 @@ public class ToyModelDataRecord extends Census_AbstractDataRecord {
 
     /** Creates a new ToyModelDataRecord */
     public ToyModelDataRecord() {
-        _Init();
+        init();
     }
 
     /**
@@ -55,7 +55,7 @@ public class ToyModelDataRecord extends Census_AbstractDataRecord {
      */
     public ToyModelDataRecord(ToyModelDataRecord_2 _ToyModelDataRecord_2) {
         init(_ToyModelDataRecord_2);
-        this._RecordID = _ToyModelDataRecord_2._RecordID;
+        this.RecordID = _ToyModelDataRecord_2.RecordID;
     }
 
     /**
@@ -66,7 +66,7 @@ public class ToyModelDataRecord extends Census_AbstractDataRecord {
      */
     public ToyModelDataRecord(ToyModelDataRecord _ToyModelDataRecord_3) {
         init(_ToyModelDataRecord_3);
-        this._RecordID = _ToyModelDataRecord_3._RecordID;
+        this.RecordID = _ToyModelDataRecord_3.RecordID;
     }
 
     /**
@@ -98,7 +98,7 @@ public class ToyModelDataRecord extends Census_AbstractDataRecord {
      */
     public ToyModelDataRecord(RandomAccessFile aRandomAccessFile) {
         try {
-            this._RecordID = aRandomAccessFile.readLong();
+            this.RecordID = aRandomAccessFile.readLong();
             this.Zone_Code = new char[10];
             for (int i = 0; i < this.Zone_Code.length; i++) {
                 Zone_Code[i] = aRandomAccessFile.readChar();
@@ -140,8 +140,8 @@ public class ToyModelDataRecord extends Census_AbstractDataRecord {
     /**
      * Initialises all fields.
      */
-    protected void _Init() {
-        super._Init();
+    protected void init() {
+        super.init();
         this.tPersonID = Integer.MIN_VALUE;
         this.tHouseholdID = Integer.MIN_VALUE;
         this.tHSARDataRecordID = Long.MIN_VALUE;
@@ -152,7 +152,7 @@ public class ToyModelDataRecord extends Census_AbstractDataRecord {
      * Initialises all fields.
      */
     protected void initZero() {
-        super._Init();
+        super.init();
         this.tPersonID = 0;
         this.tHouseholdID = 0;
         this.tISARDataRecordID = 0;

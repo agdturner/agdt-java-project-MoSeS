@@ -37,7 +37,7 @@ public class ToyModelDataRecord_2 extends ToyModelDataRecord {
 
     /** Creates a new ToyModelDataRecord */
     public ToyModelDataRecord_2() {
-        _Init();
+        init();
     }
 
     /**
@@ -57,7 +57,7 @@ public class ToyModelDataRecord_2 extends ToyModelDataRecord {
      */
     public ToyModelDataRecord_2(ToyModelDataRecord_2 _ToyModelDataRecord_2) {
         init(_ToyModelDataRecord_2);
-        this._RecordID = _ToyModelDataRecord_2._RecordID;
+        this.RecordID = _ToyModelDataRecord_2.RecordID;
     }
 
     /**
@@ -96,7 +96,7 @@ public class ToyModelDataRecord_2 extends ToyModelDataRecord {
      */
     public ToyModelDataRecord_2(RandomAccessFile aRandomAccessFile)
             throws IOException {
-        this._RecordID = aRandomAccessFile.readLong();
+        this.RecordID = aRandomAccessFile.readLong();
         this.Zone_Code = new char[10];
         for (int i = 0; i < this.Zone_Code.length; i++) {
             Zone_Code[i] = aRandomAccessFile.readChar();
@@ -130,8 +130,8 @@ public class ToyModelDataRecord_2 extends ToyModelDataRecord {
     /**
      * Initialises all fields.
      */
-    protected void _Init() {
-        super._Init();
+    protected void init() {
+        super.init();
         this.AGE = Integer.MIN_VALUE;
         this.SEX = Integer.MIN_VALUE;
         this.LLTI = Integer.MIN_VALUE;
@@ -144,7 +144,7 @@ public class ToyModelDataRecord_2 extends ToyModelDataRecord {
      * Initialises all fields.
      */
     protected void initZero() {
-        super._Init();
+        super.init();
         this.AGE = 0;
         this.SEX = 0;
         this.LLTI = 0;

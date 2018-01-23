@@ -107,14 +107,14 @@ public class MarkOutputDataRecord_1 extends Census_AbstractDataRecord {
 
     /** Creates a new CASKS002Record */
     public MarkOutputDataRecord_1() {
-        _Init();
+        init();
     }
 
     /**
      * Initialises all fields.
      */
-    protected void _Init() {
-        super._Init();
+    protected void init() {
+        super.init();
         this.allHouseholds = Integer.MIN_VALUE;
         this.ethnicGroupWhite = Integer.MIN_VALUE;
         this.ethnicGroupMixed = Integer.MIN_VALUE;

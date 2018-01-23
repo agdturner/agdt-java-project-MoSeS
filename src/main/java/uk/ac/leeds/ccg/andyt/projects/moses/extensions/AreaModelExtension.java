@@ -206,7 +206,7 @@ public class AreaModelExtension extends AreaModel {
 		short HNRESDNT;
 		short HNELDERS;
 		personIDHouseholdID[0]++;
-		person.setIndSARRecID((int) tISARDataRecord.get_RecordID());
+		person.setIndSARRecID((int) tISARDataRecord.getRecordID());
 		person.setId((int) tISARDataRecord.get_ID());
 		person.setAge(tISARDataRecord.get_AGE0());
 		HRSOCGRD = tISARDataRecord.get_HRSOCGRD();

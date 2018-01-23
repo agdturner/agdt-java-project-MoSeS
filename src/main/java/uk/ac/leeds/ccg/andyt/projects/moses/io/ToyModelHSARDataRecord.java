@@ -33,7 +33,7 @@ public class ToyModelHSARDataRecord extends Census_AbstractDataRecord {
 
     /** Creates a new ToyModelDataRecord */
     public ToyModelHSARDataRecord() {
-        _Init();
+        init();
     }
 
     /**
@@ -45,7 +45,7 @@ public class ToyModelHSARDataRecord extends Census_AbstractDataRecord {
     public ToyModelHSARDataRecord(
             ToyModelDataRecord_2 _ToyModelDataRecord_2) {
         init(_ToyModelDataRecord_2);
-        this._RecordID = _ToyModelDataRecord_2.get_RecordID();
+        this.RecordID = _ToyModelDataRecord_2.getRecordID();
     }
 
     /**
@@ -65,7 +65,7 @@ public class ToyModelHSARDataRecord extends Census_AbstractDataRecord {
         for (int i = 0; i < Zone_Code.length; i++) {
             this.Zone_Code[i] = Zone_Code[i];
         }
-        this._RecordID = RecordID;
+        this.RecordID = RecordID;
         this.t_HSARDataRecord = new Census_HSARDataRecord(RecordID, aStringTokenizer);
     }
 
@@ -76,7 +76,7 @@ public class ToyModelHSARDataRecord extends Census_AbstractDataRecord {
      */
     public ToyModelHSARDataRecord(RandomAccessFile aRandomAccessFile)
             throws IOException {
-        this._RecordID = aRandomAccessFile.readLong();
+        this.RecordID = aRandomAccessFile.readLong();
         this.Zone_Code = new char[10];
         for (int i = 0; i < this.Zone_Code.length; i++) {
             Zone_Code[i] = aRandomAccessFile.readChar();
@@ -96,8 +96,8 @@ public class ToyModelHSARDataRecord extends Census_AbstractDataRecord {
     /**
      * Initialises all fields.
      */
-    protected void _Init() {
-        super._Init();
+    protected void init() {
+        super.init();
         this.t_HSARDataRecord = new Census_HSARDataRecord();
     }
 

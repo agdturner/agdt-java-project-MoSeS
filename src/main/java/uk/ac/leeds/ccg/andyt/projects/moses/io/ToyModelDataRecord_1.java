@@ -49,7 +49,7 @@ public class ToyModelDataRecord_1 extends Census_AbstractDataRecord {
 
     /** Creates a new ToyModelDataRecord */
     public ToyModelDataRecord_1() {
-        _Init();
+        init();
     }
 
     /**
@@ -70,7 +70,7 @@ public class ToyModelDataRecord_1 extends Census_AbstractDataRecord {
     public ToyModelDataRecord_1(ToyModelDataHandler tToyModelDataHandler,
             String line) {
         String[] fields = line.split(",");
-        _RecordID = Long.valueOf(fields[0]);
+        RecordID = Long.valueOf(fields[0]);
         Zone_Code = fields[9].toCharArray();
         ISARDataRecordID = Long.valueOf(fields[1]);
         ID = Long.valueOf(fields[2]);
@@ -98,7 +98,7 @@ public class ToyModelDataRecord_1 extends Census_AbstractDataRecord {
     public ToyModelDataRecord_1(RandomAccessFile aRandomAccessFile)
             throws IOException {
         try {
-            this._RecordID = aRandomAccessFile.readLong();
+            this.RecordID = aRandomAccessFile.readLong();
             this.Zone_Code = new char[10];
             for (int i = 0; i < this.Zone_Code.length; i++) {
                 Zone_Code[i] = aRandomAccessFile.readChar();
@@ -128,8 +128,8 @@ public class ToyModelDataRecord_1 extends Census_AbstractDataRecord {
     /**
      * Initialises all fields.
      */
-    protected void _Init() {
-        super._Init();
+    protected void init() {
+        super.init();
         this.ISARDataRecordID = Long.MIN_VALUE;
         this.ID = Long.MIN_VALUE;
         this.age = Integer.MIN_VALUE;
