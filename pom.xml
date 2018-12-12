@@ -2,15 +2,50 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>uk.ac.leeds.ccg.andyt</groupId>
-    <artifactId>moses</artifactId>
+    <artifactId>agdt-project-moses</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    
+    <name>agdt-project-moses</name>
+    <url>https://github.com/agdturner/agdt-project-moses</url>
+    <description>A Java Library to works with GeoTools.</description>
+    <scm>
+        <url>git@github.com:agdturner/agdt-project-moses.git</url>
+        <connection>scm:git:git@github.com:agdturner/agdt-project-moses.git</connection>
+        <developerConnection>scm:git:git@github.com:agdturner/agdt-project-moses</developerConnection>
+    </scm>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://github.com/agdturner/agdt-project-moses/LICENSE.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <organization>
+        <name>Centre for Computational Geography, University of Leeds</name>
+        <url>http://www.ccg.leeds.ac.uk/</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>agdturner</id>
+            <name>Andy Turner</name>
+            <email>a.g.d.turner@leeds.ac.uk</email>
+            <organization>Centre for Computational Geography, University of Leeds</organization>
+            <organizationUrl>http://www.ccg.leeds.ac.uk</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <generic.version>1.0-SNAPSHOT</generic.version>
-        <agdtcensus.version>0.1.0-SNAPSHOT</agdtcensus.version>
+        <agdt-generic.version>1.0-SNAPSHOT</agdt-generic.version>
+        <agdt-data.version>0.1-SNAPSHOT</agdt-data.version>
+        <agdt-data-census.version>0.1-SNAPSHOT</agdt-data-census.version>
+        <agdt-math.version>0.1-SNAPSHOT</agdt-math.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
     
     <dependencies>
@@ -21,32 +56,48 @@
         </dependency>
         <dependency>
             <groupId>uk.ac.leeds.ccg.andyt</groupId>
-            <artifactId>generic</artifactId>
-            <version>${generic.version}</version>
+            <artifactId>agdt-generic</artifactId>
+            <version>${agdt-generic.version}</version>
         </dependency>
         <dependency>
-            <groupId>mpi</groupId>
+            <groupId>uk.ac.leeds.ccg.andyt</groupId>
+            <artifactId>agdt-data</artifactId>
+            <version>${agdt-data.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.leeds.ccg.andyt</groupId>
+            <artifactId>agdt-data-census</artifactId>
+            <version>${agdt-data-census.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.leeds.ccg.andyt</groupId>
+            <artifactId>agdt-math</artifactId>
+            <version>${agdt-math.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mpj</groupId>
             <artifactId>mpj</artifactId>
             <version>0.43</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>1.0.14</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>uk.ac.leeds.sog.moses</groupId>
             <artifactId>MoSeS_Toy_Model</artifactId>
             <version>0.1</version>
-            <!--
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/MoSeS_Toy_Model-0.1.jar</systemPath>
-            -->
         </dependency>
+        -->
         <dependency>
-            <groupId>uk.ac.leeds.ccg.andyt</groupId>
-            <artifactId>agdt-census</artifactId>
-            <version>${agdtcensus.version}</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math</artifactId>
+            <version>2.2</version>
         </dependency>
     </dependencies>
     
