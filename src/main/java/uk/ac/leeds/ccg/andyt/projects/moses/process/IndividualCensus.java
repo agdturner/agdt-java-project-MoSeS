@@ -33,12 +33,10 @@ import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
 import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataHandler;
 import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS003DataRecord;
 import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.CASDataHandler_GA_IPS;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataHandler;
-import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataRecord;
 import uk.ac.leeds.ccg.andyt.generic.logging.Generic_AbstractLog;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * Abstract class
@@ -390,13 +388,13 @@ public abstract class IndividualCensus extends Generic_AbstractLog {
                 _Directory,
                 "_ZoneCode_CommunalEstablishmentPopulation_HashMap.thisFile");
         if (_ZoneCode_AllHouseholdsTotal_HashMap_File.exists() && _ZoneCode_CommunalEstablishmentPopulation_HashMap_File.exists()) {
-            _GeneralPopulationContraints[0] = Generic_StaticIO.readObject(_ZoneCode_AllHouseholdsTotal_HashMap_File);
-            _GeneralPopulationContraints[1] = Generic_StaticIO.readObject(_ZoneCode_CommunalEstablishmentPopulation_HashMap_File);
+            _GeneralPopulationContraints[0] = Generic_IO.readObject(_ZoneCode_AllHouseholdsTotal_HashMap_File);
+            _GeneralPopulationContraints[1] = Generic_IO.readObject(_ZoneCode_CommunalEstablishmentPopulation_HashMap_File);
         } else {
             _GeneralPopulationContraints = getGeneralPopulationContraints();
-            Generic_StaticIO.writeObject(_GeneralPopulationContraints[0],
+            Generic_IO.writeObject(_GeneralPopulationContraints[0],
                     _ZoneCode_AllHouseholdsTotal_HashMap_File);
-            Generic_StaticIO.writeObject(_GeneralPopulationContraints[1],
+            Generic_IO.writeObject(_GeneralPopulationContraints[1],
                     _ZoneCode_CommunalEstablishmentPopulation_HashMap_File);
         }
         _Logger.exiting(
@@ -551,7 +549,7 @@ public abstract class IndividualCensus extends Generic_AbstractLog {
                 this._Directory.toString() + System.getProperty("file.separator") +
                 "ZoneCode_StartRecordID_EndRecordID_HashMap.thisFile");
         if (_ZoneCode_StartRecordID_EndRecordID_HashMap_File.exists()) {
-            _ZoneCode_StartRecordID_EndRecordID_HashMap = (HashMap) Generic_StaticIO.readObject(_ZoneCode_StartRecordID_EndRecordID_HashMap_File);
+            _ZoneCode_StartRecordID_EndRecordID_HashMap = (HashMap) Generic_IO.readObject(_ZoneCode_StartRecordID_EndRecordID_HashMap_File);
         } else {
             _ZoneCode_StartRecordID_EndRecordID_HashMap = new HashMap();
             long[] _StartRecordID_EndRecordID;
@@ -606,7 +604,7 @@ public abstract class IndividualCensus extends Generic_AbstractLog {
                             _ZoneCode_Substring, _StartRecordID_EndRecordID);
                 }
             }
-            Generic_StaticIO.writeObject(_ZoneCode_StartRecordID_EndRecordID_HashMap,
+            Generic_IO.writeObject(_ZoneCode_StartRecordID_EndRecordID_HashMap,
                     _ZoneCode_StartRecordID_EndRecordID_HashMap_File);
         }
     }
@@ -626,7 +624,7 @@ public abstract class IndividualCensus extends Generic_AbstractLog {
     }
 
     public void output_Population_HashMap() {
-        Generic_StaticIO.writeObject(
+        Generic_IO.writeObject(
                 _Population_HashMap,
                 _Output_File_1);
     }
@@ -635,7 +633,7 @@ public abstract class IndividualCensus extends Generic_AbstractLog {
         _Logger.entering(
                 this.getClass().getName(),
                 "load_Population_HashMap");
-        _Population_HashMap = (HashMap) Generic_StaticIO.readObject(_Input_File);
+        _Population_HashMap = (HashMap) Generic_IO.readObject(_Input_File);
         _Logger.exiting(
                 this.getClass().getName(),
                 "load_Population_HashMap");

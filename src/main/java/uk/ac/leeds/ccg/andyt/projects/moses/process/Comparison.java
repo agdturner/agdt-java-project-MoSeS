@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeMap;
 import org.jfree.chart.JFreeChart;
-import uk.ac.leeds.ccg.andyt.generic.math.Generic_BigDecimal;
+import uk.ac.leeds.ccg.andyt.math.Generic_BigDecimal;
 import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataHandler;
 import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
 import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS002DataHandler;
@@ -41,7 +41,7 @@ import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS002DataRecord;
 import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
 import uk.ac.leeds.ccg.andyt.census.cas.uv.Census_CASUV003DataHandler;
 import uk.ac.leeds.ccg.andyt.census.cas.uv.Census_CASUV003DataRecord;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ToyModelDataRecord_2;
 
@@ -448,7 +448,7 @@ public class Comparison extends RegressionReport {
                 new InputStreamReader(new FileInputStream(
                                 tToyModelDataRecord2CSVFile)));
         StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
-        Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+        Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
         // Initialise
         int tMaleCount;
         int tFemaleCount;

@@ -36,7 +36,7 @@ import java.io.StreamTokenizer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeMap;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * Class for handling output that confirms results control constrain.
@@ -254,7 +254,7 @@ public class OutputDataHandler_ControlConstraints extends AbstractOutputDataHand
         BufferedReader tBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(_InputFile)));
         StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
-        Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+        Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
         int tokenType = tStreamTokenizer.nextToken();
 
 

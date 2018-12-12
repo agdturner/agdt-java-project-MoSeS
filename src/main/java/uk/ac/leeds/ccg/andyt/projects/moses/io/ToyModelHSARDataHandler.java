@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * A specialist handler for accessing CASKS002Records and information about the
@@ -58,7 +58,7 @@ public class ToyModelHSARDataHandler extends Census_AbstractDataHandler {
 	 */
 	public ToyModelHSARDataHandler(File _File) throws IOException {
 		if (_File.toString().endsWith("ThisFile")) {
-			ToyModelHSARDataHandler _ToyModelHSARDataHandler = (ToyModelHSARDataHandler) Generic_StaticIO.readObject(_File);
+			ToyModelHSARDataHandler _ToyModelHSARDataHandler = (ToyModelHSARDataHandler) Generic_IO.readObject(_File);
 			load(_ToyModelHSARDataHandler._File);
 			this._RecordLength = _ToyModelHSARDataHandler._RecordLength;
 			// this.recordLength = new
@@ -185,7 +185,7 @@ public class ToyModelHSARDataHandler extends Census_AbstractDataHandler {
 				new InputStreamReader(new FileInputStream(
 						a_ToyModelHSARDataRecordASCIIFile)));
 		StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
-		Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+		Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
 		long lineCount = 0L;
 		ToyModelHSARDataRecord a_ToyModelHSARDataRecord = new ToyModelHSARDataRecord();
 		boolean readHouseholdCodeLine = true;
@@ -249,7 +249,7 @@ public class ToyModelHSARDataHandler extends Census_AbstractDataHandler {
 		System.out.println("Number of Households loaded = "
 				+ (householdCount + 1));
 		System.out.println("Number of Persons = " + (RecordID + 1));
-		Generic_StaticIO.writeObject(
+		Generic_IO.writeObject(
                 this,
                 new File(a_ToyModelHSARDataRecordASCIIFile.getParent(), a_ToyModelHSARDataRecordASCIIFile.getName()
 				+ ".ThisFile"));

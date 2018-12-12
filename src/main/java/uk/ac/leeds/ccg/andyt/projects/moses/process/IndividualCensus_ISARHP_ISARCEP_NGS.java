@@ -30,7 +30,7 @@ import mpi.MPI;
 import mpi.Request;
 import mpi.Status;
 import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ParameterFileParser;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
 import uk.ac.leeds.ccg.andyt.projects.moses.mpj.MPJRun;
@@ -179,7 +179,7 @@ class IndividualCensus_ISARHP_ISARCEP_NGS extends IndividualCensus_ISARHP_ISARCE
         _Input_File = new File((String) tInput_Parameters[11] + "population_HashMap.thisFile");
         // if _InputFile.exists() then this run will be loading in a prior result and re-optimising
         // Copy Parameter file to _OutputDirectory as metadata
-        Generic_StaticIO.copy(
+        Generic_IO.copy(
                 _Input_Parameter_File,
                 _OutputDirectory);
         // Initialise Census_CASDataHandler.

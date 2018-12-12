@@ -36,7 +36,7 @@ import java.io.StreamTokenizer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeMap;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * A class for handling output data wanted by Mark Birkin.
@@ -410,7 +410,7 @@ public class MarkOutputDataHandler_2 extends Census_AbstractDataHandler {
                 new InputStreamReader(new FileInputStream(
                 tToyModelDataRecord2CSVFile)));
         StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
-        Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+        Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
         int tokenType = tStreamTokenizer.nextToken();
         ToyModelDataRecord_2 aToyModelDataRecord2;
         String aZoneCode;
@@ -751,7 +751,7 @@ public class MarkOutputDataHandler_2 extends Census_AbstractDataHandler {
                 new InputStreamReader(new FileInputStream(
                 tToyModelDataRecord2CSVFile)));
         StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
-        Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+        Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
         int tokenType = tStreamTokenizer.nextToken();
         ToyModelDataRecord_2 aToyModelDataRecord2;
         String aZoneCode;

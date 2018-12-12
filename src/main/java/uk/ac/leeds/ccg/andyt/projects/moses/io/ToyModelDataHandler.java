@@ -38,7 +38,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Vector;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * A specialist handler for accessing CASKS002Records and information about the
@@ -191,7 +191,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
                     new FileInputStream(file)));
             StreamTokenizer tStreamTokenizer =
                     new StreamTokenizer(tBufferedReader);
-            Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+            Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
             long lineCount = 0L;
             ToyModelDataRecord_1 _ToyModelDataRecord_1 = new ToyModelDataRecord_1();
             // Skip header
@@ -238,7 +238,7 @@ public class ToyModelDataHandler extends Census_AbstractDataHandler {
             StreamTokenizer tStreamTokenizer =
                     new StreamTokenizer(
                     tBufferedReader);
-            Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+            Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
             File _ToyModelDataRecord_2DATFile =
                     new File(
                     _ToyModelDataRecord1CSVFile.getParentFile(),

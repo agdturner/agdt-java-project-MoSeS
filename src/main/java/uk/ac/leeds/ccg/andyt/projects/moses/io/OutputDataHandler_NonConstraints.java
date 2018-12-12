@@ -37,7 +37,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeMap;
 import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS006DataRecord;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * Class for handling output that compares some non-constraint variables in the
@@ -153,7 +153,7 @@ public class OutputDataHandler_NonConstraints extends AbstractOutputDataHandler 
         BufferedReader tBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(_InputFile)));
         StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
-        Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+        Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
         int tokenType = tStreamTokenizer.nextToken();
         ToyModelDataRecord_2 aToyModelDataRecord2;
         String aZoneCode;

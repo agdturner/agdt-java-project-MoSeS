@@ -19,7 +19,7 @@
 package uk.ac.leeds.ccg.andyt.projects.moses.io;
 
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -35,9 +35,9 @@ public class ParameterFileParser {
     public static Object[] parse(File f) {
         Object[] result = new Object[12];
         BufferedReader br;
-        br = Generic_StaticIO.getBufferedReader(f);
+        br = Generic_IO.getBufferedReader(f);
         StreamTokenizer st = new StreamTokenizer(br);
-        Generic_StaticIO.setStreamTokenizerSyntax5(st);
+        Generic_IO.setStreamTokenizerSyntax5(st);
         String s;
         int index = 0;
         try {

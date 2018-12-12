@@ -38,7 +38,7 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.statistics.Regression;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.WebContentHandler;
 
 /**
@@ -542,13 +542,13 @@ public abstract class RegressionReport extends WebContentHandler {
                 new InputStreamReader(new FileInputStream(_SARExpectedFile)));
         StreamTokenizer _SARExpectedStreamTokenizer = new StreamTokenizer(
                 _SARExpectedBufferedReader);
-        Generic_StaticIO.setStreamTokenizerSyntax3(_SARExpectedStreamTokenizer);
+        Generic_IO.setStreamTokenizerSyntax3(_SARExpectedStreamTokenizer);
         int _SARExpectedTokenType = _SARExpectedStreamTokenizer.nextToken();
         BufferedReader _CASObservedBufferedReader = new BufferedReader(
                 new InputStreamReader(new FileInputStream(_CASObservedFile)));
         StreamTokenizer _CASObservedStreamTokenizer = new StreamTokenizer(
                 _CASObservedBufferedReader);
-        Generic_StaticIO.setStreamTokenizerSyntax3(_CASObservedStreamTokenizer);
+        Generic_IO.setStreamTokenizerSyntax3(_CASObservedStreamTokenizer);
         int _CASObservedTokenType = _CASObservedStreamTokenizer.nextToken();
         // Read Headers
         String a_SARExpectedLine = _SARExpectedStreamTokenizer.sval;

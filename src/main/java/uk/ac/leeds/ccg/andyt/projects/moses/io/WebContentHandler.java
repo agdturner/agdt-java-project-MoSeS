@@ -23,7 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * Class for generating Web Content.
@@ -45,7 +45,7 @@ public abstract class WebContentHandler {
         File f = new File(
                 _Directory,
                 _FilenamePrefix + _FilenameSuffix + ".xhtml2.0.html");
-        FileOutputStream fos = Generic_StaticIO.getFileOutputStream(f);
+        FileOutputStream fos = Generic_IO.getFileOutputStream(f);
         byte[] _LineSeparator = System.getProperty("line.separator").getBytes();
         writeHTMLDTD(_LineSeparator, fos);
         writeHTMLHead(_LineSeparator, _FilenamePrefix, fos);

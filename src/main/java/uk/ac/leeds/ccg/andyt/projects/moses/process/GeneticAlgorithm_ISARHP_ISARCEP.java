@@ -35,8 +35,8 @@ import uk.ac.leeds.ccg.andyt.census.cas.ks.Census_CASKS09cDataRecord;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler.AgeSexType;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
-import uk.ac.leeds.ccg.andyt.generic.execution.Generic_AgeConverter;
-import uk.ac.leeds.ccg.andyt.generic.utilities.Generic_Collections;
+import uk.ac.leeds.ccg.andyt.data.converter.Generic_AgeConverter;
+import uk.ac.leeds.ccg.andyt.projects.moses.util.Moses_Collections;
 
 public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
 
@@ -506,7 +506,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     parentHPHRPFemale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -574,7 +574,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     parentHPHRPMale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -638,7 +638,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     parentHPNonHRP_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -705,7 +705,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     parentCEPFemale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -771,7 +771,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                         // Mutate
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     parentCEPMale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -842,7 +842,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     childHPHRPFemale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -863,7 +863,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     childHPHRPMale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -882,7 +882,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     childHPNonHRP_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -902,7 +902,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     childCEPFemale_Vector,
                                     aNumberOfMutations,
                                     _Random);
@@ -923,7 +923,7 @@ public class GeneticAlgorithm_ISARHP_ISARCEP extends GeneticAlgorithm {
                     if (aMaxNumberOfMutationsPerChild > 0) {
                         aNumberOfMutations = _Random.nextInt(aMaxNumberOfMutationsPerChild);
                         if (aNumberOfMutations > 0) {
-                            aIndexesToSwap_HashSet = Generic_Collections.getRandomIndexes_HashSet(
+                            aIndexesToSwap_HashSet = Moses_Collections.getRandomIndexes_HashSet(
                                     parentCEPMale_Vector,
                                     aNumberOfMutations,
                                     _Random);

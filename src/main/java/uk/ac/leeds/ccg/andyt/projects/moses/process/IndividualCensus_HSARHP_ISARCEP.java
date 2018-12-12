@@ -34,9 +34,9 @@ import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler.AgeSexType;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
-import uk.ac.leeds.ccg.andyt.generic.execution.Generic_AgeConverter;
+import uk.ac.leeds.ccg.andyt.data.converter.Generic_AgeConverter;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ParameterFileParser;
 
 public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
@@ -85,7 +85,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
         initLogFile();
         initOutputFiles();
         // Copy Parameter file to _OutputDirectory as metadata
-        Generic_StaticIO.copy(
+        Generic_IO.copy(
                 _Input_Parameter_File,
                 _OutputDirectory);
         // Initialise _InputFile

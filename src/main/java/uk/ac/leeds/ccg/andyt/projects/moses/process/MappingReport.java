@@ -26,7 +26,7 @@ import java.io.InputStreamReader;
 import java.io.StreamTokenizer;
 import java.util.Vector;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.WebContentHandler;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * A class for generating maps comparing CAS data with IndividualCensus outputs
@@ -44,13 +44,13 @@ public abstract class MappingReport extends WebContentHandler {
 				new InputStreamReader(new FileInputStream(_SARExpectedFile)));
 		StreamTokenizer _SARExpectedStreamTokenizer = new StreamTokenizer(
 				_SARExpectedBufferedReader);
-		Generic_StaticIO.setStreamTokenizerSyntax3(_SARExpectedStreamTokenizer);
+		Generic_IO.setStreamTokenizerSyntax3(_SARExpectedStreamTokenizer);
 		int _SARExpectedTokenType = _SARExpectedStreamTokenizer.nextToken();
 		BufferedReader _CASObservedBufferedReader = new BufferedReader(
 				new InputStreamReader(new FileInputStream(_CASObservedFile)));
 		StreamTokenizer _CASObservedStreamTokenizer = new StreamTokenizer(
 				_CASObservedBufferedReader);
-		Generic_StaticIO.setStreamTokenizerSyntax3(_CASObservedStreamTokenizer);
+		Generic_IO.setStreamTokenizerSyntax3(_CASObservedStreamTokenizer);
 		int _CASObservedTokenType = _CASObservedStreamTokenizer.nextToken();
 		// Read Headers
 		String a_SARExpectedLine = _SARExpectedStreamTokenizer.sval;

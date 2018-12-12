@@ -21,21 +21,15 @@ package uk.ac.leeds.ccg.andyt.projects.moses.io;
 import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
 import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.StreamTokenizer;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Random;
-import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Vector;
 import uk.ac.leeds.ccg.andyt.projects.moses.process.GeneticAlgorithm_HSARHP_ISARCEP;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
 import uk.ac.leeds.ccg.andyt.projects.moses.process.GeneticAlgorithm_ISARHP_ISARCEP;
 
 /**
@@ -430,7 +424,7 @@ public class OutputDataHandler_OptimisationConstraints {
 //        BufferedReader tBufferedReader = new BufferedReader(
 //                new InputStreamReader(new FileInputStream(_InputFile)));
 //        StreamTokenizer tStreamTokenizer = new StreamTokenizer(tBufferedReader);
-//        Generic_StaticIO.setStreamTokenizerSyntax1(tStreamTokenizer);
+//        Generic_IO.setStreamTokenizerSyntax1(tStreamTokenizer);
 //        int tokenType = tStreamTokenizer.nextToken();
 //        ToyModelDataRecord_2 aToyModelDataRecord2;
 //        String aZoneCode;

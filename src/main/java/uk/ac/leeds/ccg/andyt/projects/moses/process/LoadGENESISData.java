@@ -26,7 +26,7 @@ import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.census.sws.Census_SWSDataHandler;
 import uk.ac.leeds.ccg.andyt.census.sws.Census_SWSDataRecord;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 
 /**
  * A class for loading formatted data and generating serialised handlers.
@@ -82,7 +82,7 @@ public class LoadGENESISData {
         file = new File(
                 directory,
                 Census_SWSDataHandler.class.getCanonicalName() + ".thisFile");
-        Generic_StaticIO.writeObject(
+        Generic_IO.writeObject(
                 a_SWSDataHandler,
                 file);
         a_SWSDataHandler = new Census_SWSDataHandler(
@@ -100,7 +100,7 @@ public class LoadGENESISData {
         file = new File(
                 directory,
                 Census_CASAreaEastingNorthingDataHandler.class.getCanonicalName() + ".thisFile");
-        Generic_StaticIO.writeObject(
+        Generic_IO.writeObject(
                 a_CASAreaEastingNorthingDataHandler,
                 file);
         a_CASAreaEastingNorthingDataHandler = new Census_CASAreaEastingNorthingDataHandler(

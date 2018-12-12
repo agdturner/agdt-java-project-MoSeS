@@ -33,7 +33,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Vector;
 import org.jfree.chart.JFreeChart;
-import uk.ac.leeds.ccg.andyt.generic.io.Generic_StaticIO;
+import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataHandler;
 import uk.ac.leeds.ccg.andyt.census.core.Census_CASDataRecord;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataHandler;
@@ -526,7 +526,7 @@ public class RegressionReport_UK1 extends RegressionReport {
                         new FileInputStream(resultsFile)));
                 StreamTokenizer aStreamTokenizer =
                         new StreamTokenizer(aBufferedReader);
-                Generic_StaticIO.setStreamTokenizerSyntax1(aStreamTokenizer);
+                Generic_IO.setStreamTokenizerSyntax1(aStreamTokenizer);
                 String line = "";
                 int tokenType = aStreamTokenizer.nextToken();
                 while (tokenType != StreamTokenizer.TT_EOF) {
@@ -659,7 +659,7 @@ public class RegressionReport_UK1 extends RegressionReport {
                         new FileInputStream(resultsFile)));
                 StreamTokenizer aStreamTokenizer =
                         new StreamTokenizer(aBufferedReader);
-                Generic_StaticIO.setStreamTokenizerSyntax1(aStreamTokenizer);
+                Generic_IO.setStreamTokenizerSyntax1(aStreamTokenizer);
                 String line = "";
                 int tokenType = aStreamTokenizer.nextToken();
                 while (tokenType != StreamTokenizer.TT_EOF) {
