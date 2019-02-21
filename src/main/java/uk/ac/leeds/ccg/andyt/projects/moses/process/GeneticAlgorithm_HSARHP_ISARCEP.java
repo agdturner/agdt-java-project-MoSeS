@@ -37,7 +37,7 @@ import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler.AgeSexType;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
-import uk.ac.leeds.ccg.andyt.data.converter.Generic_AgeConverter;
+import uk.ac.leeds.ccg.andyt.data.converter.Data_AgeConverter;
 import uk.ac.leeds.ccg.andyt.projects.moses.util.Moses_Collections;
 
 /**
@@ -835,7 +835,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
             sex = aISARDataRecord.get_SEX();
             type = Census_ISARDataHandler.getRELTOHRType1(aISARDataRecord);
             // type is only not 3 if there was a struggle to initialise with type = 3
-            aAge_short = Generic_AgeConverter.getAgeClass4(aAge_int);
+            aAge_short = Data_AgeConverter.getAgeClass4(aAge_int);
             boolean got = false;
             value = toSwapOutCEP_Age_Vector_HashMap.get(aAge_short);
             if (value == null) {
@@ -850,9 +850,9 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
             }
             int counter = 0;
             do {
-                age7 = Generic_AgeConverter.getAge7(aAge_int, _Random);
+                age7 = Data_AgeConverter.getAge7(aAge_int, _Random);
                 bAgeSexType = _IndividualCensus_HSARHP_ISARCEP._ISARDataHandler.new AgeSexType(
-                        Generic_AgeConverter.getAgeClassISARDataRecord(age7),
+                        Data_AgeConverter.getAgeClassISARDataRecord(age7),
                         sex,
                         type);
                 bISARDataRecord = _IndividualCensus_HSARHP_ISARCEP._ISARDataHandler.getISARDataRecord(
@@ -899,7 +899,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
                 for (int i = 0; i < aVector.size(); i++) {
                     for (int j = 0; j < aCEP_Age_Vector.size(); j++) {
                         aISARDataRecord = (Census_ISARDataRecord) aCEP_Age_Vector.elementAt(j);
-                        bAge_short = Generic_AgeConverter.getAgeClass4(aISARDataRecord.getAgeInt());
+                        bAge_short = Data_AgeConverter.getAgeClass4(aISARDataRecord.getAgeInt());
                         if (aAge_short == bAge_short) {
                             aCEP_Age_Vector.setElementAt(
                                     aISARDataRecord,
@@ -962,7 +962,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
             aHSARDataRecord = (Census_HSARDataRecord) tHPHRP_Vector.elementAt((Integer) aIterator.next());
             aAge_int = aHSARDataRecord.getAgeInt();
             sex = aHSARDataRecord.get_SEX();
-            aAge_short = Generic_AgeConverter.getAgeClass2(aAge_int);
+            aAge_short = Data_AgeConverter.getAgeClass2(aAge_int);
             boolean got = false;
             value = toSwapOutHPHRP_Age_Vector_HashMap.get(aAge_short);
             if (value == null) {
@@ -977,9 +977,9 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
             }
             int counter = 0;
             do {
-                age5 = Generic_AgeConverter.getAge5(aAge_short, _Random);
+                age5 = Data_AgeConverter.getAge5(aAge_short, _Random);
                 aAgeSex = _IndividualCensus_HSARHP_ISARCEP._HSARDataHandler.new AgeSex(
-                        Generic_AgeConverter.getAgeClassHSARDataRecord(age5),
+                        Data_AgeConverter.getAgeClassHSARDataRecord(age5),
                         sex);
                 bHSARDataRecord = _IndividualCensus_HSARHP_ISARCEP._HSARDataHandler.getHSARDataRecord(
                         _Random,
@@ -1025,7 +1025,7 @@ public class GeneticAlgorithm_HSARHP_ISARCEP extends GeneticAlgorithm {
                 for (int i = 0; i < aVector.size(); i++) {
                     for (int j = 0; j < aHPHRP_Vector.size(); j++) {
                         aHSARDataRecord = (Census_HSARDataRecord) aHPHRP_Vector.elementAt(j);
-                        bAge_short = Generic_AgeConverter.getAgeClass2(aHSARDataRecord.getAgeInt());
+                        bAge_short = Data_AgeConverter.getAgeClass2(aHSARDataRecord.getAgeInt());
                         if (aAge_short == bAge_short) {
                             aHPHRP_Vector.setElementAt(
                                     aHSARDataRecord,

@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.TreeMap;
 import org.jfree.chart.JFreeChart;
-import uk.ac.leeds.ccg.andyt.math.Generic_BigDecimal;
+import uk.ac.leeds.ccg.andyt.math.Math_BigDecimal;
 import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataHandler;
 import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS001DataRecord;
 import uk.ac.leeds.ccg.andyt.census.cas.Census_CAS002DataHandler;
@@ -386,7 +386,7 @@ public class Comparison extends RegressionReport {
         standardDeviationOfDifferenceBigDecimal = standardDeviationOfDifferenceBigDecimal
                 .divide(nRecordsBigDecimal.subtract(BigDecimal.ONE), scale,
                         roundingMode);
-        standardDeviationOfDifferenceBigDecimal = Generic_BigDecimal.sqrt(
+        standardDeviationOfDifferenceBigDecimal = Math_BigDecimal.sqrt(
                 standardDeviationOfDifferenceBigDecimal,
                 scale,
                 RoundingMode.HALF_EVEN);

@@ -34,7 +34,7 @@ import uk.ac.leeds.ccg.andyt.census.sar.Census_HSARDataRecord;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataHandler.AgeSexType;
 import uk.ac.leeds.ccg.andyt.census.sar.Census_ISARDataRecord;
-import uk.ac.leeds.ccg.andyt.data.converter.Generic_AgeConverter;
+import uk.ac.leeds.ccg.andyt.data.converter.Data_AgeConverter;
 import uk.ac.leeds.ccg.andyt.generic.core.Generic_ErrorAndExceptionHandler;
 import uk.ac.leeds.ccg.andyt.generic.io.Generic_IO;
 import uk.ac.leeds.ccg.andyt.projects.moses.io.ParameterFileParser;
@@ -242,7 +242,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
                     int iterationCount = 0;
                     do {
                         aAgeSex = _HSARDataHandler.new AgeSex(
-                                (short) Generic_AgeConverter.getAgeClassHSARDataRecord(Generic_AgeConverter.getAge5(age, aRandom)),
+                                (short) Data_AgeConverter.getAgeClassHSARDataRecord(Data_AgeConverter.getAge5(age, aRandom)),
                                 sex);
                         aHSARDataRecord = _HSARDataHandler.getHSARDataRecord(
                                 aRandom,
@@ -290,7 +290,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
                     int iterationCount = 0;
                     do {
                         aAgeSex = _HSARDataHandler.new AgeSex(
-                                (short) Generic_AgeConverter.getAgeClassHSARDataRecord(Generic_AgeConverter.getAge5(age, aRandom)),
+                                (short) Data_AgeConverter.getAgeClassHSARDataRecord(Data_AgeConverter.getAge5(age, aRandom)),
                                 sex);
                         aHSARDataRecord = _HSARDataHandler.getHSARDataRecord(
                                 aRandom,
@@ -336,7 +336,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
                     int iterationCount = 0;
                     do {
                         aAgeSexType = _ISARDataHandler.new AgeSexType(
-                                (short) Generic_AgeConverter.getAgeClassISARDataRecord(Generic_AgeConverter.getAge7(age, aRandom)),
+                                (short) Data_AgeConverter.getAgeClassISARDataRecord(Data_AgeConverter.getAge7(age, aRandom)),
                                 sex,
                                 type);
                         aISARDataRecord = _ISARDataHandler.getISARDataRecord(
@@ -403,7 +403,7 @@ public abstract class IndividualCensus_HSARHP_ISARCEP extends IndividualCensus {
                     int iterationCount = 0;
                     do {
                         aAgeSexType = _ISARDataHandler.new AgeSexType(
-                                (short) Generic_AgeConverter.getAgeClassISARDataRecord(Generic_AgeConverter.getAge7(age, aRandom)),
+                                (short) Data_AgeConverter.getAgeClassISARDataRecord(Data_AgeConverter.getAge7(age, aRandom)),
                                 sex,
                                 type);
                         aISARDataRecord = _ISARDataHandler.getISARDataRecord(
